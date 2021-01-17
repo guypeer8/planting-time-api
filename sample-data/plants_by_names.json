@@ -1,0 +1,590 @@
+[
+  {
+    "t_id": 182512,
+    "metadata": {
+      "common_name": "Garden tomato",
+      "scientific_name": "Solanum lycopersicum",
+      "family_common_name": "Potato family",
+      "images": [
+        "https://bs.floristic.org/image/o/400851a79391dbe6f667c66e4bf70299e9921853"
+      ]
+    },
+    "attributes": {
+      "plant_type": "vegetable"
+    },
+    "growth": {
+      "humidity": 5,
+      "ph": {
+        "min": 7,
+        "max": 7.5
+      },
+      "light": {
+        "numeric": 8
+      },
+      "percipitation": {
+        "min": 1524,
+        "max": 1524
+      },
+      "soil": {
+        "nutriments": {
+          "numeric": 8
+        },
+        "texture": {
+          "numeric": 3
+        }
+      }
+    },
+    "taxonomy": {
+      "genus": "Solanum",
+      "family": "Solanaceae",
+      "order": "Solanales",
+      "class": "Magnoliopsida",
+      "division": "Magnoliophyta",
+      "subkingdom": "Tracheobionta",
+      "kingdom": "Plantae"
+    }
+  },
+  {
+    "t_id": 182597,
+    "metadata": {
+      "common_name": "Irish potato",
+      "scientific_name": "Solanum tuberosum",
+      "family_common_name": "Potato family",
+      "images": [
+        "https://bs.floristic.org/image/o/95a0197b33f8efe2ea7a0d25f84476415779a4b5"
+      ]
+    },
+    "attributes": {
+      "plant_type": "vegetable"
+    },
+    "growth": {
+      "humidity": 5,
+      "ph": {
+        "min": 7.5,
+        "max": 8
+      },
+      "light": {
+        "numeric": 8
+      },
+      "soil": {
+        "nutriments": {
+          "numeric": 7
+        },
+        "texture": {
+          "numeric": 2
+        }
+      }
+    },
+    "taxonomy": {
+      "genus": "Solanum",
+      "family": "Solanaceae",
+      "order": "Solanales",
+      "class": "Magnoliopsida",
+      "division": "Magnoliophyta",
+      "subkingdom": "Tracheobionta",
+      "kingdom": "Plantae"
+    }
+  },
+  {
+    "t_id": 125316,
+    "metadata": {
+      "common_name": "Garden cucumber",
+      "scientific_name": "Cucumis sativus",
+      "family_common_name": "Cucumber family",
+      "images": [
+        "https://bs.floristic.org/image/o/32bab206969e192771e3f9917e3a682c05857ae9"
+      ]
+    },
+    "attributes": {
+      "plant_type": "vegetable"
+    },
+    "growth": {
+      "ph": {
+        "min": null,
+        "max": null
+      },
+      "light": {
+        "numeric": null
+      }
+    },
+    "taxonomy": {
+      "genus": "Cucumis",
+      "family": "Cucurbitaceae",
+      "order": "Violales",
+      "class": "Magnoliopsida",
+      "division": "Magnoliophyta",
+      "subkingdom": "Tracheobionta",
+      "kingdom": "Plantae"
+    }
+  },
+  {
+    "t_id": 103505,
+    "metadata": {
+      "common_name": "Tapertip onion",
+      "scientific_name": "Allium acuminatum",
+      "family_common_name": null,
+      "images": [
+        "https://d2seqvvyy3b8p2.cloudfront.net/cbfe7afb31fb7c992baf3b4b007266eb.jpg"
+      ]
+    },
+    "attributes": {
+      "is_edible": false,
+      "edible_part": null
+    },
+    "growth": {
+      "ph": {
+        "min": 6,
+        "max": 8
+      },
+      "light": {
+        "numeric": null
+      },
+      "percipitation": {
+        "min": 254,
+        "max": 254
+      }
+    },
+    "taxonomy": {
+      "genus": "Allium",
+      "family": "Amaryllidaceae"
+    }
+  },
+  {
+    "t_id": 103485,
+    "metadata": {
+      "common_name": "Garlic mustard",
+      "scientific_name": "Alliaria petiolata",
+      "family_common_name": "Mustard family",
+      "images": [
+        "https://bs.floristic.org/image/o/d56189572271b41efd3e6c0576fa1581aab31ca1"
+      ]
+    },
+    "attributes": {
+      "is_edible": false,
+      "edible_part": null
+    },
+    "growth": {
+      "humidity": 6,
+      "ph": {
+        "min": 7,
+        "max": 7.5
+      },
+      "light": {
+        "numeric": 4
+      },
+      "soil": {
+        "nutriments": {
+          "numeric": 8
+        },
+        "texture": {
+          "numeric": 3
+        }
+      }
+    },
+    "taxonomy": {
+      "genus": "Alliaria",
+      "family": "Brassicaceae",
+      "order": "Capparales",
+      "class": "Magnoliopsida",
+      "division": "Magnoliophyta",
+      "subkingdom": "Tracheobionta",
+      "kingdom": "Plantae"
+    }
+  },
+  {
+    "t_id": 112532,
+    "metadata": {
+      "common_name": "Ruvo kale",
+      "scientific_name": "Brassica ruvo",
+      "family_common_name": "Mustard family"
+    },
+    "attributes": {
+      "is_edible": false,
+      "edible_part": null
+    },
+    "growth": {
+      "ph": {
+        "min": null,
+        "max": null
+      },
+      "light": {
+        "numeric": null
+      }
+    },
+    "taxonomy": {
+      "genus": "Brassica",
+      "family": "Brassicaceae",
+      "order": "Capparales",
+      "class": "Magnoliopsida",
+      "division": "Magnoliophyta",
+      "subkingdom": "Tracheobionta",
+      "kingdom": "Plantae"
+    }
+  },
+  {
+    "t_id": 122078,
+    "metadata": {
+      "common_name": "Wild basil",
+      "scientific_name": "Clinopodium vulgare",
+      "family_common_name": "Mint family",
+      "images": [
+        "https://bs.floristic.org/image/o/a5b9f297e111b150a4e7a7e29d9bbb8eebc6c0f0"
+      ]
+    },
+    "attributes": {
+      "is_edible": false,
+      "edible_part": null
+    },
+    "growth": {
+      "humidity": 5,
+      "ph": {
+        "min": 7,
+        "max": 7.5
+      },
+      "light": {
+        "numeric": 6
+      },
+      "soil": {
+        "nutriments": {
+          "numeric": 4
+        },
+        "texture": {
+          "numeric": 3
+        }
+      }
+    },
+    "taxonomy": {
+      "genus": "Clinopodium",
+      "family": "Lamiaceae",
+      "order": "Lamiales",
+      "class": "Magnoliopsida",
+      "division": "Magnoliophyta",
+      "subkingdom": "Tracheobionta",
+      "kingdom": "Plantae"
+    }
+  },
+  {
+    "t_id": 193519,
+    "metadata": {
+      "common_name": "Corn",
+      "scientific_name": "Zea mays",
+      "family_common_name": "Grass family",
+      "images": [
+        "https://bs.floristic.org/image/o/70d678aabeca1e2751d751537e0289fbbfcfbed1"
+      ]
+    },
+    "attributes": {
+      "is_edible": false,
+      "edible_part": null
+    },
+    "growth": {
+      "humidity": 6,
+      "ph": {
+        "min": 5.5,
+        "max": 7.5
+      },
+      "light": {
+        "numeric": 9
+      },
+      "percipitation": {
+        "min": 508,
+        "max": 508
+      },
+      "soil": {
+        "nutriments": {
+          "numeric": 8
+        },
+        "texture": {
+          "numeric": 2
+        }
+      }
+    },
+    "taxonomy": {
+      "genus": "Zea",
+      "family": "Poaceae",
+      "order": "Cyperales",
+      "class": "Liliopsida",
+      "division": "Magnoliophyta",
+      "subkingdom": "Tracheobionta",
+      "kingdom": "Plantae"
+    }
+  },
+  {
+    "t_id": 112470,
+    "metadata": {
+      "common_name": "Mustard",
+      "scientific_name": "Brassica cretica",
+      "family_common_name": "Mustard family",
+      "images": [
+        "https://d2seqvvyy3b8p2.cloudfront.net/47019a0c124f9b0c0e86c9808dde4601.jpg"
+      ]
+    },
+    "attributes": {
+      "is_edible": false,
+      "edible_part": null
+    },
+    "growth": {
+      "ph": {
+        "min": null,
+        "max": null
+      },
+      "light": {
+        "numeric": null
+      }
+    },
+    "taxonomy": {
+      "genus": "Brassica",
+      "family": "Brassicaceae",
+      "order": "Capparales",
+      "class": "Magnoliopsida",
+      "division": "Magnoliophyta",
+      "subkingdom": "Tracheobionta",
+      "kingdom": "Plantae"
+    }
+  },
+  {
+    "t_id": 105974,
+    "metadata": {
+      "common_name": "Wild celery",
+      "scientific_name": "Apium graveolens",
+      "family_common_name": "Carrot family",
+      "images": [
+        "https://bs.floristic.org/image/o/c373a570b61d7607a13d3d35f2cf12bf8768a105"
+      ]
+    },
+    "attributes": {
+      "plant_type": "vegetable"
+    },
+    "growth": {
+      "humidity": 8,
+      "ph": {
+        "min": 6.5,
+        "max": 7
+      },
+      "light": {
+        "numeric": 7
+      },
+      "soil": {
+        "nutriments": {
+          "numeric": 5
+        },
+        "salinity": {
+          "numeric": 4
+        },
+        "texture": {
+          "numeric": 2
+        }
+      }
+    },
+    "taxonomy": {
+      "genus": "Apium",
+      "family": "Apiaceae",
+      "order": "Apiales",
+      "class": "Magnoliopsida",
+      "division": "Magnoliophyta",
+      "subkingdom": "Tracheobionta",
+      "kingdom": "Plantae"
+    }
+  },
+  {
+    "t_id": 165409,
+    "metadata": {
+      "common_name": "Kidney bean",
+      "scientific_name": "Phaseolus vulgaris",
+      "family_common_name": "Pea family",
+      "images": [
+        "https://bs.floristic.org/image/o/46b23b23e98319531962424fb9d88a4656610a0b"
+      ]
+    },
+    "attributes": {
+      "plant_type": "vegetable"
+    },
+    "growth": {
+      "humidity": 5,
+      "ph": {
+        "min": 6.5,
+        "max": 7
+      },
+      "light": {
+        "numeric": 8
+      },
+      "soil": {
+        "nutriments": {
+          "numeric": 7
+        },
+        "texture": {
+          "numeric": 3
+        }
+      }
+    },
+    "taxonomy": {
+      "genus": "Phaseolus",
+      "family": "Fabaceae",
+      "order": "Fabales",
+      "class": "Magnoliopsida",
+      "division": "Magnoliophyta",
+      "subkingdom": "Tracheobionta",
+      "kingdom": "Plantae"
+    }
+  },
+  {
+    "t_id": 112532,
+    "metadata": {
+      "common_name": "Ruvo kale",
+      "scientific_name": "Brassica ruvo",
+      "family_common_name": "Mustard family"
+    },
+    "attributes": {
+      "is_edible": false,
+      "edible_part": null
+    },
+    "growth": {
+      "ph": {
+        "min": null,
+        "max": null
+      },
+      "light": {
+        "numeric": null
+      }
+    },
+    "taxonomy": {
+      "genus": "Brassica",
+      "family": "Brassicaceae",
+      "order": "Capparales",
+      "class": "Magnoliopsida",
+      "division": "Magnoliophyta",
+      "subkingdom": "Tracheobionta",
+      "kingdom": "Plantae"
+    }
+  },
+  {
+    "t_id": 112492,
+    "metadata": {
+      "common_name": "Cabbage",
+      "scientific_name": "Brassica oleracea",
+      "family_common_name": "Mustard family",
+      "images": [
+        "https://bs.floristic.org/image/o/787a2191ca3a63b93336b61ac73b8881f21a32d4"
+      ]
+    },
+    "attributes": {
+      "plant_type": "vegetable"
+    },
+    "growth": {
+      "humidity": 8,
+      "ph": {
+        "min": 7,
+        "max": 7.5
+      },
+      "light": {
+        "numeric": 8
+      },
+      "soil": {
+        "nutriments": {
+          "numeric": 6
+        },
+        "salinity": {
+          "numeric": 7
+        },
+        "texture": {
+          "numeric": 8
+        }
+      }
+    },
+    "taxonomy": {
+      "genus": "Brassica",
+      "family": "Brassicaceae",
+      "order": "Capparales",
+      "class": "Magnoliopsida",
+      "division": "Magnoliophyta",
+      "subkingdom": "Tracheobionta",
+      "kingdom": "Plantae"
+    }
+  },
+  {
+    "t_id": 123755,
+    "metadata": {
+      "common_name": "Sea kale",
+      "scientific_name": "Crambe maritima",
+      "family_common_name": "Mustard family",
+      "images": [
+        "https://bs.floristic.org/image/o/8db172b28fe1eb0fb857be4d9f7ca0b0bf7802c6"
+      ]
+    },
+    "attributes": {
+      "plant_type": "vegetable"
+    },
+    "growth": {
+      "humidity": 3,
+      "ph": {
+        "min": 7,
+        "max": 7.5
+      },
+      "light": {
+        "numeric": 8
+      },
+      "soil": {
+        "nutriments": {
+          "numeric": 7
+        },
+        "salinity": {
+          "numeric": 5
+        },
+        "texture": {
+          "numeric": 7
+        }
+      }
+    },
+    "taxonomy": {
+      "genus": "Crambe",
+      "family": "Brassicaceae",
+      "order": "Capparales",
+      "class": "Magnoliopsida",
+      "division": "Magnoliophyta",
+      "subkingdom": "Tracheobionta",
+      "kingdom": "Plantae"
+    }
+  },
+  {
+    "t_id": 147170,
+    "metadata": {
+      "common_name": "Prickly lettuce",
+      "scientific_name": "Lactuca serriola",
+      "family_common_name": "Aster family",
+      "images": [
+        "https://bs.floristic.org/image/o/7b1eed4edf538b2843ba853c5a8ee8198ec591d3"
+      ]
+    },
+    "attributes": {
+      "is_edible": false,
+      "edible_part": null
+    },
+    "growth": {
+      "humidity": 4,
+      "ph": {
+        "min": 7,
+        "max": 7.5
+      },
+      "light": {
+        "numeric": 7
+      },
+      "soil": {
+        "nutriments": {
+          "numeric": 6
+        },
+        "texture": {
+          "numeric": 3
+        }
+      }
+    },
+    "taxonomy": {
+      "genus": "Lactuca",
+      "family": "Asteraceae",
+      "order": "Asterales",
+      "class": "Magnoliopsida",
+      "division": "Magnoliophyta",
+      "subkingdom": "Tracheobionta",
+      "kingdom": "Plantae"
+    }
+  }
+]

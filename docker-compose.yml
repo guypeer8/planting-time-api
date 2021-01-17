@@ -1,0 +1,23 @@
+version: '3'
+
+services: 
+  mongodb:
+    image: 'mongo'
+    ports: 
+      - 27017:27017
+    volumes:
+      - type: volume
+        source: MONGO_DATA
+        target: /data/db
+  mongo-express:
+    image: 'mongo-express'
+    depends_on: 
+      - mongodb
+    ports: 
+      - 8081:8081
+    environment: 
+      ME_CONFIG_MONGODB_SERVER: mongodb
+
+volumes:
+    MONGO_DATA:
+      name: ./mongod
