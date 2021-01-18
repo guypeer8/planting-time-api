@@ -1,46 +1,407 @@
 [
   {
-    "error": {},
-    "plant_name": "Fort Mac Mac apple"
+    "error": {
+      "message": "Request failed with status code 401",
+      "name": "Error",
+      "stack": "Error: Request failed with status code 401\n    at createError (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/core/createError.js:16:15)\n    at settle (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/core/settle.js:17:12)\n    at IncomingMessage.handleStreamEnd (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/adapters/http.js:260:11)\n    at IncomingMessage.emit (events.js:215:7)\n    at endReadableNT (_stream_readable.js:1184:12)\n    at processTicksAndRejections (internal/process/task_queues.js:80:21)",
+      "config": {
+        "url": "https://trefle.io/api/v1/plants/search?token=undefined&q=tomato",
+        "method": "get",
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "User-Agent": "axios/0.21.1"
+        },
+        "transformRequest": [
+          null
+        ],
+        "transformResponse": [
+          null
+        ],
+        "timeout": 0,
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN",
+        "maxContentLength": -1,
+        "maxBodyLength": -1
+      }
+    },
+    "plant_name": "tomato"
   },
   {
-    "error": {},
-    "plant_name": "Haskap"
+    "error": {
+      "message": "Request failed with status code 401",
+      "name": "Error",
+      "stack": "Error: Request failed with status code 401\n    at createError (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/core/createError.js:16:15)\n    at settle (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/core/settle.js:17:12)\n    at IncomingMessage.handleStreamEnd (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/adapters/http.js:260:11)\n    at IncomingMessage.emit (events.js:215:7)\n    at endReadableNT (_stream_readable.js:1184:12)\n    at processTicksAndRejections (internal/process/task_queues.js:80:21)",
+      "config": {
+        "url": "https://trefle.io/api/v1/plants/search?token=undefined&q=potato",
+        "method": "get",
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "User-Agent": "axios/0.21.1"
+        },
+        "transformRequest": [
+          null
+        ],
+        "transformResponse": [
+          null
+        ],
+        "timeout": 0,
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN",
+        "maxContentLength": -1,
+        "maxBodyLength": -1
+      }
+    },
+    "plant_name": "potato"
   },
   {
-    "error": {},
-    "plant_name": "September Ruby apple"
+    "error": {
+      "message": "Request failed with status code 401",
+      "name": "Error",
+      "stack": "Error: Request failed with status code 401\n    at createError (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/core/createError.js:16:15)\n    at settle (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/core/settle.js:17:12)\n    at IncomingMessage.handleStreamEnd (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/adapters/http.js:260:11)\n    at IncomingMessage.emit (events.js:215:7)\n    at endReadableNT (_stream_readable.js:1184:12)\n    at processTicksAndRejections (internal/process/task_queues.js:80:21)",
+      "config": {
+        "url": "https://trefle.io/api/v1/plants/search?token=undefined&q=cucumber",
+        "method": "get",
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "User-Agent": "axios/0.21.1"
+        },
+        "transformRequest": [
+          null
+        ],
+        "transformResponse": [
+          null
+        ],
+        "timeout": 0,
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN",
+        "maxContentLength": -1,
+        "maxBodyLength": -1
+      }
+    },
+    "plant_name": "cucumber"
   },
   {
-    "error": {},
-    "plant_name": "Brookgold plum"
+    "error": {
+      "message": "Request failed with status code 401",
+      "name": "Error",
+      "stack": "Error: Request failed with status code 401\n    at createError (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/core/createError.js:16:15)\n    at settle (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/core/settle.js:17:12)\n    at IncomingMessage.handleStreamEnd (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/adapters/http.js:260:11)\n    at IncomingMessage.emit (events.js:215:7)\n    at endReadableNT (_stream_readable.js:1184:12)\n    at processTicksAndRejections (internal/process/task_queues.js:80:21)",
+      "config": {
+        "url": "https://trefle.io/api/v1/plants/search?token=undefined&q=onion",
+        "method": "get",
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "User-Agent": "axios/0.21.1"
+        },
+        "transformRequest": [
+          null
+        ],
+        "transformResponse": [
+          null
+        ],
+        "timeout": 0,
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN",
+        "maxContentLength": -1,
+        "maxBodyLength": -1
+      }
+    },
+    "plant_name": "onion"
   },
   {
-    "error": {},
-    "plant_name": "Fall Red apple"
+    "error": {
+      "message": "Request failed with status code 401",
+      "name": "Error",
+      "stack": "Error: Request failed with status code 401\n    at createError (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/core/createError.js:16:15)\n    at settle (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/core/settle.js:17:12)\n    at IncomingMessage.handleStreamEnd (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/adapters/http.js:260:11)\n    at IncomingMessage.emit (events.js:215:7)\n    at endReadableNT (_stream_readable.js:1184:12)\n    at processTicksAndRejections (internal/process/task_queues.js:80:21)",
+      "config": {
+        "url": "https://trefle.io/api/v1/plants/search?token=undefined&q=garlic",
+        "method": "get",
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "User-Agent": "axios/0.21.1"
+        },
+        "transformRequest": [
+          null
+        ],
+        "transformResponse": [
+          null
+        ],
+        "timeout": 0,
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN",
+        "maxContentLength": -1,
+        "maxBodyLength": -1
+      }
+    },
+    "plant_name": "garlic"
   },
   {
-    "error": {},
-    "plant_name": "Fofonoff plum"
+    "error": {
+      "message": "Request failed with status code 401",
+      "name": "Error",
+      "stack": "Error: Request failed with status code 401\n    at createError (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/core/createError.js:16:15)\n    at settle (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/core/settle.js:17:12)\n    at IncomingMessage.handleStreamEnd (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/adapters/http.js:260:11)\n    at IncomingMessage.emit (events.js:215:7)\n    at endReadableNT (_stream_readable.js:1184:12)\n    at processTicksAndRejections (internal/process/task_queues.js:80:21)",
+      "config": {
+        "url": "https://trefle.io/api/v1/plants/search?token=undefined&q=broccoli",
+        "method": "get",
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "User-Agent": "axios/0.21.1"
+        },
+        "transformRequest": [
+          null
+        ],
+        "transformResponse": [
+          null
+        ],
+        "timeout": 0,
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN",
+        "maxContentLength": -1,
+        "maxBodyLength": -1
+      }
+    },
+    "plant_name": "broccoli"
   },
   {
-    "error": {},
-    "plant_name": "Garrington Chokecherry"
+    "error": {
+      "message": "Request failed with status code 401",
+      "name": "Error",
+      "stack": "Error: Request failed with status code 401\n    at createError (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/core/createError.js:16:15)\n    at settle (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/core/settle.js:17:12)\n    at IncomingMessage.handleStreamEnd (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/adapters/http.js:260:11)\n    at IncomingMessage.emit (events.js:215:7)\n    at endReadableNT (_stream_readable.js:1184:12)\n    at processTicksAndRejections (internal/process/task_queues.js:80:21)",
+      "config": {
+        "url": "https://trefle.io/api/v1/plants/search?token=undefined&q=basil",
+        "method": "get",
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "User-Agent": "axios/0.21.1"
+        },
+        "transformRequest": [
+          null
+        ],
+        "transformResponse": [
+          null
+        ],
+        "timeout": 0,
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN",
+        "maxContentLength": -1,
+        "maxBodyLength": -1
+      }
+    },
+    "plant_name": "basil"
   },
   {
-    "error": {},
-    "plant_name": "Minnesota 1734 apple"
+    "error": {
+      "message": "Request failed with status code 401",
+      "name": "Error",
+      "stack": "Error: Request failed with status code 401\n    at createError (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/core/createError.js:16:15)\n    at settle (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/core/settle.js:17:12)\n    at IncomingMessage.handleStreamEnd (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/adapters/http.js:260:11)\n    at IncomingMessage.emit (events.js:215:7)\n    at endReadableNT (_stream_readable.js:1184:12)\n    at processTicksAndRejections (internal/process/task_queues.js:80:21)",
+      "config": {
+        "url": "https://trefle.io/api/v1/plants/search?token=undefined&q=sweet%20corn",
+        "method": "get",
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "User-Agent": "axios/0.21.1"
+        },
+        "transformRequest": [
+          null
+        ],
+        "transformResponse": [
+          null
+        ],
+        "timeout": 0,
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN",
+        "maxContentLength": -1,
+        "maxBodyLength": -1
+      }
+    },
+    "plant_name": "sweet corn"
   },
   {
-    "error": {},
-    "plant_name": "Norkent apple"
+    "error": {
+      "message": "Request failed with status code 401",
+      "name": "Error",
+      "stack": "Error: Request failed with status code 401\n    at createError (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/core/createError.js:16:15)\n    at settle (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/core/settle.js:17:12)\n    at IncomingMessage.handleStreamEnd (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/adapters/http.js:260:11)\n    at IncomingMessage.emit (events.js:215:7)\n    at endReadableNT (_stream_readable.js:1184:12)\n    at processTicksAndRejections (internal/process/task_queues.js:80:21)",
+      "config": {
+        "url": "https://trefle.io/api/v1/plants/search?token=undefined&q=cauliflower",
+        "method": "get",
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "User-Agent": "axios/0.21.1"
+        },
+        "transformRequest": [
+          null
+        ],
+        "transformResponse": [
+          null
+        ],
+        "timeout": 0,
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN",
+        "maxContentLength": -1,
+        "maxBodyLength": -1
+      }
+    },
+    "plant_name": "cauliflower"
   },
   {
-    "error": {},
-    "plant_name": "Parkland apple"
+    "error": {
+      "message": "Request failed with status code 401",
+      "name": "Error",
+      "stack": "Error: Request failed with status code 401\n    at createError (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/core/createError.js:16:15)\n    at settle (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/core/settle.js:17:12)\n    at IncomingMessage.handleStreamEnd (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/adapters/http.js:260:11)\n    at IncomingMessage.emit (events.js:215:7)\n    at endReadableNT (_stream_readable.js:1184:12)\n    at processTicksAndRejections (internal/process/task_queues.js:80:21)",
+      "config": {
+        "url": "https://trefle.io/api/v1/plants/search?token=undefined&q=celery",
+        "method": "get",
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "User-Agent": "axios/0.21.1"
+        },
+        "transformRequest": [
+          null
+        ],
+        "transformResponse": [
+          null
+        ],
+        "timeout": 0,
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN",
+        "maxContentLength": -1,
+        "maxBodyLength": -1
+      }
+    },
+    "plant_name": "celery"
   },
   {
-    "error": {},
-    "plant_name": "Pembina plum"
+    "error": {
+      "message": "Request failed with status code 401",
+      "name": "Error",
+      "stack": "Error: Request failed with status code 401\n    at createError (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/core/createError.js:16:15)\n    at settle (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/core/settle.js:17:12)\n    at IncomingMessage.handleStreamEnd (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/adapters/http.js:260:11)\n    at IncomingMessage.emit (events.js:215:7)\n    at endReadableNT (_stream_readable.js:1184:12)\n    at processTicksAndRejections (internal/process/task_queues.js:80:21)",
+      "config": {
+        "url": "https://trefle.io/api/v1/plants/search?token=undefined&q=Beans",
+        "method": "get",
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "User-Agent": "axios/0.21.1"
+        },
+        "transformRequest": [
+          null
+        ],
+        "transformResponse": [
+          null
+        ],
+        "timeout": 0,
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN",
+        "maxContentLength": -1,
+        "maxBodyLength": -1
+      }
+    },
+    "plant_name": "Beans"
+  },
+  {
+    "error": {
+      "message": "Request failed with status code 401",
+      "name": "Error",
+      "stack": "Error: Request failed with status code 401\n    at createError (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/core/createError.js:16:15)\n    at settle (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/core/settle.js:17:12)\n    at IncomingMessage.handleStreamEnd (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/adapters/http.js:260:11)\n    at IncomingMessage.emit (events.js:215:7)\n    at endReadableNT (_stream_readable.js:1184:12)\n    at processTicksAndRejections (internal/process/task_queues.js:80:21)",
+      "config": {
+        "url": "https://trefle.io/api/v1/plants/search?token=undefined&q=Broccoli",
+        "method": "get",
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "User-Agent": "axios/0.21.1"
+        },
+        "transformRequest": [
+          null
+        ],
+        "transformResponse": [
+          null
+        ],
+        "timeout": 0,
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN",
+        "maxContentLength": -1,
+        "maxBodyLength": -1
+      }
+    },
+    "plant_name": "Broccoli"
+  },
+  {
+    "error": {
+      "message": "Request failed with status code 401",
+      "name": "Error",
+      "stack": "Error: Request failed with status code 401\n    at createError (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/core/createError.js:16:15)\n    at settle (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/core/settle.js:17:12)\n    at IncomingMessage.handleStreamEnd (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/adapters/http.js:260:11)\n    at IncomingMessage.emit (events.js:215:7)\n    at endReadableNT (_stream_readable.js:1184:12)\n    at processTicksAndRejections (internal/process/task_queues.js:80:21)",
+      "config": {
+        "url": "https://trefle.io/api/v1/plants/search?token=undefined&q=Cabbage",
+        "method": "get",
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "User-Agent": "axios/0.21.1"
+        },
+        "transformRequest": [
+          null
+        ],
+        "transformResponse": [
+          null
+        ],
+        "timeout": 0,
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN",
+        "maxContentLength": -1,
+        "maxBodyLength": -1
+      }
+    },
+    "plant_name": "Cabbage"
+  },
+  {
+    "error": {
+      "message": "Request failed with status code 401",
+      "name": "Error",
+      "stack": "Error: Request failed with status code 401\n    at createError (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/core/createError.js:16:15)\n    at settle (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/core/settle.js:17:12)\n    at IncomingMessage.handleStreamEnd (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/adapters/http.js:260:11)\n    at IncomingMessage.emit (events.js:215:7)\n    at endReadableNT (_stream_readable.js:1184:12)\n    at processTicksAndRejections (internal/process/task_queues.js:80:21)",
+      "config": {
+        "url": "https://trefle.io/api/v1/plants/search?token=undefined&q=Kale",
+        "method": "get",
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "User-Agent": "axios/0.21.1"
+        },
+        "transformRequest": [
+          null
+        ],
+        "transformResponse": [
+          null
+        ],
+        "timeout": 0,
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN",
+        "maxContentLength": -1,
+        "maxBodyLength": -1
+      }
+    },
+    "plant_name": "Kale"
+  },
+  {
+    "error": {
+      "message": "Request failed with status code 401",
+      "name": "Error",
+      "stack": "Error: Request failed with status code 401\n    at createError (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/core/createError.js:16:15)\n    at settle (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/core/settle.js:17:12)\n    at IncomingMessage.handleStreamEnd (/Users/itaye/Projects/planting-time-api/node_modules/axios/lib/adapters/http.js:260:11)\n    at IncomingMessage.emit (events.js:215:7)\n    at endReadableNT (_stream_readable.js:1184:12)\n    at processTicksAndRejections (internal/process/task_queues.js:80:21)",
+      "config": {
+        "url": "https://trefle.io/api/v1/plants/search?token=undefined&q=Lettuce",
+        "method": "get",
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "User-Agent": "axios/0.21.1"
+        },
+        "transformRequest": [
+          null
+        ],
+        "transformResponse": [
+          null
+        ],
+        "timeout": 0,
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN",
+        "maxContentLength": -1,
+        "maxBodyLength": -1
+      }
+    },
+    "plant_name": "Lettuce"
   }
 ]

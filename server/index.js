@@ -31,7 +31,7 @@ mongoose.connect(mongodbServer, {
     useUnifiedTopology: true,
 });
 
-const createApp = async () => {
+const createApp = () => {
     const app = express();
 
     app.use(helmet({ xssFilter: { setOnOldIE: false } }));
@@ -54,6 +54,7 @@ const createApp = async () => {
 
 
 const runApp = app => {
+
     app.listen(PORT, err => {
         if (err) { return console.warn(err); }
         console.info(`Listening on port ${PORT}!`);

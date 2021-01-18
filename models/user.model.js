@@ -3,7 +3,7 @@ const isEmail = require('validator/lib/isEmail');
 
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
-const { PROVIDERS, PLANS } = require('../config');
+const { PROVIDERS } = require('../config');
 
 const userSchema = new mongoose.Schema({
     userId: { type: String, required: true, unique: true },
@@ -16,13 +16,7 @@ const userSchema = new mongoose.Schema({
             validator: v => (!v || isEmail(v)),
             message: props => `${props.value} must be a valid email.`
         },
-    },
-    plan: {
-        type: String,
-        enum: PLANS,
-        default: PLANS[0],
-        required: true,
-    },
+    }
 }, { 
     toJSON: { virtuals: true },
     timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },

@@ -19,7 +19,7 @@ const MAPQUEST_REVERSE_GEO_API = `http://open.mapquestapi.com/geocoding/v1/rever
 
 const SUNLIGHT_API = 'https://api.sunrise-sunset.org/json';
 
-const frontendRoute = isDev ? 'http://127.0.0.1:8888' : 'https://plantingtime.com';
+const frontendRoute = isDev ? 'http://localhost:8888' : 'https://plantingtime.com';
 const backendRoute = isDev ? 'http://127.0.0.1:8080' : 'https://api.plantingtime.com';
 const mongodbServer = isDev ? 'mongodb://localhost:27017/plantingtime' : process.env.MONGO_URI;
 

@@ -2,6 +2,6 @@ require('dotenv').config();
 
 const { createApp, runApp } = require('./server');
 
-const app = await createApp();
+const app = createApp();
 
 runApp(app);

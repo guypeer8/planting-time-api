@@ -193,17 +193,21 @@ const buildPlantsByNames = ({
     onFinish = () => {},
 } = {}) => {
     map(plant_names, async (plant_name, cbk) => {
+        console.log(plant_name);
         try {
             const result = {};
             const plant = await fetchPlantByName(plant_name);
             result.t_id = plant.id;
 
             await createMetadata(result, plant);
+            console.log("createMetadata", plant_name);
             await createGrowth(result, plant);
+            console.log("createGrowth", plant_name);
             await createTaxonomy(result, plant);
-
+            console.log("createTaxonomy", plant_name);
             cbk(null, { result });
         } catch(e) {
+            console.log("ERROR", e, plant_name);
             cbk(null, { error: e, plant_name });
         }
     }, (_, plants_data) => {
@@ -266,6 +270,8 @@ function runDatabaseBuildByPlantName(plant_names = [], { save_to_db = false, wri
     buildPlantsByNames({
         plant_names,
         async onFinish({ results, failed }) {
+            console.log("reasult", results, "failed", failed);
+
             if (write_files && !isEmpty(failed)) {
                 writeFile('failed_plants_by_names', failed, true);
             }

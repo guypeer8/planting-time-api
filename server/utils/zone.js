@@ -95,6 +95,5 @@ const getClimateZoneMetrics = climate_normals => ({
 
 module.exports = {
     fetchClimateZone,
-    getHardinessZone,
     getClimateZoneMetrics,
 };

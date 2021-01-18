@@ -8,8 +8,10 @@ const { fetchGeo } = require('../../utils/geo');
  */
 router.get('/', async (req, res) => {
     const { ip } = req;
+    const _ip = ip === '::1' ? '109.186.68.227' : ip;
+
     const { lat, lon } = req.query;
-    res.json(await fetchGeo({ ip, lat, lon }));
+    res.json(await fetchGeo({ ip: _ip, lat, lon }));
 });
 
 module.exports = router;
