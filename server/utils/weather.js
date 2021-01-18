@@ -1,17 +1,12 @@
 require('dotenv').config();
 
 const axios = require('axios');
-const SunCalc = require('suncalc');
 const sample = require('lodash/sample');
 const Meteostat = require('meteostat').default;
-const { MONTHS } = require('@planting-time/constants/months');
-const { SEASONS_MAP } = require('@planting-time/constants/seasons');
 
 const { SUNLIGHT_API } = require('../../config');
 
 const BASE_ENDPOINT = 'https://api.openweathermap.org';
-
-const WEATHER_ICON_SRC = `http://openweathermap.org/img/wn/{{ICON_ID}}@2x.png`;
 
 const owm_api_keys = Array.from({ length: 4 }).map((_, i) => process.env[`OPEN_WEATHER_MAP_KEY_${i+1}`]);
 const meteostat_api_keys = Array.from({ length: 5 }).map((_, i) => process.env[`METEOSTAT_KEY_${i+1}`]);
@@ -63,9 +58,6 @@ const getClimateNormals = async (lat, lon) => {
     }
 };
 
-const getWeatherIcon = icon_id => 
-    WEATHER_ICON_SRC.replace('{{ICON_ID}}', icon_id);
-
 const fetchSunlightParams = async (lat, lon) => {
     try {
         const { data } = await axios.get(`${SUNLIGHT_API}?lat=${lat}&lng=${lon}`);
@@ -74,26 +66,6 @@ const fetchSunlightParams = async (lat, lon) => {
         } 
     } catch(e) {}
     return null;
-};
-
-const getSunTime = ({ month, day, lat, lon } = {}) => {
-    const date = new Date(`${month+1}-${day}-2021`);
-    const times = SunCalc.getTimes(date, lat, lon);
-    const sunset_ms = new Date(times.sunsetStart).getTime();
-    const sunrise_ms = new Date(times.sunriseEnd).getTime();    
-    const daylight_time = sunset_ms - sunrise_ms;
-    return daylight_time/1000/60/60;  
-}
-  
-const getAverageSuntime = ({ month, lat, lon } = {}) => {
-    const days_in_month = MONTHS[month].days;
-    const months = Array.from({ length: days_in_month }).map((_, i) => i+1);
-    const daylight_hours_sum = months.reduce((acc, day) => acc + getSunTime({ month, day, lat, lon }), 0);
-    return daylight_hours_sum / days_in_month;
-}
-
-const getSeason = hemisphere => {
-    return SEASONS_MAP[hemisphere][new Date().getMonth()];
 };
 
 const getClimacellData = async (lat, lon) => {
@@ -109,11 +81,7 @@ module.exports = {
     getCurrentWeather,
     getHistoricalWeather,
     getClimateNormals,
-    getWeatherIcon,
-    getSunTime,
-    getAverageSuntime,
     fetchSunlightParams,
-    getSeason,
 };
 
 // (async () => {

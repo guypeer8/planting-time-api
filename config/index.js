@@ -5,8 +5,8 @@ const isDev = process.env.NODE_ENV !== 'production';
 const sample = require('lodash/sample');
 const appRootDir = require('app-root-dir').get();
 
-const PROVIDERS = ['google', 'facebook', 'github', 'linkedin'];
 const PORT = 8080;
+const PROVIDERS = ['google', 'facebook', 'github', 'linkedin'];
 
 const IPAPI_API = `https://ipapi.co/{{IP}}/json/`;
 const FREE_GEOIP = 'https://freegeoip.app/json/{{IP}}';
@@ -20,15 +20,16 @@ const MAPQUEST_REVERSE_GEO_API = `http://open.mapquestapi.com/geocoding/v1/rever
 const SUNLIGHT_API = 'https://api.sunrise-sunset.org/json';
 
 const frontendRoute = isDev ? 'http://localhost:8888' : 'https://plantingtime.com';
-const backendRoute = isDev ? 'http://127.0.0.1:8080' : 'https://api.plantingtime.com';
+const backendRoute = isDev ? 'http://localhost:8080' : 'https://api.plantingtime.com';
 const mongodbServer = isDev ? 'mongodb://localhost:27017/plantingtime' : process.env.MONGO_URI;
 
-const corsOptions = { origin: frontendRoute, optionsSuccessStatus: 200 };
+const corsOptions = isDev ? {} : { origin: frontendRoute, optionsSuccessStatus: 200 };
 
 module.exports = {
     PORT,
     PROVIDERS,
     appRootDir,
+    isDev,
     frontendRoute,
     backendRoute,
     mongodbServer,

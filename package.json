@@ -1,10 +1,10 @@
 {
-  "name": "plantingtime-api",
+  "name": "planting-time-api",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "export NODE_ENV=production && node app.js",
     "dev": "export NODE_ENV=development && nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

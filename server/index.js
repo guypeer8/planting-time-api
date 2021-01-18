@@ -52,9 +52,7 @@ const createApp = () => {
     return app;
 };
 
-
 const runApp = app => {
-
     app.listen(PORT, err => {
         if (err) { return console.warn(err); }
         console.info(`Listening on port ${PORT}!`);

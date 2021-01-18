@@ -9,15 +9,17 @@ const omit = require('lodash/omit');
 const merge = require('lodash/merge');
 const rp = require('request-promise');
 const every = require('lodash/every');
-const isNil = require('lodash/isNil');
 const sample = require('lodash/sample');
 const iplocate = require('node-iplocate');
+const isNumber = require('lodash/isNumber');
 const ccLookup = require('country-code-lookup');
 const isPlainObject = require('lodash/isPlainObject');
-const { getHardinessZone } = require('@planting-time/constants/utils');
+const { getSeason } = require('@planting-time/constants/utils/season');
+const { getAverageSunHours } = require('@planting-time/constants/utils/sunlight');
+const { getHardinessZone } = require('@planting-time/constants/utils/hardiness-zone');
 
 const { fetchClimateZone } = require('./zone');
-const { getClimateNormals, getAverageSuntime, getSeason } = require('./weather');
+const { getClimateNormals } = require('./weather');
 const { FREE_GEOIP, IPSTACK_API, IPGEOLOCATION_API, MAPQUEST_REVERSE_GEO_API } = require('../../config');
 
 const continent_by_code = {
@@ -67,6 +69,7 @@ const fetchGeoByIp = async ip => {
   try {
     const lookup = await maxmind.open('maxmind/GeoLite2-City.mmdb');
     const result = lookup.get(ip);  
+
     if (result && has(result, 'location.latitude') && has(result, 'country.names') && has(result, 'city.names') && has(result, 'continent.names')) {
       const { latitude, longitude, time_zone: timezone } = result.location;
       const { iso_code: code } = result.country;
@@ -190,8 +193,8 @@ const mergeClimateData = async geo_config => {
         (acc, val, i) => {
           const month = val.month - 1;
           const cl_normals = omit(val, ['month']);
-          if (isNaN(cl_normals.tsun) || isNil(cl_normals.tsun)) {
-            tsun_month = getAverageSuntime({ month, lat, lon });
+          if (isNumber(cl_normals.tsun)) {
+            const tsun_month = getAverageSunHours({ month, lat, lon });
             climate_normals[i].tsun = tsun_month;
             cl_normals.tsun = tsun_month;
           }
@@ -202,31 +205,31 @@ const mergeClimateData = async geo_config => {
 
       geo_config.climate_normals.general = {};
 
-      if (every(climate_normals, cn => !isNaN(cn.prcp))) {
+      if (every(climate_normals, cn => isNumber(cn.prcp))) {
         geo_config.climate_normals.general.pmin = getMin(climate_normals, 'prcp');
         geo_config.climate_normals.general.pmax = getMax(climate_normals, 'prcp');
         geo_config.climate_normals.general.pavg = getAvg(climate_normals, 'prcp');
         geo_config.climate_normals.general.ptotal = getTotal(climate_normals, 'prcp');
       }
 
-      if (every(climate_normals, cn => !isNaN(cn.tsun))) {
+      if (every(climate_normals, cn => isNumber(cn.tsun))) {
         geo_config.climate_normals.general.tsunmin = getMin(climate_normals, 'tsun');
         geo_config.climate_normals.general.tsunmax = getMax(climate_normals, 'tsun');
         geo_config.climate_normals.general.tsunavg = getAvg(climate_normals, 'tsun');
         geo_config.climate_normals.general.tsuntotal = getTotal(climate_normals, 'tsun');
       }
 
-      if (every(climate_normals, cn => !isNaN(cn.tmin))) {
+      if (every(climate_normals, cn => isNumber(cn.tmin))) {
         geo_config.climate_normals.general.tmin = getMin(climate_normals, 'tmin');
       }
-      if (every(climate_normals, cn => !isNaN(cn.tmax))) {
+      if (every(climate_normals, cn => isNumber(cn.tmax))) {
         geo_config.climate_normals.general.tmax = getMax(climate_normals, 'tmax');
       }
-      if (every(climate_normals, cn => !isNaN(cn.tavg))) {
+      if (every(climate_normals, cn => isNumber(cn.tavg))) {
         geo_config.climate_normals.general.tavg = getAvg(climate_normals, 'tavg');
       }
 
-      if (!isNaN(geo_config.climate_normals.general.tmin)) {
+      if (isNumber(geo_config.climate_normals.general.tmin)) {
         const min_temp = geo_config.climate_normals.general.tmin;
         geo_config.hardiness_zone = getHardinessZone(min_temp);
       }
@@ -261,9 +264,9 @@ module.exports = {
     fetchGeo,
 };
 
-(async () => {
+// (async () => {
   // require('fs').writeFileSync('sample-data/geo.json', JSON.stringify(await fetchGeo({ ip: '84.108.88.235' }), null, 2)); // holon
   // require('fs').writeFileSync('sample-data/geo.json', JSON.stringify(await fetchGeo({ lat: 31.011261, lon: 35.1 }), null, 2));
   // require('fs').writeFileSync('sample-data/geo.json', JSON.stringify(await fetchGeo({ lat: 29.425171, lon: -98.494614 }), null, 2)); // san antonio
   // require('fs').writeFileSync('sample-data/geo.json', JSON.stringify(await fetchGeo({ lat: 48.154, lon: -94.519 }), null, 2)); // holon
-})();
+// })();
