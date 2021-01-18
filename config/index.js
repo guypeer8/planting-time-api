@@ -11,7 +11,7 @@ const PORT = 8080;
 const IPAPI_API = `https://ipapi.co/{{IP}}/json/`;
 const FREE_GEOIP = 'https://freegeoip.app/json/{{IP}}';
 const IPGEOLOCATION_API = `https://api.ipgeolocationapi.com/geolocate/{{IP}}`;
-const IPSTACK_API = `http://api.ipstack.com/{{IP}}?access_key=${sample([process.env.IP_STACK_KEY_1, process.env.IP_STACK_KEY_2])}`;
+const IPSTACK_API = `http://api.ipstack.com/{{IP}}?access_key=${sample(Array.from({ length: 2 }).map((_, i) => process.env[`IP_STACK_KEY_${i+1}`]))}`;
 
 const MAPBOX_API = 'https://api.mapbox.com';
 const HERE_API = `https://revgeocode.search.hereapi.com/v1/revgeocode`;

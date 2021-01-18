@@ -14,9 +14,9 @@ const sample = require('lodash/sample');
 const iplocate = require('node-iplocate');
 const ccLookup = require('country-code-lookup');
 const isPlainObject = require('lodash/isPlainObject');
+const { getHardinessZone } = require('@planting-time/constants/utils');
 
 const { fetchClimateZone } = require('./zone');
-const { getHardinessZone } = require('../../constants/utils');
 const { getClimateNormals, getAverageSuntime, getSeason } = require('./weather');
 const { FREE_GEOIP, IPSTACK_API, IPGEOLOCATION_API, MAPQUEST_REVERSE_GEO_API } = require('../../config');
 

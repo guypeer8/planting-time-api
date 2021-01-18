@@ -1,12 +1,12 @@
+const get = require('lodash/get');
 const set = require('lodash/set');
 const mongoose = require('mongoose');
 const isEmpty = require('lodash/isEmpty');
 const isURL = require('validator/lib/isURL');
 const isBoolean = require('lodash/isBoolean');
-
-const { SEASONS } = require('../constants/seasons');
-const { CLIMATE_ZONES } = require('../constants/climate-zones');
-const { HARDINESS_ZONES } = require('../constants/hardiness-zones');
+const { SEASONS } = require('@planting-time/constants/seasons');
+const { CLIMATE_ZONES } = require('@planting-time/constants/climate-zones');
+const { HARDINESS_ZONES } = require('@planting-time/constants/hardiness-zones');
 
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
@@ -129,13 +129,13 @@ const plantSchema = new mongoose.Schema({
 
 const getCompanions = function(plant) {
     const query = {};
-    if (!isEmpty(plant.non_companions)) {
-        set(query, '_id.$nin', plant.non_companions);
-    }
     if (!isEmpty(plant.companions)) {
         set(query, '_id.$in', plant.companions);
     } else {
-        set(query, 'taxonomy.genus', plant.taxonomy.genus);
+        const genus = get(plant, 'taxonomy.genus', null);
+        if (!genus) return [];
+        set(query, 'taxonomy.genus', genus);
+        set(query, '_id.$nin', plant.non_companions);
     }
     return mongoose.model('Plant').find(query).lean();
 };

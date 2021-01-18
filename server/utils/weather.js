@@ -4,10 +4,10 @@ const axios = require('axios');
 const SunCalc = require('suncalc');
 const sample = require('lodash/sample');
 const Meteostat = require('meteostat').default;
+const { MONTHS } = require('@planting-time/constants/months');
+const { SEASONS_MAP } = require('@planting-time/constants/seasons');
 
 const { SUNLIGHT_API } = require('../../config');
-const { MONTHS } = require('../../constants/months');
-const { SEASONS_MAP } = require('../../constants/seasons');
 
 const BASE_ENDPOINT = 'https://api.openweathermap.org';
 

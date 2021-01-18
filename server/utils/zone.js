@@ -1,9 +1,7 @@
 const axios = require('axios');
 const trim = require('lodash/trim');
 const first = require('lodash/first');
-
-const { SEASONS } = require('../../constants/seasons');
-const { HARDINESS_ZONES } = require('../../constants/hardiness-zones');
+const { SEASONS } = require('@planting-time/constants/seasons');
 
 const CLIMATE_API = 'http://climateapi.scottpinkelman.com/api/v1/location';
 
