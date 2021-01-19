@@ -84,12 +84,11 @@ const fetchGeoByIp = async ip => {
   } catch (e) {
     try {
       const result = JSON.parse(await rp.get(IPSTACK_API.replace('{{IP}}', ip)));
-      const free_geoip_result = JSON.parse(await rp.get(FREE_GEOIP.replace('{{IP}}', ip)));
 
       if (result.location) {
         const { latitude, longitude, city, country_code: code, country_name: country } = result;
         const continent = result.continent_name || continent_by_code[result.continent_code];
-        const timezone = result.timezone || free_geoip_result.time_zone || get(geoTz(latitude, longitude), '[0]', null);
+        const timezone = result.timezone || get(geoTz(latitude, longitude), '[0]', null);
         geo_config = {
           geo: { latitude, longitude, timezone },
           location: { code, country, continent, city },
@@ -111,13 +110,15 @@ const fetchGeoByIp = async ip => {
         }
       } catch (e) {
         try {
-          const result = JSON.parse(await rp.get(IPGEOLOCATION_API.replace('{{IP}}', ip)));
-          const free_geoip_result = JSON.parse(await rp.get(FREE_GEOIP.replace('{{IP}}', ip)));
+          const [result, free_geoip] = await Promise.all([
+            rp.get(IPGEOLOCATION_API.replace('{{IP}}', ip)),
+            rp.get(FREE_GEOIP.replace('{{IP}}', ip)),
+          ]).map(JSON.parse);
           if (result && result.alpha2 && result.geo) {
             const code = result.alpha2;
             const { latitude, longitude } = result.geo;
             const { continent, name: country } = result;
-            const { time_zone: timezone, city } = free_geoip_result;
+            const { time_zone: timezone, city } = free_geoip;
             geo_config = {
               geo: { latitude, longitude, timezone },
               location: { code, country, continent, city },
