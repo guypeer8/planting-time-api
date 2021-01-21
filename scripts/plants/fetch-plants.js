@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const fs = require('fs');
 const axios = require('axios');
+const csv = require('csvtojson');
 const map = require('map-series');
 const set = require('lodash/set');
 const keys = require('lodash/keys');
@@ -10,13 +11,15 @@ const first = require('lodash/first');
 const isNil = require('lodash/isNil');
 const sample = require('lodash/sample');
 const isEmpty = require('lodash/isEmpty');
+const isNumber = require('lodash/isNumber');
 
-const { mongodbServer } = require('../../config');
 const PlantModel = require('../../models/plant.model');
+const { isDev, mongodbServer } = require('../../config');
 
 const api_tokens = Array.from({ length: 4 }).map((_, i) => process.env[`TREFLE_API_KEY_${i+1}`]);
 
 const ENDPOINT = 'https://trefle.io';
+// https://fdc.nal.usda.gov/portal-data/external/1103352
 
 const cache = {
     plant_by_name: {},
@@ -73,15 +76,6 @@ const fetchSpeciesByLink = async link => {
     return cache.species_by_link[link];
 };
 
-const fetchNutrients = async plant_name => {
-    try {
-        const { data } = await axios.get('https://fdc.nal.usda.gov/portal-data/external/1103352');
-        console.warn(data.foodNutrients);
-    } catch(e) {
-        console.log(e);
-    }
-};
-
 const createMetadata = async (result, plant) => {
     set(result, 'metadata', {
         common_name: plant.common_name,
@@ -91,7 +85,24 @@ const createMetadata = async (result, plant) => {
     });
 };
 
-const createGrowth = async (result, plant) => {
+// const createClimateData = async (result, plant) => {
+//     if (hardiness_zone) {
+//         if (isNumber(Number(hardiness_zone))) {
+//             set(result, 'climate.hardiness_zones', [`${hardiness_zone}a`, `${hardiness_zone}b`]);
+//             set(result, 'climate.frost_sensitive', Number(hardiness_zone) <= 9);
+//         } else {
+//             set(result, 'climate.hardiness_zones', [hardiness_zone]);
+//             set(result, 'climate.frost_sensitive', Number(hardiness_zone.slice(0, -1)) <= 9);
+//         }
+//     }
+//     if (climate_zones) {
+//         set(result, 'climate.climate_zones', climate_zones);
+//     }
+//     set(result, 'seasons', {});
+//     set(result, 'calendar', {});
+// };
+
+const createGrowth = async (result, plant, plant_type) => {
     const species = await fetchSpeciesByLink(plant.links.self);
 
     set(result, 'attributes', {
@@ -99,8 +110,8 @@ const createGrowth = async (result, plant) => {
         edible_part: species.edible_part,
     });
 
-    if (species.vegetable) {
-        set(result, 'attributes', { plant_type: 'vegetable' });
+    if (plant_type || species.vegetable) {
+        set(result, 'attributes', { plant_type: plant_type || 'vegetable' });
     }
 
     if (species.growth.atmospheric_humidity) {
@@ -193,30 +204,24 @@ const buildPlantsByNames = ({
     onFinish = () => {},
 } = {}) => {
     map(plant_names, async (plant_name, cbk) => {
-        console.log(plant_name);
         try {
             const result = {};
             const plant = await fetchPlantByName(plant_name);
             result.t_id = plant.id;
 
             await createMetadata(result, plant);
-            console.log("createMetadata", plant_name);
             await createGrowth(result, plant);
-            console.log("createGrowth", plant_name);
             await createTaxonomy(result, plant);
-            console.log("createTaxonomy", plant_name);
             cbk(null, { result });
         } catch(e) {
-            console.log("ERROR", e, plant_name);
-            cbk(null, { error: e, plant_name });
+            cbk(null, { error: e.message, plant_name });
         }
     }, (_, plants_data) => {
         const results = plants_data.filter(p => p.result && !p.error).map(r => r.result);
         const failed = plants_data.filter(p => !p.result && p.error);
-        
         onFinish({ results, failed });
     });
-}
+};
 
 const buildPlantsByPage = async ({ 
     page = 1, 
@@ -264,14 +269,12 @@ const buildPlantsByPage = async ({
             }
         }
     });
-}
+};
 
 function runDatabaseBuildByPlantName(plant_names = [], { save_to_db = false, write_files = true } = {}) {
     buildPlantsByNames({
         plant_names,
         async onFinish({ results, failed }) {
-            console.log("reasult", results, "failed", failed);
-
             if (write_files && !isEmpty(failed)) {
                 writeFile('failed_plants_by_names', failed, true);
             }
@@ -286,7 +289,7 @@ function runDatabaseBuildByPlantName(plant_names = [], { save_to_db = false, wri
                 try {
                     await PlantModel.insertMany(results);
                 } catch(e) {
-                    console.log(e)
+                    console.log(e);
                     // failed_insertsion_by_page[page] = e;
                 }
             }
@@ -344,53 +347,6 @@ runDatabaseBuildByPlantName([
     "Cabbage",
     "Kale",
     "Lettuce",
-    // "Potatoes",
-    // "Radish",
-    // "Spinach",
-    // "Sweet Peas",
-    // "Tomatoes",
-    // "Chokecherry",
-    // "End apple",
-    // "Fort Mac Mac apple",
-    // "Haskap",
-    // "September Ruby apple",
-    // "Basil",
-    // "Chives",
-    // "Mint",
-    // "Oregano",
-    // "Rosemary",
-    // "Thyme",
-    // "Arrowhead",
-    // "Delphinium",
-    // "Goldenrod",
-    // "sunflower",
-    // "Lily of the Valley",
-    // "Oxeye Daisy",
-    // "Yarrow",
-    // "Carrots",
-    // "Mustard greens",
-    // "Onions",
-    // "Parsnips",
-    // "Swiss chard",
-    // "Brookgold plum",
-    // "Fall Red apple",
-    // "Fofonoff plum",
-    // "Garrington Chokecherry",
-    // "Korean pine",
-    // "Minnesota 1734 apple",
-    // "Norkent apple",
-    // "Parkland apple",
-    // "Pembina plum",
-    // "Hyssop",
-    // "Juniper",
-    // "Turkestan Rose",
-    // "Bleeding Heart",
-    // "Monkshood",
-    // "Penstemon",
-    // "Poppy",
-    // "Primrose",
-    // "Sea Holly",
-    // "Violet",
 ], {save_to_db: true});
 
 // runPageByPageDatabaseBuild();

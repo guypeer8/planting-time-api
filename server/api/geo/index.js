@@ -1,6 +1,7 @@
 const router = require('express').Router();
-const { isDev } = require('../../../config');
 const isIP = require('validator/lib/isIP');
+
+const { isDev } = require('../../../config');
 const { fetchGeo } = require('../../utils/geo');
 
 /**

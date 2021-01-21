@@ -1,10 +1,11 @@
 const router = require('express').Router();
 
-const { verifyEmail } = require('../../utils/validation');
+const gardenRouter = require('./garden');
+const profileRouter = require('./profile');
+const { ensureLoggedIn } = require('../../middlewares/jwt');
 
-router.post('/save-email', async (req, res) => {
-    const { email = '' } = req.body;
-    res.json(await verifyEmail(req.userData, email, { saveIfValid: true }));
-});
+router.use(ensureLoggedIn);
+router.use('/garden', gardenRouter);
+router.use('/profile', profileRouter);
 
 module.exports = router;

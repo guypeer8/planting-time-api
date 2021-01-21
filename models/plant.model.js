@@ -13,7 +13,7 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 const PLANT_TYPES = ['fruit', 'vegetable', 'herb', 'flower', 'houseplant'];
 
 const plantSchema = new mongoose.Schema({
-    t_id: { type: String }, // trefle id
+    t_id: { type: String, unique: true }, // trefle id
     growth: {
         light: { 
             numeric: { type: Number, min: 0, max: 10 }, 
@@ -54,10 +54,12 @@ const plantSchema = new mongoose.Schema({
         },
         days_to_maturity: { type: Number, min: 0 },
     },
-    seasons: [{ type: String, enum: Object.values(SEASONS) }],
-    hardiness_zones: [{ type: String, enum: Object.keys(HARDINESS_ZONES) }],
-    climate_zones: [{ type: String, enum: CLIMATE_ZONES }],
-    frost_sensitive: { type: Boolean, default: true },
+    climate: {
+        seasons: [{ type: String, enum: Object.values(SEASONS) }],
+        hardiness_zones: [{ type: String, enum: Object.keys(HARDINESS_ZONES) }],
+        climate_zones: [{ type: String, enum: CLIMATE_ZONES }],
+        frost_sensitive: { type: Boolean, default: true },
+    },
     calendar: {
         sowing_months: {
             start: { type: Number, min: 0, max: 11 },
@@ -127,21 +129,25 @@ const plantSchema = new mongoose.Schema({
     timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },
 });
 
-const getCompanions = function(plant) {
-    const query = {};
+const getCompanions = function(plant, { select_fields = null } = {}) {
+    const query = { _id: { $nin: [plant._id] } };
     if (!isEmpty(plant.companions)) {
         set(query, '_id.$in', plant.companions);
     } else {
         const genus = get(plant, 'taxonomy.genus', null);
         if (!genus) return [];
         set(query, 'taxonomy.genus', genus);
-        set(query, '_id.$nin', plant.non_companions);
+        query,_id.$nin.push(...plant.non_companions);
     }
-    return mongoose.model('Plant').find(query).lean();
+    let queryBuilder = mongoose.model('Plant').find(query);
+    if (select_fields) {
+        queryBuilder = queryBuilder.select(select_fields.join(' '));
+    }
+    return queryBuilder.lean();
 };
 
-plantSchema.methods.getCompanions = function() {
-    return getCompanions(this);
+plantSchema.methods.getCompanions = function({ select_fields = null } = {}) {
+    return getCompanions(this, { select_fields });
 };
 
 plantSchema.statics.getPlants = async function({ 
@@ -159,6 +165,7 @@ plantSchema.statics.getPlants = async function({
     frost_sensitive = null, 
     plant_type = null, 
     withCompanions = true,
+    meta = { lat: null, lon: null },
 } = {}) {
     const query = { searchable };
     if (id) { 
@@ -171,10 +178,10 @@ plantSchema.statics.getPlants = async function({
         query.seasons = season;
     }
     if (isBoolean(frost_sensitive)) { 
-        query.frost_sensitive = frost_sensitive;
+        query['climate.frost_sensitive'] = frost_sensitive;
     }
     if (climate_zone) { 
-        query.climate_zones = { 
+        query['climate.climate_zones'] = { 
             $elemMatch: { 
                 $regex: new RegExp(climate_zone),
                 $options: 'i',
@@ -182,7 +189,7 @@ plantSchema.statics.getPlants = async function({
         };
     }
     if (hardiness_zone) { 
-        query.hardiness_zones = { 
+        query['climate.hardiness_zones'] = { 
             $elemMatch: { 
                 $regex: new RegExp(hardiness_zone),
                 $options: 'i',

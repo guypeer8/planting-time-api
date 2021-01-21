@@ -265,9 +265,9 @@ module.exports = {
     fetchGeo,
 };
 
-// (async () => {
+(async () => {
   // require('fs').writeFileSync('sample-data/geo.json', JSON.stringify(await fetchGeo({ ip: '84.108.88.235' }), null, 2)); // holon
   // require('fs').writeFileSync('sample-data/geo.json', JSON.stringify(await fetchGeo({ lat: 31.011261, lon: 35.1 }), null, 2));
   // require('fs').writeFileSync('sample-data/geo.json', JSON.stringify(await fetchGeo({ lat: 29.425171, lon: -98.494614 }), null, 2)); // san antonio
   // require('fs').writeFileSync('sample-data/geo.json', JSON.stringify(await fetchGeo({ lat: 48.154, lon: -94.519 }), null, 2)); // holon
-// })();
+})();

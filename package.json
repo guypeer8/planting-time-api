@@ -28,7 +28,6 @@
     "express-slow-down": "^1.4.0",
     "geo-tz": "^6.0.1",
     "helmet": "^4.2.0",
-    "js-base64": "^3.6.0",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.20",
     "map-series": "0.0.3",
@@ -52,6 +51,8 @@
     "validator": "^13.5.2"
   },
   "devDependencies": {
+    "csvtojson": "^2.0.10",
+    "googleapis": "^67.0.0",
     "nodemon": "^2.0.4",
     "puppeteer": "^5.5.0"
   }
