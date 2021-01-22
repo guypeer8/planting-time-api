@@ -11,8 +11,8 @@
   "author": "Guy Peer",
   "license": "ISC",
   "dependencies": {
-    "@planting-time/constants": "git+https://github.com/guypeer8/planting-time-constants",
     "@paypal/checkout-server-sdk": "^1.0.2",
+    "@planting-time/constants": "git+https://github.com/guypeer8/planting-time-constants",
     "app-root-dir": "^1.0.2",
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
@@ -28,6 +28,7 @@
     "express-slow-down": "^1.4.0",
     "geo-tz": "^6.0.1",
     "helmet": "^4.2.0",
+    "js-base64": "^3.6.0",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.20",
     "map-series": "0.0.3",
