@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
 const isEmail = require('validator/lib/isEmail');
 
-const ObjectId = mongoose.Schema.Types.ObjectId;
-
 const { PROVIDERS } = require('../config');
 
+const USER_ROLES = ['user', 'admin', 'shop'];
+
 const userSchema = new mongoose.Schema({
-    userId: { type: String, required: true, unique: true },
+    userId: { type: String },
     displayName: { type: String, required: true },   
     provider: { type: String, enum: PROVIDERS, required: true },
-    role: { type: String, enum: ['base', 'admin', 'shop'] },
+    role: { type: String, enum: USER_ROLES },
     email: {
         type: String,
         validate: {

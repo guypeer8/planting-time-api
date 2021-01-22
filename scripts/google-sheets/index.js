@@ -25,7 +25,7 @@ const getNewToken = oAuth2Client => new Promise(resolve => {
     const authUrl = oAuth2Client.generateAuthUrl({ access_type: 'offline', scope: SCOPES });
     console.log('Authorize this app by visiting this url:', authUrl);
     const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
-    rl.question('Enter the code from that page here: ', (code) => {
+    rl.question('Enter the code from that page here: ', code => {
         rl.close();
         oAuth2Client.getToken(code, (err, token) => {
             if (err) {
@@ -33,10 +33,8 @@ const getNewToken = oAuth2Client => new Promise(resolve => {
             }
             oAuth2Client.setCredentials(token);
             // Store the token to disk for later program executions
-            fs.writeFile(TOKEN_PATH, JSON.stringify(token), (err) => {
-                if (err) {
-                    return console.error(err);
-                }
+            fs.writeFile(TOKEN_PATH, JSON.stringify(token), err => {
+                if (err) { return console.error(err); }
                 console.log('Token stored to', TOKEN_PATH);
             });
             resolve(oAuth2Client);
@@ -44,26 +42,25 @@ const getNewToken = oAuth2Client => new Promise(resolve => {
     });
 });
 
-const listMajors = spreadsheetId => {
+const getSpreadSheet = spreadsheetId => new Promise(async (resolve, reject) => {
     const auth = await authorize();
     const sheets = google.sheets({ version: 'v4', auth });
-
     sheets.spreadsheets.values.get({ spreadsheetId }, (err, res) => {
-    if (err) return console.log('The API returned an error: ' + err);
-        const rows = res.data.values;
-        if (rows.length) {
-            console.log('Name, Major:');
-            // Print columns A and E, which correspond to indices 0 and 4.
-            rows.map(row => {
-                console.log(`${row[0]}, ${row[4]}`);
-            });
-        } else {
-            console.log('No data found.');
-        }
+        if (err) { return reject(err); }
+        resolve(get(res, 'data.values', []));
     });
-}
+});
+
+const getPlants = async spreadsheetId => {
+    const plant_rows = await getSpreadSheet(spreadsheetId);
+    console.warn('plant_rows:', plant_rows);
+};
+
+// (async () => {
+//     const p = await getSpreadSheet('1ZTDpTlGV1scf80AaRZctczpN0gBGr5U4KIdYoZ2H9OQ');
+//     console.log(p);
+// })();
 
 module.exports = {
-  SCOPES,
-  listMajors,
+    getPlants,
 };

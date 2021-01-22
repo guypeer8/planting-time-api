@@ -165,6 +165,7 @@ plantSchema.statics.getPlants = async function({
     frost_sensitive = null, 
     plant_type = null, 
     withCompanions = true,
+    select_fields = null,
     meta = { lat: null, lon: null },
 } = {}) {
     const query = { searchable };
@@ -238,10 +239,15 @@ plantSchema.statics.getPlants = async function({
     }
 
     if (!withCompanions) {
-        return this.find(query).select('-companions -non_companions').lean();
+        const select = [...(select_fields || []), '-companions', '-non_companions'];
+        return this.find(query).select(select.join(' ')).lean();
     } 
 
-    const plants = await this.find(query).lean();
+    let queryBuilder = this.find(query);
+    if (select_fields) {
+        queryBuilder = queryBuilder.select(select_fields.join(' '));
+    }
+    const plants = await queryBuilder.lean();
     return Promise.all(plants.map(async plant => {
         plant.companions = await getCompanions(plant);
         delete plant.non_companions;
