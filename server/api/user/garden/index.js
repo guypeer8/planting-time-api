@@ -10,13 +10,9 @@ router.post('/', async (req, res) => {
     try {
         const { name } = req.body;
         const user = req.user_auth._id;
-        if (!name) {
-            throw new Error('A garden must have a name');
-        }
+        if (!name) { throw new Error('A garden must have a name'); }
         const name_exists = await GardenModel.exists({ user, name });
-        if (name_exists) {
-            throw new Error(`Garden named "${name}" already exists`);
-        }
+        if (name_exists) { throw new Error(`Garden named "${name}" already exists`); }
         const gardenRecord = new GardenModel({ user, name });
         const garden = await gardenRecord.save();
         res.json({ status: 'success', payload: garden });
