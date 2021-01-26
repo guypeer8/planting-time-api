@@ -11,10 +11,9 @@ const first = require('lodash/first');
 const isNil = require('lodash/isNil');
 const sample = require('lodash/sample');
 const isEmpty = require('lodash/isEmpty');
-const isNumber = require('lodash/isNumber');
 
+const { mongodbServer } = require('../../config');
 const PlantModel = require('../../models/plant.model');
-const { isDev, mongodbServer } = require('../../config');
 
 const api_tokens = Array.from({ length: 4 }).map((_, i) => process.env[`TREFLE_API_KEY_${i+1}`]);
 
@@ -201,6 +200,7 @@ const createTaxonomy = async (result, plant) => {
 
 const buildPlantsByNames = ({ 
     plant_names = [], 
+    plant_type = null,
     onFinish = () => {},
 } = {}) => {
     map(plant_names, async (plant_name, cbk) => {
@@ -210,7 +210,7 @@ const buildPlantsByNames = ({
             result.t_id = plant.id;
 
             await createMetadata(result, plant);
-            await createGrowth(result, plant);
+            await createGrowth(result, plant, plant_type);
             await createTaxonomy(result, plant);
             cbk(null, { result });
         } catch(e) {
@@ -271,9 +271,14 @@ const buildPlantsByPage = async ({
     });
 };
 
-function runDatabaseBuildByPlantName(plant_names = [], { save_to_db = false, write_files = true } = {}) {
+function runDatabaseBuildByPlantName(plant_names = [], { 
+    plant_type = null, 
+    save_to_db = false, 
+    write_files = true,
+} = {}) {
     buildPlantsByNames({
         plant_names,
+        plant_type,
         async onFinish({ results, failed }) {
             if (write_files && !isEmpty(failed)) {
                 writeFile('failed_plants_by_names', failed, true);
@@ -347,6 +352,8 @@ runDatabaseBuildByPlantName([
     "Cabbage",
     "Kale",
     "Lettuce",
-], {save_to_db: true});
+], { 
+    save_to_db: true,
+});
 
 // runPageByPageDatabaseBuild();

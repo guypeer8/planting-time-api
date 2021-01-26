@@ -1,16 +1,23 @@
+require('dotenv').config();
+
 const fs = require('fs');
+const { join } = require('path');
+const csv = require('csvtojson/v2');
 const readline = require('readline');
 const { promisify } = require('util');
 const { google } = require('googleapis');
+const groupBy = require('lodash/groupBy');
 
 const readFile = promisify(fs.readFile);
 
+const creds = require(join(__dirname, './g_credentials.json'));
+
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
 
-const TOKEN_PATH = 'gsheets_token.json';
+const TOKEN_PATH = join(__dirname, 'gsheets_token.json');
 
-const authorize = (file_name = 'g_credentials.json') => new Promise(async resolve => {
-    const { client_secret, client_id, redirect_uris } = (await readFile(file_name)).installed;
+const authorize = () => new Promise(async resolve => {
+    const { client_secret, client_id, redirect_uris } = creds.web;
     const oAuth2Client = new google.auth.OAuth2(client_id, client_secret, redirect_uris[0]);
     try {
         const token = await readFile(TOKEN_PATH);
@@ -56,10 +63,12 @@ const getPlants = async spreadsheetId => {
     console.warn('plant_rows:', plant_rows);
 };
 
-// (async () => {
-//     const p = await getSpreadSheet('1ZTDpTlGV1scf80AaRZctczpN0gBGr5U4KIdYoZ2H9OQ');
-//     console.log(p);
-// })();
+(async () => {
+    // const p = await getSpreadSheet('1ZTDpTlGV1scf80AaRZctczpN0gBGr5U4KIdYoZ2H9OQ');
+    // console.log(p);
+    const data = groupBy(await csv().fromFile(join(__dirname, 'plants.csv')), 'field1');
+    console.log(data)
+})();
 
 module.exports = {
     getPlants,
