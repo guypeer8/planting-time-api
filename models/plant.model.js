@@ -136,8 +136,8 @@ const getCompanions = function(plant, { select_fields = null } = {}) {
     } else {
         const genus = get(plant, 'taxonomy.genus', null);
         if (!genus) return [];
-        set(query, 'taxonomy.genus', genus);
-        query,_id.$nin.push(...plant.non_companions);
+        query['taxonomy.genus'] = genus;
+        query._id.$nin.push(...plant.non_companions);
     }
     let queryBuilder = mongoose.model('Plant').find(query);
     if (select_fields) {
@@ -223,19 +223,19 @@ plantSchema.statics.getPlants = async function({
         ];
     }
     if (tmin) {
-        set(query, 'growth.temerature.min', { $lte: tmin });
+        query['growth.temerature.min'] = { $lte: tmin };
     }
     if (tmax) {
-        set(query, 'growth.temerature.max', { $gte: tmax });
+        query['growth.temerature.max'] = { $gte: tmax };
     }
     if (pmin) {
-        set(query, 'growth.percipitation.min', { $lte: pmin });
+        query['growth.percipitation.min'] = { $lte: pmin };
     }
     if (pmax) {
-        set(query, 'growth.percipitation.max', { $gte: pmax });
+        query['growth.percipitation.max'] = { $gte: pmax };
     }
     if (plant_type) {
-        set(query, 'attributes.plant_type', plant_type);
+        query['attributes.plant_type'] = plant_type;
     }
 
     if (!withCompanions) {
