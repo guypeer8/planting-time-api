@@ -166,6 +166,9 @@ plantSchema.statics.getPlants = async function({
     plant_type = null, 
     withCompanions = true,
     select_fields = null,
+    limit = 30,
+    page = 1,
+    sort = 'metadata.common_name',
     meta = { lat: null, lon: null },
 } = {}) {
     const query = { searchable };
@@ -238,16 +241,19 @@ plantSchema.statics.getPlants = async function({
         query['attributes.plant_type'] = plant_type;
     }
 
+    let queryBuilder = this.find(query).limit(limit).skip((page-1) * limit).sort(sort);
+
     if (!withCompanions) {
-        const select = [...(select_fields || []), '-companions', '-non_companions'];
-        return this.find(query).select(select.join(' ')).lean();
+        const select = [...(select_fields || []), '-companions', '-non_companions'].join(' ');
+        return queryBuilder.select(select).lean();
     } 
 
-    let queryBuilder = this.find(query);
     if (select_fields) {
         queryBuilder = queryBuilder.select(select_fields.join(' '));
     }
+
     const plants = await queryBuilder.lean();
+
     return Promise.all(plants.map(async plant => {
         plant.companions = await getCompanions(plant);
         delete plant.non_companions;
