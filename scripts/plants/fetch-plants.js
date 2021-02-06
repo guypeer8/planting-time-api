@@ -105,22 +105,17 @@ const createSpecies = async (result, plant, plant_type) => {
     const species = await fetchSpeciesByLink(plant.links.self);
 
     if (species.images) {
-        set(result, 'metadata', {
-            plant_part_images: species.images,
-        });
+        set(result, 'metadata.plant_part_images', species.images);
     }
     
     set(result, 'attributes', {
         is_edible: species.edible,
-        edible_part: species.edible_part,
-    });
-    
-    set(result, 'attributes', {
+        // edible_part: species.edible_part,
         duration: plant.duration || [], // [Annual, Biennial, Perennial]
     });
 
     if (plant_type || species.vegetable) {
-        set(result, 'attributes', { plant_type: plant_type || 'vegetable' });
+        set(result, 'attributes.plant_type', plant_type || 'vegetable');
     }
 
     if (species.distribution) {
@@ -357,20 +352,21 @@ function runPageByPageDatabaseBuild({ save_to_db = false, write_files = true } =
 
 runDatabaseBuildByPlantName([
     'tomato',
-    // 'potato',
-    // 'cucumber', 
-    // 'onion', 
-    // 'garlic', 
-    // 'broccoli', 
-    // 'basil', 
-    // 'sweet corn', 
-    // 'cauliflower', 
-    // 'celery',
-    // "Beans",
-    // "Broccoli",
-    // "Cabbage",
-    // "Kale",
-    // "Lettuce",
+    'potato',
+    'cucumber', 
+    'onion', 
+    'garlic', 
+    'broccoli', 
+    'basil', 
+    'sweet corn', 
+    'cauliflower', 
+    'celery',
+    "Beans",
+    "Broccoli",
+    "Cabbage",
+    "Kale",
+    "Lettuce",
+    'mango'
 ], { 
     save_to_db: true,
 });
