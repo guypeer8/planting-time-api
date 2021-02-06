@@ -12,6 +12,830 @@
     "attributes": {
       "plant_type": "vegetable"
     },
+    "distribution": {
+      "native": [
+        "Peru"
+      ],
+      "introduced": [
+        "Alabama",
+        "Alaska",
+        "Andaman Is.",
+        "Angola",
+        "Arizona",
+        "Arkansas",
+        "Austria",
+        "Azores",
+        "Bahamas",
+        "Bangladesh",
+        "Belarus",
+        "Benin",
+        "Bolivia",
+        "British Columbia",
+        "Burkina",
+        "California",
+        "Cameroon",
+        "Canary Is.",
+        "Cape Verde",
+        "Caroline Is.",
+        "Central African Repu",
+        "Chagos Archipelago",
+        "Chatham Is.",
+        "Christmas I.",
+        "Colombia",
+        "Connecticut",
+        "Cook Is.",
+        "Costa Rica",
+        "Cuba",
+        "Czechoslovakia",
+        "Delaware",
+        "Dominican Republic",
+        "East Aegean Is.",
+        "East Himalaya",
+        "Ecuador",
+        "Fiji",
+        "Florida",
+        "Galápagos",
+        "Georgia",
+        "Gilbert Is.",
+        "Gulf of Guinea Is.",
+        "Haiti",
+        "Hawaii",
+        "Illinois",
+        "India",
+        "Indiana",
+        "Iowa",
+        "Ivory Coast",
+        "Japan",
+        "Jawa",
+        "Kansas",
+        "Kazakhstan",
+        "Kentucky",
+        "Korea",
+        "Laccadive Is.",
+        "Laos",
+        "Leeward Is.",
+        "Line Is.",
+        "Louisiana",
+        "Madagascar",
+        "Madeira",
+        "Maine",
+        "Malawi",
+        "Mali",
+        "Marianas",
+        "Marquesas",
+        "Marshall Is.",
+        "Maryland",
+        "Masachusettes",
+        "Mauritania",
+        "Mauritius",
+        "Michigan",
+        "Mississippi",
+        "Missouri",
+        "Montana",
+        "Mozambique",
+        "Myanmar",
+        "Namibia",
+        "Nauru",
+        "Nebraska",
+        "Nepal",
+        "Nevada",
+        "New Brunswick",
+        "New Caledonia",
+        "New Hampshire",
+        "New York",
+        "Nicaragua",
+        "Nicobar Is.",
+        "Niue",
+        "North Carolina",
+        "North Dakota",
+        "Nova Scotia",
+        "Ogasawara-shoto",
+        "Ohio",
+        "Ontario",
+        "Oregon",
+        "Pakistan",
+        "Panamá",
+        "Pennsylvania",
+        "Philippines",
+        "Puerto Rico",
+        "Québec",
+        "Rhode I.",
+        "Réunion",
+        "Saskatchewan",
+        "Selvagens",
+        "Society Is.",
+        "South Carolina",
+        "Tadzhikistan",
+        "Taiwan",
+        "Tennessee",
+        "Texas",
+        "Trinidad-Tobago",
+        "Tuamotu",
+        "Tubuai Is.",
+        "Turkey",
+        "Turkmenistan",
+        "Tuvalu",
+        "Utah",
+        "Uzbekistan",
+        "Venezuela",
+        "Vermont",
+        "Vietnam",
+        "Virginia",
+        "Wake I.",
+        "Wisconsin",
+        "Zambia",
+        "Zimbabwe",
+        "Cyprus"
+      ]
+    },
+    "dictionary": {
+      "common_names": {
+        "en": [
+          "Tomato",
+          "Garden tomato"
+        ],
+        "ab": [
+          "Атомат"
+        ],
+        "af": [
+          "Tamatie"
+        ],
+        "ak": [
+          "Anakyemoto/Ntos"
+        ],
+        "sq": [
+          "Domatja"
+        ],
+        "am": [
+          "ቲማቲም"
+        ],
+        "ar": [
+          "طماطم"
+        ],
+        "hy": [
+          "Լոլիկ"
+        ],
+        "az": [
+          "Pomidor"
+        ],
+        "ba": [
+          "Помидор"
+        ],
+        "eu": [
+          "Tomate"
+        ],
+        "be": [
+          "Памідоры",
+          "Тамат звычайны"
+        ],
+        "bn": [
+          "টমেটো"
+        ],
+        "bs": [
+          "Paradajz"
+        ],
+        "br": [
+          "Tomatez"
+        ],
+        "bg": [
+          "Домат"
+        ],
+        "my": [
+          "ခရမ်းချဉ်ပင်"
+        ],
+        "ca": [
+          "Tomàquet",
+          "Tomatera"
+        ],
+        "ce": [
+          "Бадарж"
+        ],
+        "co": [
+          "Pumata"
+        ],
+        "hr": [
+          "Rajčica"
+        ],
+        "cs": [
+          "Lilek rajče",
+          "Lilek raj",
+          "Raj"
+        ],
+        "da": [
+          "Tomatplante"
+        ],
+        "dv": [
+          "ވިލާތު ބަށި"
+        ],
+        "nl": [
+          "Tomaat"
+        ],
+        "eo": [
+          "Tomato"
+        ],
+        "et": [
+          "Tomat"
+        ],
+        "fi": [
+          "Tomaatti"
+        ],
+        "fr": [
+          "Tomate",
+          "Tomate comestible",
+          "Pomme d'amour",
+          "Aubergine",
+          "Marignan",
+          "Pomme de terre",
+          "Patate"
+        ],
+        "ka": [
+          "ჩვეულებრივი პომიდორი",
+          "Ჩვეულებრივი პომიდორი"
+        ],
+        "de": [
+          "Tomate",
+          "Kultur-Tomate",
+          "Paradeispflanze"
+        ],
+        "el": [
+          "Τομάτα",
+          "Ntomata",
+          "Ntomatia",
+          "Pomilori"
+        ],
+        "gn": [
+          "Tomate"
+        ],
+        "ht": [
+          "Tomat"
+        ],
+        "ha": [
+          "Tumatir"
+        ],
+        "he": [
+          "עגבנייה"
+        ],
+        "hi": [
+          "टमाटर"
+        ],
+        "hu": [
+          "Paradicsom"
+        ],
+        "is": [
+          "Tómatur"
+        ],
+        "io": [
+          "Tomato"
+        ],
+        "id": [
+          "Tomat"
+        ],
+        "ia": [
+          "Tomatiero"
+        ],
+        "iu": [
+          "ᒥᓗᑦᓱᑳᒐᖅ"
+        ],
+        "ga": [
+          "Tráta"
+        ],
+        "it": [
+          "Pomodoro",
+          "Tomatica",
+          "Pomidoro"
+        ],
+        "jv": [
+          "Tomat"
+        ],
+        "kn": [
+          "ಟೊಮೇಟೊ"
+        ],
+        "kk": [
+          "Қызанақ"
+        ],
+        "rw": [
+          "Inyanya"
+        ],
+        "ky": [
+          "Кызанак"
+        ],
+        "rn": [
+          "Tomati"
+        ],
+        "ku": [
+          "Firengî"
+        ],
+        "lv": [
+          "Tomāts",
+          "Tom"
+        ],
+        "li": [
+          "Temat"
+        ],
+        "ln": [
+          "Tomáti"
+        ],
+        "lt": [
+          "Pomidoras",
+          "Valgomasis pomidoras"
+        ],
+        "mk": [
+          "Домат"
+        ],
+        "mg": [
+          "Voatabia"
+        ],
+        "ms": [
+          "Tomato"
+        ],
+        "ml": [
+          "തക്കാളി"
+        ],
+        "gv": [
+          "Traase"
+        ],
+        "mr": [
+          "टोमॅटो"
+        ],
+        "mn": [
+          "Улаан лооль"
+        ],
+        "nv": [
+          "Chʼil łichxíʼí"
+        ],
+        "ne": [
+          "गोलभेडा"
+        ],
+        "se": [
+          "Tomáhtta"
+        ],
+        "nb": [
+          "Tomat"
+        ],
+        "nn": [
+          "Tomat"
+        ],
+        "oc": [
+          "Tomata"
+        ],
+        "or": [
+          "ଟମାଟ"
+        ],
+        "os": [
+          "Пъамидор"
+        ],
+        "pa": [
+          "ਟਮਾਟਰ"
+        ],
+        "ps": [
+          "رومي بانجان"
+        ],
+        "fa": [
+          "گوجه فرنگی"
+        ],
+        "pl": [
+          "Pomidor zwyczajny"
+        ],
+        "pt": [
+          "Tomateiro"
+        ],
+        "qu": [
+          "Chilltu"
+        ],
+        "ro": [
+          "Roșie"
+        ],
+        "rm": [
+          "Tomata"
+        ],
+        "ru": [
+          "Помидор",
+          "Томат"
+        ],
+        "sa": [
+          "वार्तकी"
+        ],
+        "sc": [
+          "Tamata"
+        ],
+        "gd": [
+          "Tomàto"
+        ],
+        "sr": [
+          "Парадајз"
+        ],
+        "sn": [
+          "Madomasi"
+        ],
+        "sd": [
+          "ٽماٽو"
+        ],
+        "si": [
+          "තක්කාලි"
+        ],
+        "sk": [
+          "Rajčiak jedlý",
+          "Ľuľok jedlý"
+        ],
+        "sl": [
+          "Paradižnik"
+        ],
+        "so": [
+          "Yaanyo"
+        ],
+        "st": [
+          "Tamati"
+        ],
+        "es": [
+          "Tomatera",
+          "Tomate",
+          "Tomate fino",
+          "Jitomate"
+        ],
+        "su": [
+          "Tomat"
+        ],
+        "sw": [
+          "Mnyanya"
+        ],
+        "sv": [
+          "Tomat",
+          "Kärleksäpple"
+        ],
+        "tl": [
+          "Kamatis"
+        ],
+        "ta": [
+          "தக்காளி"
+        ],
+        "te": [
+          "టమాటో"
+        ],
+        "th": [
+          "มะเขือเทศ"
+        ],
+        "bo": [
+          "ལྡུམ་སྒོང་།"
+        ],
+        "to": [
+          "Temata"
+        ],
+        "tr": [
+          "Domates"
+        ],
+        "ug": [
+          "پەمىدۇر"
+        ],
+        "uk": [
+          "Помідор"
+        ],
+        "ur": [
+          "ٹماٹر"
+        ],
+        "uz": [
+          "Pomidor"
+        ],
+        "vi": [
+          "Cà chua"
+        ],
+        "vo": [
+          "Tomat"
+        ],
+        "cy": [
+          "Tomato"
+        ],
+        "fy": [
+          "Tomaat"
+        ],
+        "wo": [
+          "Tamaate"
+        ],
+        "yi": [
+          "טאמאטע"
+        ],
+        "yo": [
+          "Tòmátò"
+        ],
+        "za": [
+          "Makcaih"
+        ],
+        "zu": [
+          "Utamatisi"
+        ],
+        "mt": [
+          "Tadam"
+        ],
+        "deu": [
+          "tomate"
+        ],
+        "por": [
+          "tomateiro"
+        ],
+        "eng": [
+          "tomato",
+          "garden tomato"
+        ],
+        "nld": [
+          "tomaat"
+        ],
+        "swe": [
+          "tomat",
+          "kärleksäpple"
+        ],
+        "fra": [
+          "tomate",
+          "tomate comestible"
+        ],
+        "ita": [
+          "pomodoro"
+        ],
+        "spa": [
+          "tomatera"
+        ]
+      },
+      "available_locales": [
+        "en",
+        "ab",
+        "af",
+        "ak",
+        "sq",
+        "am",
+        "ar",
+        "hy",
+        "az",
+        "ba",
+        "eu",
+        "be",
+        "bn",
+        "bs",
+        "br",
+        "bg",
+        "my",
+        "ca",
+        "ce",
+        "co",
+        "hr",
+        "cs",
+        "da",
+        "dv",
+        "nl",
+        "eo",
+        "et",
+        "fi",
+        "fr",
+        "ka",
+        "de",
+        "el",
+        "gn",
+        "ht",
+        "ha",
+        "he",
+        "hi",
+        "hu",
+        "is",
+        "io",
+        "id",
+        "ia",
+        "iu",
+        "ga",
+        "it",
+        "jv",
+        "kn",
+        "kk",
+        "rw",
+        "ky",
+        "rn",
+        "ku",
+        "lv",
+        "li",
+        "ln",
+        "lt",
+        "mk",
+        "mg",
+        "ms",
+        "ml",
+        "gv",
+        "mr",
+        "mn",
+        "nv",
+        "ne",
+        "se",
+        "nb",
+        "nn",
+        "oc",
+        "or",
+        "os",
+        "pa",
+        "ps",
+        "fa",
+        "pl",
+        "pt",
+        "qu",
+        "ro",
+        "rm",
+        "ru",
+        "sa",
+        "sc",
+        "gd",
+        "sr",
+        "sn",
+        "sd",
+        "si",
+        "sk",
+        "sl",
+        "so",
+        "st",
+        "es",
+        "su",
+        "sw",
+        "sv",
+        "tl",
+        "ta",
+        "te",
+        "th",
+        "bo",
+        "to",
+        "tr",
+        "ug",
+        "uk",
+        "ur",
+        "uz",
+        "vi",
+        "vo",
+        "cy",
+        "fy",
+        "wo",
+        "yi",
+        "yo",
+        "za",
+        "zu",
+        "mt",
+        "deu",
+        "por",
+        "eng",
+        "nld",
+        "swe",
+        "fra",
+        "ita",
+        "spa"
+      ]
+    },
+    "search_keywords": [
+      "Tomato",
+      "Garden tomato",
+      "Атомат",
+      "Tamatie",
+      "Anakyemoto/Ntos",
+      "Domatja",
+      "ቲማቲም",
+      "طماطم",
+      "Լոլիկ",
+      "Pomidor",
+      "Помидор",
+      "Tomate",
+      "Памідоры",
+      "Тамат звычайны",
+      "টমেটো",
+      "Paradajz",
+      "Tomatez",
+      "Домат",
+      "ခရမ်းချဉ်ပင်",
+      "Tomàquet",
+      "Tomatera",
+      "Бадарж",
+      "Pumata",
+      "Rajčica",
+      "Lilek rajče",
+      "Lilek raj",
+      "Raj",
+      "Tomatplante",
+      "ވިލާތު ބަށި",
+      "Tomaat",
+      "Tomato",
+      "Tomat",
+      "Tomaatti",
+      "Tomate",
+      "Tomate comestible",
+      "Pomme d'amour",
+      "Aubergine",
+      "Marignan",
+      "Pomme de terre",
+      "Patate",
+      "ჩვეულებრივი პომიდორი",
+      "Ჩვეულებრივი პომიდორი",
+      "Tomate",
+      "Kultur-Tomate",
+      "Paradeispflanze",
+      "Τομάτα",
+      "Ntomata",
+      "Ntomatia",
+      "Pomilori",
+      "Tomate",
+      "Tomat",
+      "Tumatir",
+      "עגבנייה",
+      "टमाटर",
+      "Paradicsom",
+      "Tómatur",
+      "Tomato",
+      "Tomat",
+      "Tomatiero",
+      "ᒥᓗᑦᓱᑳᒐᖅ",
+      "Tráta",
+      "Pomodoro",
+      "Tomatica",
+      "Pomidoro",
+      "Tomat",
+      "ಟೊಮೇಟೊ",
+      "Қызанақ",
+      "Inyanya",
+      "Кызанак",
+      "Tomati",
+      "Firengî",
+      "Tomāts",
+      "Tom",
+      "Temat",
+      "Tomáti",
+      "Pomidoras",
+      "Valgomasis pomidoras",
+      "Домат",
+      "Voatabia",
+      "Tomato",
+      "തക്കാളി",
+      "Traase",
+      "टोमॅटो",
+      "Улаан лооль",
+      "Chʼil łichxíʼí",
+      "गोलभेडा",
+      "Tomáhtta",
+      "Tomat",
+      "Tomat",
+      "Tomata",
+      "ଟମାଟ",
+      "Пъамидор",
+      "ਟਮਾਟਰ",
+      "رومي بانجان",
+      "گوجه فرنگی",
+      "Pomidor zwyczajny",
+      "Tomateiro",
+      "Chilltu",
+      "Roșie",
+      "Tomata",
+      "Помидор",
+      "Томат",
+      "वार्तकी",
+      "Tamata",
+      "Tomàto",
+      "Парадајз",
+      "Madomasi",
+      "ٽماٽو",
+      "තක්කාලි",
+      "Rajčiak jedlý",
+      "Ľuľok jedlý",
+      "Paradižnik",
+      "Yaanyo",
+      "Tamati",
+      "Tomatera",
+      "Tomate",
+      "Tomate fino",
+      "Jitomate",
+      "Tomat",
+      "Mnyanya",
+      "Tomat",
+      "Kärleksäpple",
+      "Kamatis",
+      "தக்காளி",
+      "టమాటో",
+      "มะเขือเทศ",
+      "ལྡུམ་སྒོང་།",
+      "Temata",
+      "Domates",
+      "پەمىدۇر",
+      "Помідор",
+      "ٹماٹر",
+      "Pomidor",
+      "Cà chua",
+      "Tomat",
+      "Tomato",
+      "Tomaat",
+      "Tamaate",
+      "טאמאטע",
+      "Tòmátò",
+      "Makcaih",
+      "Utamatisi",
+      "Tadam",
+      "tomate",
+      "tomateiro",
+      "tomato",
+      "garden tomato",
+      "tomaat",
+      "tomat",
+      "kärleksäpple",
+      "tomate",
+      "tomate comestible",
+      "pomodoro",
+      "tomatera"
+    ],
     "growth": {
       "humidity": 5,
       "ph": {
@@ -42,549 +866,7 @@
       "division": "Magnoliophyta",
       "subkingdom": "Tracheobionta",
       "kingdom": "Plantae"
-    }
-  },
-  {
-    "t_id": 182597,
-    "metadata": {
-      "common_name": "Irish potato",
-      "scientific_name": "Solanum tuberosum",
-      "family_common_name": "Potato family",
-      "images": [
-        "https://bs.floristic.org/image/o/95a0197b33f8efe2ea7a0d25f84476415779a4b5"
-      ]
     },
-    "attributes": {
-      "plant_type": "vegetable"
-    },
-    "growth": {
-      "humidity": 5,
-      "ph": {
-        "min": 7.5,
-        "max": 8
-      },
-      "light": {
-        "numeric": 8
-      },
-      "soil": {
-        "nutriments": {
-          "numeric": 7
-        },
-        "texture": {
-          "numeric": 2
-        }
-      }
-    },
-    "taxonomy": {
-      "genus": "Solanum",
-      "family": "Solanaceae",
-      "order": "Solanales",
-      "class": "Magnoliopsida",
-      "division": "Magnoliophyta",
-      "subkingdom": "Tracheobionta",
-      "kingdom": "Plantae"
-    }
-  },
-  {
-    "t_id": 125316,
-    "metadata": {
-      "common_name": "Garden cucumber",
-      "scientific_name": "Cucumis sativus",
-      "family_common_name": "Cucumber family",
-      "images": [
-        "https://bs.floristic.org/image/o/32bab206969e192771e3f9917e3a682c05857ae9"
-      ]
-    },
-    "attributes": {
-      "plant_type": "vegetable"
-    },
-    "growth": {
-      "ph": {
-        "min": null,
-        "max": null
-      },
-      "light": {
-        "numeric": null
-      }
-    },
-    "taxonomy": {
-      "genus": "Cucumis",
-      "family": "Cucurbitaceae",
-      "order": "Violales",
-      "class": "Magnoliopsida",
-      "division": "Magnoliophyta",
-      "subkingdom": "Tracheobionta",
-      "kingdom": "Plantae"
-    }
-  },
-  {
-    "t_id": 103505,
-    "metadata": {
-      "common_name": "Tapertip onion",
-      "scientific_name": "Allium acuminatum",
-      "family_common_name": null,
-      "images": [
-        "https://d2seqvvyy3b8p2.cloudfront.net/cbfe7afb31fb7c992baf3b4b007266eb.jpg"
-      ]
-    },
-    "attributes": {
-      "is_edible": false,
-      "edible_part": null
-    },
-    "growth": {
-      "ph": {
-        "min": 6,
-        "max": 8
-      },
-      "light": {
-        "numeric": null
-      },
-      "percipitation": {
-        "min": 254,
-        "max": 254
-      }
-    },
-    "taxonomy": {
-      "genus": "Allium",
-      "family": "Amaryllidaceae"
-    }
-  },
-  {
-    "t_id": 103485,
-    "metadata": {
-      "common_name": "Garlic mustard",
-      "scientific_name": "Alliaria petiolata",
-      "family_common_name": "Mustard family",
-      "images": [
-        "https://bs.floristic.org/image/o/d56189572271b41efd3e6c0576fa1581aab31ca1"
-      ]
-    },
-    "attributes": {
-      "is_edible": false,
-      "edible_part": null
-    },
-    "growth": {
-      "humidity": 6,
-      "ph": {
-        "min": 7,
-        "max": 7.5
-      },
-      "light": {
-        "numeric": 4
-      },
-      "soil": {
-        "nutriments": {
-          "numeric": 8
-        },
-        "texture": {
-          "numeric": 3
-        }
-      }
-    },
-    "taxonomy": {
-      "genus": "Alliaria",
-      "family": "Brassicaceae",
-      "order": "Capparales",
-      "class": "Magnoliopsida",
-      "division": "Magnoliophyta",
-      "subkingdom": "Tracheobionta",
-      "kingdom": "Plantae"
-    }
-  },
-  {
-    "t_id": 112532,
-    "metadata": {
-      "common_name": "Ruvo kale",
-      "scientific_name": "Brassica ruvo",
-      "family_common_name": "Mustard family"
-    },
-    "attributes": {
-      "is_edible": false,
-      "edible_part": null
-    },
-    "growth": {
-      "ph": {
-        "min": null,
-        "max": null
-      },
-      "light": {
-        "numeric": null
-      }
-    },
-    "taxonomy": {
-      "genus": "Brassica",
-      "family": "Brassicaceae",
-      "order": "Capparales",
-      "class": "Magnoliopsida",
-      "division": "Magnoliophyta",
-      "subkingdom": "Tracheobionta",
-      "kingdom": "Plantae"
-    }
-  },
-  {
-    "t_id": 122078,
-    "metadata": {
-      "common_name": "Wild basil",
-      "scientific_name": "Clinopodium vulgare",
-      "family_common_name": "Mint family",
-      "images": [
-        "https://bs.floristic.org/image/o/a5b9f297e111b150a4e7a7e29d9bbb8eebc6c0f0"
-      ]
-    },
-    "attributes": {
-      "is_edible": false,
-      "edible_part": null
-    },
-    "growth": {
-      "humidity": 5,
-      "ph": {
-        "min": 7,
-        "max": 7.5
-      },
-      "light": {
-        "numeric": 6
-      },
-      "soil": {
-        "nutriments": {
-          "numeric": 4
-        },
-        "texture": {
-          "numeric": 3
-        }
-      }
-    },
-    "taxonomy": {
-      "genus": "Clinopodium",
-      "family": "Lamiaceae",
-      "order": "Lamiales",
-      "class": "Magnoliopsida",
-      "division": "Magnoliophyta",
-      "subkingdom": "Tracheobionta",
-      "kingdom": "Plantae"
-    }
-  },
-  {
-    "t_id": 193519,
-    "metadata": {
-      "common_name": "Corn",
-      "scientific_name": "Zea mays",
-      "family_common_name": "Grass family",
-      "images": [
-        "https://bs.floristic.org/image/o/70d678aabeca1e2751d751537e0289fbbfcfbed1"
-      ]
-    },
-    "attributes": {
-      "is_edible": false,
-      "edible_part": null
-    },
-    "growth": {
-      "humidity": 6,
-      "ph": {
-        "min": 5.5,
-        "max": 7.5
-      },
-      "light": {
-        "numeric": 9
-      },
-      "percipitation": {
-        "min": 508,
-        "max": 508
-      },
-      "soil": {
-        "nutriments": {
-          "numeric": 8
-        },
-        "texture": {
-          "numeric": 2
-        }
-      }
-    },
-    "taxonomy": {
-      "genus": "Zea",
-      "family": "Poaceae",
-      "order": "Cyperales",
-      "class": "Liliopsida",
-      "division": "Magnoliophyta",
-      "subkingdom": "Tracheobionta",
-      "kingdom": "Plantae"
-    }
-  },
-  {
-    "t_id": 112470,
-    "metadata": {
-      "common_name": "Mustard",
-      "scientific_name": "Brassica cretica",
-      "family_common_name": "Mustard family",
-      "images": [
-        "https://d2seqvvyy3b8p2.cloudfront.net/47019a0c124f9b0c0e86c9808dde4601.jpg"
-      ]
-    },
-    "attributes": {
-      "is_edible": false,
-      "edible_part": null
-    },
-    "growth": {
-      "ph": {
-        "min": null,
-        "max": null
-      },
-      "light": {
-        "numeric": null
-      }
-    },
-    "taxonomy": {
-      "genus": "Brassica",
-      "family": "Brassicaceae",
-      "order": "Capparales",
-      "class": "Magnoliopsida",
-      "division": "Magnoliophyta",
-      "subkingdom": "Tracheobionta",
-      "kingdom": "Plantae"
-    }
-  },
-  {
-    "t_id": 105974,
-    "metadata": {
-      "common_name": "Wild celery",
-      "scientific_name": "Apium graveolens",
-      "family_common_name": "Carrot family",
-      "images": [
-        "https://bs.floristic.org/image/o/c373a570b61d7607a13d3d35f2cf12bf8768a105"
-      ]
-    },
-    "attributes": {
-      "plant_type": "vegetable"
-    },
-    "growth": {
-      "humidity": 8,
-      "ph": {
-        "min": 6.5,
-        "max": 7
-      },
-      "light": {
-        "numeric": 7
-      },
-      "soil": {
-        "nutriments": {
-          "numeric": 5
-        },
-        "salinity": {
-          "numeric": 4
-        },
-        "texture": {
-          "numeric": 2
-        }
-      }
-    },
-    "taxonomy": {
-      "genus": "Apium",
-      "family": "Apiaceae",
-      "order": "Apiales",
-      "class": "Magnoliopsida",
-      "division": "Magnoliophyta",
-      "subkingdom": "Tracheobionta",
-      "kingdom": "Plantae"
-    }
-  },
-  {
-    "t_id": 165409,
-    "metadata": {
-      "common_name": "Kidney bean",
-      "scientific_name": "Phaseolus vulgaris",
-      "family_common_name": "Pea family",
-      "images": [
-        "https://bs.floristic.org/image/o/46b23b23e98319531962424fb9d88a4656610a0b"
-      ]
-    },
-    "attributes": {
-      "plant_type": "vegetable"
-    },
-    "growth": {
-      "humidity": 5,
-      "ph": {
-        "min": 6.5,
-        "max": 7
-      },
-      "light": {
-        "numeric": 8
-      },
-      "soil": {
-        "nutriments": {
-          "numeric": 7
-        },
-        "texture": {
-          "numeric": 3
-        }
-      }
-    },
-    "taxonomy": {
-      "genus": "Phaseolus",
-      "family": "Fabaceae",
-      "order": "Fabales",
-      "class": "Magnoliopsida",
-      "division": "Magnoliophyta",
-      "subkingdom": "Tracheobionta",
-      "kingdom": "Plantae"
-    }
-  },
-  {
-    "t_id": 112532,
-    "metadata": {
-      "common_name": "Ruvo kale",
-      "scientific_name": "Brassica ruvo",
-      "family_common_name": "Mustard family"
-    },
-    "attributes": {
-      "is_edible": false,
-      "edible_part": null
-    },
-    "growth": {
-      "ph": {
-        "min": null,
-        "max": null
-      },
-      "light": {
-        "numeric": null
-      }
-    },
-    "taxonomy": {
-      "genus": "Brassica",
-      "family": "Brassicaceae",
-      "order": "Capparales",
-      "class": "Magnoliopsida",
-      "division": "Magnoliophyta",
-      "subkingdom": "Tracheobionta",
-      "kingdom": "Plantae"
-    }
-  },
-  {
-    "t_id": 112492,
-    "metadata": {
-      "common_name": "Cabbage",
-      "scientific_name": "Brassica oleracea",
-      "family_common_name": "Mustard family",
-      "images": [
-        "https://bs.floristic.org/image/o/787a2191ca3a63b93336b61ac73b8881f21a32d4"
-      ]
-    },
-    "attributes": {
-      "plant_type": "vegetable"
-    },
-    "growth": {
-      "humidity": 8,
-      "ph": {
-        "min": 7,
-        "max": 7.5
-      },
-      "light": {
-        "numeric": 8
-      },
-      "soil": {
-        "nutriments": {
-          "numeric": 6
-        },
-        "salinity": {
-          "numeric": 7
-        },
-        "texture": {
-          "numeric": 8
-        }
-      }
-    },
-    "taxonomy": {
-      "genus": "Brassica",
-      "family": "Brassicaceae",
-      "order": "Capparales",
-      "class": "Magnoliopsida",
-      "division": "Magnoliophyta",
-      "subkingdom": "Tracheobionta",
-      "kingdom": "Plantae"
-    }
-  },
-  {
-    "t_id": 123755,
-    "metadata": {
-      "common_name": "Sea kale",
-      "scientific_name": "Crambe maritima",
-      "family_common_name": "Mustard family",
-      "images": [
-        "https://bs.floristic.org/image/o/8db172b28fe1eb0fb857be4d9f7ca0b0bf7802c6"
-      ]
-    },
-    "attributes": {
-      "plant_type": "vegetable"
-    },
-    "growth": {
-      "humidity": 3,
-      "ph": {
-        "min": 7,
-        "max": 7.5
-      },
-      "light": {
-        "numeric": 8
-      },
-      "soil": {
-        "nutriments": {
-          "numeric": 7
-        },
-        "salinity": {
-          "numeric": 5
-        },
-        "texture": {
-          "numeric": 7
-        }
-      }
-    },
-    "taxonomy": {
-      "genus": "Crambe",
-      "family": "Brassicaceae",
-      "order": "Capparales",
-      "class": "Magnoliopsida",
-      "division": "Magnoliophyta",
-      "subkingdom": "Tracheobionta",
-      "kingdom": "Plantae"
-    }
-  },
-  {
-    "t_id": 147170,
-    "metadata": {
-      "common_name": "Prickly lettuce",
-      "scientific_name": "Lactuca serriola",
-      "family_common_name": "Aster family",
-      "images": [
-        "https://bs.floristic.org/image/o/7b1eed4edf538b2843ba853c5a8ee8198ec591d3"
-      ]
-    },
-    "attributes": {
-      "is_edible": false,
-      "edible_part": null
-    },
-    "growth": {
-      "humidity": 4,
-      "ph": {
-        "min": 7,
-        "max": 7.5
-      },
-      "light": {
-        "numeric": 7
-      },
-      "soil": {
-        "nutriments": {
-          "numeric": 6
-        },
-        "texture": {
-          "numeric": 3
-        }
-      }
-    },
-    "taxonomy": {
-      "genus": "Lactuca",
-      "family": "Asteraceae",
-      "order": "Asterales",
-      "class": "Magnoliopsida",
-      "division": "Magnoliophyta",
-      "subkingdom": "Tracheobionta",
-      "kingdom": "Plantae"
-    }
+    "searchable": true
   }
 ]

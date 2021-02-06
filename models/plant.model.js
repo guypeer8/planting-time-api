@@ -101,6 +101,14 @@ const plantSchema = new mongoose.Schema({
             health_benefits: [{ type: String }],
         },
     },
+    distribution: {
+        native: [{ type: String }],
+        introduced: [{ type: String }],
+    },
+    dictionary: {
+        common_names: mongoose.Schema.Types.Mixed, // { en: [Tomato, Garden tomato], ... }
+        available_locales: [{ type: String }], // [en, fr, es, ...]
+    }, 
     tags: [{ type: String }],
     tips: [{
         title: { type: String },
@@ -164,6 +172,8 @@ plantSchema.statics.getPlants = async function({
     hardiness_zone = null,
     frost_sensitive = null, 
     plant_type = null, 
+    native_distribution = null, 
+    introduced_distribution = null, 
     withCompanions = true,
     select_fields = null,
     limit = 30,
@@ -196,6 +206,22 @@ plantSchema.statics.getPlants = async function({
         query['climate.hardiness_zones'] = { 
             $elemMatch: { 
                 $regex: new RegExp(hardiness_zone),
+                $options: 'i',
+            },
+        };
+    }
+    if (native_distribution) { 
+        query['distribution.native'] = { 
+            $elemMatch: { 
+                $regex: new RegExp(native_distribution),
+                $options: 'i',
+            },
+        };
+    }
+    if (introduced_distribution) { 
+        query['distribution.introduced'] = { 
+            $elemMatch: { 
+                $regex: new RegExp(introduced_distribution),
                 $options: 'i',
             },
         };

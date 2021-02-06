@@ -101,16 +101,32 @@ const createMetadata = async (result, plant) => {
 //     set(result, 'calendar', {});
 // };
 
-const createGrowth = async (result, plant, plant_type) => {
+const createSpecies = async (result, plant, plant_type) => {
     const species = await fetchSpeciesByLink(plant.links.self);
 
     set(result, 'attributes', {
         is_edible: species.edible,
         edible_part: species.edible_part,
     });
+    
+    set(result, 'attributes', {
+        duration: plant.duration || [], // [Annual, Biennial, Perennial]
+    });
 
     if (plant_type || species.vegetable) {
         set(result, 'attributes', { plant_type: plant_type || 'vegetable' });
+    }
+
+    if (species.distribution) {
+        set(result, 'distribution', species.distribution);
+    }
+
+    if (species.common_names) {
+        set(result, 'dictionary.common_names', species.common_names);
+        set(result, 'dictionary.available_locales', Object.keys(species.common_names));
+        set(result, 'search_keywords', Object.keys(species.common_names).reduce(
+            (acc, locale) => [...acc, ...species.common_names[locale]], [])
+        );
     }
 
     if (species.growth.atmospheric_humidity) {
@@ -210,7 +226,7 @@ const buildPlantsByNames = ({
             result.t_id = plant.id;
 
             await createMetadata(result, plant);
-            await createGrowth(result, plant, plant_type);
+            await createSpecies(result, plant, plant_type);
             await createTaxonomy(result, plant);
             cbk(null, { result });
         } catch(e) {
@@ -238,7 +254,7 @@ const buildPlantsByPage = async ({
             result.t_id = plant.id;
 
             await createMetadata(result, plant);
-            await createGrowth(result, plant);
+            await createSpecies(result, plant);
             await createTaxonomy(result, plant);
 
             cbk(null, { result });
@@ -275,24 +291,24 @@ function runDatabaseBuildByPlantName(plant_names = [], {
     plant_type = null, 
     save_to_db = false, 
     write_files = true,
+    searchable = true,
 } = {}) {
     buildPlantsByNames({
         plant_names,
         plant_type,
         async onFinish({ results, failed }) {
+            const _results = searchable ? results.map(r => ({ ...r, searchable: true })) : results;
+
             if (write_files && !isEmpty(failed)) {
                 writeFile('failed_plants_by_names', failed, true);
             }
 
-            write_files && writeFile('plants_by_names', results, true);
+            write_files && writeFile('plants_by_names', _results, true);
             
             if (save_to_db) {
-                mongoose.connect(mongodbServer, { 
-                    useNewUrlParser: true, 
-                    useUnifiedTopology: true,
-                });
+                mongoose.connect(mongodbServer, { useNewUrlParser: true, useUnifiedTopology: true });
                 try {
-                    await PlantModel.insertMany(results);
+                    await PlantModel.insertMany(_results);
                 } catch(e) {
                     console.log(e);
                     // failed_insertsion_by_page[page] = e;
@@ -307,10 +323,7 @@ function runPageByPageDatabaseBuild({ save_to_db = false, write_files = true } =
     const failed_insertion_by_page = {};
 
     if (save_to_db) {
-        mongoose.connect(mongodbServer, { 
-            useNewUrlParser: true, 
-            useUnifiedTopology: true,
-        });
+        mongoose.connect(mongodbServer, { useNewUrlParser: true, useUnifiedTopology: true });
     }
 
     buildPlantsByPage({ 
@@ -338,20 +351,20 @@ function runPageByPageDatabaseBuild({ save_to_db = false, write_files = true } =
 
 runDatabaseBuildByPlantName([
     'tomato',
-    'potato',
-    'cucumber', 
-    'onion', 
-    'garlic', 
-    'broccoli', 
-    'basil', 
-    'sweet corn', 
-    'cauliflower', 
-    'celery',
-    "Beans",
-    "Broccoli",
-    "Cabbage",
-    "Kale",
-    "Lettuce",
+    // 'potato',
+    // 'cucumber', 
+    // 'onion', 
+    // 'garlic', 
+    // 'broccoli', 
+    // 'basil', 
+    // 'sweet corn', 
+    // 'cauliflower', 
+    // 'celery',
+    // "Beans",
+    // "Broccoli",
+    // "Cabbage",
+    // "Kale",
+    // "Lettuce",
 ], { 
     save_to_db: true,
 });
