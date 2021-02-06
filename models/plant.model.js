@@ -90,6 +90,7 @@ const plantSchema = new mongoose.Schema({
         family_common_name: { type: String },
         images: [{ type: String }],
         description: { type: String },
+        plant_part_images: mongoose.Schema.Types.Mixed,
     },
     attributes: {
         plant_type: { type: String, enum: PLANT_TYPES },

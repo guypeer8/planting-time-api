@@ -104,6 +104,12 @@ const createMetadata = async (result, plant) => {
 const createSpecies = async (result, plant, plant_type) => {
     const species = await fetchSpeciesByLink(plant.links.self);
 
+    if (species.images) {
+        set(result, 'metadata', {
+            plant_part_images: species.images,
+        });
+    }
+    
     set(result, 'attributes', {
         is_edible: species.edible,
         edible_part: species.edible_part,
