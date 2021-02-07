@@ -177,6 +177,7 @@ plantSchema.statics.getPlants = async function({
     introduced_distribution = null, 
     withCompanions = true,
     select_fields = null,
+    locale = 'en',
     limit = 30,
     page = 1,
     sort = 'metadata.common_name',
@@ -243,13 +244,21 @@ plantSchema.statics.getPlants = async function({
                 },
             },
             { 
+                [`dictionary.common_names.${locale}`]: { 
+                    $elemMatch: {
+                        $regex: search_regex, 
+                        $options: 'i',
+                    },
+                },
+            },
+            { 
                 search_keywords: { 
                     $elemMatch: {
                         $regex: search_regex, 
                         $options: 'i',
                     },
                 },
-            }
+            },
         ];
     }
     if (tmin) {

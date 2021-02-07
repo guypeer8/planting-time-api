@@ -125,9 +125,6 @@ const createSpecies = async (result, plant, plant_type) => {
     if (species.common_names) {
         set(result, 'dictionary.common_names', species.common_names);
         set(result, 'dictionary.available_locales', Object.keys(species.common_names));
-        set(result, 'search_keywords', Object.keys(species.common_names).reduce(
-            (acc, locale) => [...acc, ...species.common_names[locale]], [])
-        );
     }
 
     if (species.growth.atmospheric_humidity) {
@@ -229,6 +226,7 @@ const buildPlantsByNames = ({
             await createMetadata(result, plant);
             await createSpecies(result, plant, plant_type);
             await createTaxonomy(result, plant);
+
             cbk(null, { result });
         } catch(e) {
             cbk(null, { error: e.message, plant_name });
