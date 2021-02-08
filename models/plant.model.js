@@ -26,7 +26,7 @@ const plantSchema = new mongoose.Schema({
             // ideal in phases
         },   
         humidity: { type: Number }, 
-        percipitation: { 
+        precipitation: { 
             min: { type: Number }, // mm/year
             max: { type: Number }, // mm/year
         }, 
@@ -162,24 +162,24 @@ plantSchema.methods.getCompanions = function({ select_fields = null } = {}) {
 plantSchema.statics.getPlants = async function({ 
     id = null, 
     ids = null, 
-    searchable = true, 
-    search_keyword = '',
     tmin = null, 
     tmax = null,
     pmin = null, 
     pmax = null,
     season = null,
+    locale = 'en',
+    searchable = true, 
+    plant_type = null, 
     climate_zone = null,
+    search_keyword = '',
     hardiness_zone = null,
     frost_sensitive = null, 
-    plant_type = null, 
     native_distribution = null, 
     introduced_distribution = null, 
     withCompanions = true,
     select_fields = null,
-    locale = 'en',
-    limit = 30,
     page = 1,
+    limit = 30,
     sort = 'metadata.common_name',
     meta = { lat: null, lon: null },
 } = {}) {
@@ -229,36 +229,13 @@ plantSchema.statics.getPlants = async function({
         };
     }
     if (search_keyword) {
-        const search_regex = new RegExp(search_keyword);
+        const search_re = { $regex: new RegExp(search_keyword), $options: 'i' };
         query.$or = [
-            { 
-                'metadata.common_name': { 
-                    $regex: search_regex, 
-                    $options: 'i',
-                },
-            },
-            { 
-                'metadata.scientific_name': { 
-                    $regex: search_regex, 
-                    $options: 'i',
-                },
-            },
-            { 
-                [`dictionary.common_names.${locale}`]: { 
-                    $elemMatch: {
-                        $regex: search_regex, 
-                        $options: 'i',
-                    },
-                },
-            },
-            { 
-                search_keywords: { 
-                    $elemMatch: {
-                        $regex: search_regex, 
-                        $options: 'i',
-                    },
-                },
-            },
+            { 'metadata.common_name': search_re },
+            { 'metadata.scientific_name': search_re },
+            { search_keywords: { $elemMatch: search_re } },
+            { [`dictionary.common_names.he`]: { $elemMatch: search_re } },
+            { [`dictionary.common_names.${locale}`]: { $elemMatch: search_re } },
         ];
     }
     if (tmin) {
@@ -268,10 +245,10 @@ plantSchema.statics.getPlants = async function({
         query['growth.temerature.max'] = { $gte: tmax };
     }
     if (pmin) {
-        query['growth.percipitation.min'] = { $lte: pmin };
+        query['growth.precipitation.min'] = { $lte: pmin };
     }
     if (pmax) {
-        query['growth.percipitation.max'] = { $gte: pmax };
+        query['growth.precipitation.max'] = { $gte: pmax };
     }
     if (plant_type) {
         query['attributes.plant_type'] = plant_type;

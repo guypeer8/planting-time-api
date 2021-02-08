@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
     const { lat, lon } = req.query;
     
     const ip = (() => {
-        if (isDev) return '109.186.68.227';
+        if (isDev) return '84.108.88.235';
         if (!req.ip || !isIP(req.ip)) return null;
         return req.ip;
     })();

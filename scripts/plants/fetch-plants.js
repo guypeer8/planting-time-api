@@ -149,11 +149,11 @@ const createSpecies = async (result, plant, plant_type) => {
         ];
         if (!isNil(species.growth.minimum_precipitation[min_measure])) {
             const prcp = species.growth.minimum_precipitation[min_measure];
-            set(result, 'growth.percipitation.min', min_measure === 'mm' ? prcp : prcp*10);
+            set(result, 'growth.precipitation.min', min_measure === 'mm' ? prcp : prcp*10);
         }
         if (!isNil(species.growth.maximum_precipitation[max_measure])) {
             const prcp = species.growth.minimum_precipitation[max_measure];
-            set(result, 'growth.percipitation.max', max_measure === 'mm' ? prcp : prcp*10);
+            set(result, 'growth.precipitation.max', max_measure === 'mm' ? prcp : prcp*10);
         }
     }
 
@@ -315,7 +315,7 @@ function runDatabaseBuildByPlantName(plant_names = [], {
             }
         }
     });
-};
+}
 
 function runPageByPageDatabaseBuild({ save_to_db = false, write_files = true } = {}) {
     const failed_by_page = {};
@@ -348,25 +348,28 @@ function runPageByPageDatabaseBuild({ save_to_db = false, write_files = true } =
     });
 }
 
-runDatabaseBuildByPlantName([
-    'tomato',
-    'potato',
-    'cucumber', 
-    'onion', 
-    'garlic', 
-    'broccoli', 
-    'basil', 
-    'sweet corn', 
-    'cauliflower', 
-    'celery',
-    "Beans",
-    "Broccoli",
-    "Cabbage",
-    "Kale",
-    "Lettuce",
-    'mango'
-], { 
-    save_to_db: true,
-});
+runDatabaseBuildByPlantName(
+    [
+        'tomato',
+        'potato',
+        'cucumber', 
+        'onion', 
+        'garlic', 
+        'broccoli', 
+        'basil', 
+        'sweet corn', 
+        'cauliflower', 
+        'celery',
+        'Beans',
+        'Broccoli',
+        'Cabbage',
+        'Kale',
+        'Lettuce',
+        'mango',
+    ], 
+    { 
+        save_to_db: true,
+    }
+);
 
 // runPageByPageDatabaseBuild();
