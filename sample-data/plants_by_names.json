@@ -1027,7 +1027,7 @@
       "light": {
         "numeric": 8
       },
-      "percipitation": {
+      "precipitation": {
         "min": 1524,
         "max": 1524
       },
@@ -2659,7 +2659,7 @@
       "light": {
         "numeric": null
       },
-      "percipitation": {
+      "precipitation": {
         "min": 254,
         "max": 254
       }
@@ -4466,7 +4466,7 @@
       "light": {
         "numeric": 9
       },
-      "percipitation": {
+      "precipitation": {
         "min": 508,
         "max": 508
       },
@@ -8430,7 +8430,7 @@
       "light": {
         "numeric": null
       },
-      "percipitation": {
+      "precipitation": {
         "min": 1524,
         "max": 1524
       }
