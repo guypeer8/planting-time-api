@@ -15,7 +15,9 @@ const IPSTACK_API = `http://api.ipstack.com/{{IP}}?access_key=${sample(Array.fro
 
 const MAPBOX_API = 'https://api.mapbox.com';
 const HERE_API = `https://revgeocode.search.hereapi.com/v1/revgeocode`;
-const MAPQUEST_REVERSE_GEO_API = `http://open.mapquestapi.com/geocoding/v1/reverse`;
+const MAPQUEST_API = `http://open.mapquestapi.com/geocoding/v1`;
+const MAPQUEST_REVERSE_GEO_API = `${MAPQUEST_API}/reverse`;
+const MAPQUEST_PLACE_GEO_API = `${MAPQUEST_API}/address`;
 
 const SUNLIGHT_API = 'https://api.sunrise-sunset.org/json';
 
@@ -39,6 +41,7 @@ module.exports = {
     IPSTACK_API,
     IPGEOLOCATION_API,
     MAPQUEST_REVERSE_GEO_API,
+    MAPQUEST_PLACE_GEO_API,
     MAPBOX_API,
     HERE_API,
     SUNLIGHT_API,
