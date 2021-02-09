@@ -17,6 +17,21 @@ router.post('/', async (req, res) => {
 });
 
 /**
+ * /api/plants/:plant_id --> get plant
+ */
+router.get('/:plant_id', async (req, res) => {
+    try {
+        const { plant_id } = req.params;
+        const [plant] = await PlantModel.getPlants({ id: plant_id });
+
+        res.json({ status: 'success', payload: plant });
+    } catch(e) {
+        res.json({ status: 'error', error: e });
+    }
+});
+
+
+/**
  * /api/plants/companions --> get plants companions
  */
 router.post('/companions', ensureLoggedIn, async (req, res) => {
