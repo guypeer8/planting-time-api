@@ -6,7 +6,8 @@ const sample = require('lodash/sample');
 const appRootDir = require('app-root-dir').get();
 
 const PORT = 8080;
-const PROVIDERS = ['google', 'facebook', 'github', 'linkedin'];
+const ROLES = ['user', 'admin', 'shop-owner'];
+const PROVIDERS = ['local', 'google', 'facebook'];
 
 const IPAPI_API = `https://ipapi.co/{{IP}}/json/`;
 const FREE_GEOIP = 'https://freegeoip.app/json/{{IP}}';
@@ -29,6 +30,7 @@ const corsOptions = isDev ? {} : { origin: frontendRoute, optionsSuccessStatus: 
 
 module.exports = {
     PORT,
+    ROLES,
     PROVIDERS,
     appRootDir,
     isDev,

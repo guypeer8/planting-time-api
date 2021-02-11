@@ -6,6 +6,7 @@ const { fetchGeo } = require('../../utils/geo');
 
 /**
  * /api/geo --> get by ip
+ * /api/geo?place={place} --> get by place
  * /api/geo?lat=32&lon=35 --> get by coords
  */
 router.get('/', async (req, res) => {

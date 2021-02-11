@@ -35,8 +35,8 @@ const ensureLoggedIn = (req, res, next) => {
       return res.status(401).send({ status: 'Not logged in.' });
     }
     
-    const { _id, userId, provider, displayName } = req.user_auth;
-    if (!(_id || userId || provider || displayName)) {
+    const { _id, provider, name, role } = req.user_auth;
+    if (!(_id || provider || name || !role)) {
         return res.status(401).send({ status: 'Missing data' });
     }
 

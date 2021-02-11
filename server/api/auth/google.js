@@ -16,10 +16,10 @@ passport.use(new GoogleStrategy({
       const { user, isNew } = await User.findOrCreate({ 
         userId: profile.id, 
         provider: 'google',
-        displayName: profile.displayName,
+        name: profile.displayName,
         email: get(profile, 'emails[0].value', ''),
       });
-      cb(null, { user, oneToken: accessToken || refreshToken, isNew });
+      cb(null, { ...user, ott: accessToken || refreshToken, isNew });
     } catch(e) {
       cb(e, null);
     }
