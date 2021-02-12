@@ -276,8 +276,8 @@ const mergeClimateData = async geo_config => {
 
 const fetchGeo = async ({ ip, place, lat, lon } = {}) => {
   const geo_config = await (async () => {
-    if (ip) { return fetchGeoByIp(ip); }
     if (place) { return fetchGeoByPlace(place); }
+    if (ip) { return fetchGeoByIp(ip); }
     if (lat && lon) { return fetchGeoByCoords(lat, lon); }
     return null;
   })();
