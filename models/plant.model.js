@@ -63,18 +63,10 @@ const plantSchema = new mongoose.Schema({
         frost_sensitive: { type: Boolean, default: true },
     },
     calendar: {
-        sowing_months: {
-            start: { type: Number, min: 0, max: 11 },
-            end: { type: Number, min: 0, max: 11 },
-        },
-        seeding_months: {
-            start: { type: Number, min: 0, max: 11 },
-            end: { type: Number, min: 0, max: 11 },
-        },
-        harvest_months: {
-            start: { type: Number, min: 0, max: 11 },
-            end: { type: Number, min: 0, max: 11 },
-        },
+        sow: [{ type: Number, min: 0, max: 11 }],
+        seed: [{ type: Number, min: 0, max: 11 }],
+        harvest: [{ type: Number, min: 0, max: 11 }],
+        flowering: [{ type: Number, min: 0, max: 11 }],
     },
     taxonomy: {
         kingdom: { type: String },
@@ -240,7 +232,9 @@ plantSchema.statics.getPlants = async function({
             { [`dictionary.common_names.he`]: { $elemMatch: search_re } },
         ];
         if (!['he', 'il', 'en'].includes(locale)) {
-            query.$or.push({ [`dictionary.common_names.${locale}`]: { $elemMatch: search_re } });
+            query.$or.push({ 
+                [`dictionary.common_names.${locale}`]: { $elemMatch: search_re },
+            });
         }
     }
     if (tmin) {
@@ -263,8 +257,7 @@ plantSchema.statics.getPlants = async function({
         const { lat } = geo;
         const month = new Date().getMonth();
         const season_month = getSeasonMonth({ month, lat });
-        query['calendar.sowing_month.start'] = { $gte: season_month };
-        query['calendar.sowing_month.end'] = { $lte: season_month };
+        query['calendar.sow'] = { $elemMatch: season_month };
     }
 
     let queryBuilder = this.find(query).limit(limit).skip((page-1) * limit).sort(sort);
