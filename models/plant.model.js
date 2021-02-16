@@ -228,8 +228,9 @@ plantSchema.statics.getPlants = async function({
             { 'metadata.common_name': search_re },
             { 'metadata.scientific_name': search_re },
             { search_keywords: { $elemMatch: search_re } },
-            { [`dictionary.common_names.en`]: { $elemMatch: search_re } },
-            { [`dictionary.common_names.he`]: { $elemMatch: search_re } },
+            ...['he', 'en'].map(loc => ({ 
+                [`dictionary.common_names.${loc}`]: { $elemMatch: search_re },
+            })),
         ];
         if (!['he', 'il', 'en'].includes(locale)) {
             query.$or.push({ 
