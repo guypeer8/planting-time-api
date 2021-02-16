@@ -225,9 +225,10 @@ plantSchema.statics.getPlants = async function({
     if (search_keyword) {
         const search_re = { $regex: new RegExp(search_keyword), $options: 'i' };
         query.$or = [
-            { 'metadata.common_name': search_re },
-            { 'metadata.scientific_name': search_re },
             { search_keywords: { $elemMatch: search_re } },
+            ...['common_name', 'scientific_name'].map(name => ({ 
+                [`metadata.${name}`]: { $elemMatch: search_re },
+            })),
             ...['he', 'en'].map(loc => ({ 
                 [`dictionary.common_names.${loc}`]: { $elemMatch: search_re },
             })),
