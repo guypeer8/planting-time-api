@@ -20,7 +20,8 @@ const { getHardinessZone } = require('@planting-time/constants/utils/hardiness-z
 
 const { fetchClimateZone } = require('./zone');
 const { getClimateNormals } = require('./weather');
-const { FREE_GEOIP, IPSTACK_API, IPGEOLOCATION_API, MAPQUEST_REVERSE_GEO_API } = require('../../config');
+const { FREE_GEOIP, IPSTACK_API, IPGEOLOCATION_API, MAPQUEST_REVERSE_GEO_API, MAPQUEST_PLACE_GEO_API } = require('../../config');
+const { isEmpty } = require('lodash');
 
 const continent_by_code = {
   AF: 'Africa',
@@ -36,7 +37,7 @@ const mapquest_api_keys = Array.from({ length: 4 }).map((_, i) => process.env[`M
 
 const fetchGeoByCoords = async (lat, lon) => {
   try {
-    const  geo_config = { geo: { latitude: lat, longitude: lon } };
+    const geo_config = { geo: { latitude: lat, longitude: lon } };
     const { data } = await axios.get(`${MAPQUEST_REVERSE_GEO_API}?key=${sample(mapquest_api_keys)}&location=${lat},${lon}`);
     if (data && has(data, 'results[0].locations[0]')) {
       const code = get(data, 'results[0].locations[0].adminArea1', null);
@@ -55,6 +56,34 @@ const fetchGeoByCoords = async (lat, lon) => {
       }
     }
     return geo_config;
+  } catch(e) {
+    return null;
+  }
+};
+
+const fetchGeoByPlace = async place => {
+  try {
+    const { data } = await axios.get(`${MAPQUEST_PLACE_GEO_API}?key=${sample(mapquest_api_keys)}&location=${place}`);
+    if (data && has(data, 'results[0].locations[0]') && !isEmpty(get(data, 'results[0].locations[0].latLng'))) {
+      const { lat, lng: lon } = get(data, 'results[0].locations[0].latLng', {});
+      const geo_config = { geo: { latitude: lat, longitude: lon } };
+      const code = get(data, 'results[0].locations[0].adminArea1', null);
+      const cc_lookup = ccLookup.byIso(code);
+      const timezone = get(geoTz(lat, lon), '[0]', null);
+      if (code && cc_lookup) {
+        merge(geo_config, {
+          geo: { timezone },
+          location: {
+            code: get(data, 'results[0].locations[0].adminArea1'),
+            country: cc_lookup.country,
+            continent: cc_lookup.continent,
+            city: get(data, 'results[0].locations[0].adminArea5'),
+          },
+        });
+      }
+      return geo_config;
+    }
+    throw new Error();
   } catch(e) {
     return null;
   }
@@ -245,8 +274,9 @@ const mergeClimateData = async geo_config => {
   }
 }
 
-const fetchGeo = async ({ ip, lat, lon } = {}) => {
+const fetchGeo = async ({ ip, place, lat, lon } = {}) => {
   const geo_config = await (async () => {
+    if (place) { return fetchGeoByPlace(place); }
     if (ip) { return fetchGeoByIp(ip); }
     if (lat && lon) { return fetchGeoByCoords(lat, lon); }
     return null;
@@ -266,6 +296,7 @@ module.exports = {
 };
 
 (async () => {
+  // require('fs').writeFileSync('sample-data/geo.json', JSON.stringify(await fetchGeo({ place: 'Holon, Israel' }), null, 2)); // holon
   // require('fs').writeFileSync('sample-data/geo.json', JSON.stringify(await fetchGeo({ ip: '84.108.88.235' }), null, 2)); // holon
   // require('fs').writeFileSync('sample-data/geo.json', JSON.stringify(await fetchGeo({ lat: 31.011261, lon: 35.1 }), null, 2));
   // require('fs').writeFileSync('sample-data/geo.json', JSON.stringify(await fetchGeo({ lat: 29.425171, lon: -98.494614 }), null, 2)); // san antonio

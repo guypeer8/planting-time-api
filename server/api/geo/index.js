@@ -6,10 +6,11 @@ const { fetchGeo } = require('../../utils/geo');
 
 /**
  * /api/geo --> get by ip
+ * /api/geo?place={place} --> get by place
  * /api/geo?lat=32&lon=35 --> get by coords
  */
 router.get('/', async (req, res) => {
-    const { lat, lon } = req.query;
+    const { lat, lon, place } = req.query;
     
     const ip = (() => {
         if (isDev) return '84.108.88.235';
@@ -17,7 +18,7 @@ router.get('/', async (req, res) => {
         return req.ip;
     })();
     
-    res.json(await fetchGeo({ ip, lat, lon }));
+    res.json(await fetchGeo({ ip, place, lat, lon }));
 });
 
 module.exports = router;

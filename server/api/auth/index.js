@@ -1,51 +1,30 @@
 const get = require('lodash/get');
+const uuidv4 = require('uuid/v4');
 const passport = require('passport');
 const { Base64 } = require('js-base64');
 const router = require('express').Router();
 
 const jwt = require('../../utils/jwt');
-
 const User = require('../../../models/user.model');
-
 const { ensureLoggedOut } = require('../../middlewares/jwt');
 const { frontendRoute, PROVIDERS } = require('../../../config');
 
-require('./github');
 require('./google');
 require('./facebook');
-require('./linkedin');
 
 const authCallback = (req, res) => {
-    const { state = '' } = req.query; // templateType,templateName
-    const { user, oneToken, isNew } = req.user;
-    const { _id, userId, provider } = user;
-
-    const data = Base64.encode(
-        JSON.stringify({ _id, userId, provider, oneToken, isNew })
-    );
-    
-    const pathname = state ? `/${state.replace(',', '/')}` : '';
-    res.redirect(`${frontendRoute}/templates${pathname}?data=${data}`);
+    const { state = '' } = req.query; 
+    const { _id, userId, provider, ott, isNew } = req.user;
+    const data = Base64.encode(JSON.stringify({ _id, userId, provider, ott, isNew }));
+    const _pathname = state ? `/${state}` : req.path;
+    res.redirect(`${frontendRoute}${_pathname}?data=${data}`);
 };
-
-/************
-    GITHUB
- ************/
-router.get('/github', ensureLoggedOut, (req, res, next) => {
-    const { state = '' } = req.query;
-    passport.authenticate('github', { scope: ['user:email'], state })(req, res, next);
-});
-router.get(
-    '/github/callback', 
-    passport.authenticate('github', { session: false }),
-    authCallback
-);
 
 /************
     GOOGLE
  ************/
 router.get('/google', ensureLoggedOut, (req, res, next) => {
-    const { state = '' } = req.query;
+    const state = req.pathname;
     passport.authenticate('google', { scope: ['profile', 'email'], state })(req, res, next);
 });
 router.get(
@@ -58,7 +37,7 @@ router.get(
     FACEBOOK
  **************/
 router.get('/facebook', ensureLoggedOut, (req, res, next) => {
-    const { state = '' } = req.query;
+    const state = req.pathname;
     passport.authenticate('facebook', { authType: 'rerequest', state })(req, res, next);
 });
 router.get(
@@ -67,29 +46,68 @@ router.get(
     authCallback
 );
 
-/**************
-    LINKEDIN
- **************/
-router.get('/linkedin', ensureLoggedOut, (req, res,next) => {
-    const { state = '' } = req.query;
-    passport.authenticate('linkedin', (state ? { state } : {}))(req, res, next);
+/***********
+    LOCAL
+ ***********/
+router.post('/local/login', ensureLoggedOut, async (req, res) => {
+    const provider = 'local';
+    try {
+      const { email, password } = req.body;
+      const user = await User.findOne({ email, provider });
+  
+      if (!user) {
+        return res.json({ status: 'error', message: 'Email does not exist' });
+      }
+  
+      const passwordsMatch = await user.checkPassword(password);
+      if (!passwordsMatch) {
+        return res.json({ status: 'error', message: 'Wrong password entered' });
+      }
+  
+      const _user = { ...user._doc, ott: uuidv4() };
+      const token = await jwt.sign(_user, user._doc);
+
+      res.json({ status: 'success', payload: { token } });
+    } catch(e) {
+      res.json({ status: 'error', message: e.message || e.errmsg });
+    }
 });
-router.get(
-    '/linkedin/callback', 
-    passport.authenticate('linkedin', { session: false }),
-    authCallback
-);
+  
+router.post('/local/signup', ensureLoggedOut, async (req, res) => {
+    const provider = 'local';
+    try {
+        const { name, email, password } = req.body;
 
+        const userExists = await User.exists({ email, provider });
+        if (userExists) {
+            return res.json({ status: 'error', message: 'Email already exists' });
+        }
+        
+        const user = new User({ name, email, password });
+        const userSaved = await user.save();
+
+        const _user = { ...userSaved._doc, ott: uuidv4() };
+        const token = await jwt.sign(_user, userSaved._doc);
+
+        res.json({ status: 'success', payload: { token } });
+    } catch(e) {
+        res.json({ status: 'error', message: e.message || e.errmsg });
+    }
+});
+
+/**********
+    JWT
+ **********/
 router.post('/sign-jwt', ensureLoggedOut, async (req, res) => {
-    const { _id, userId, provider, oneToken } = req.body;
+    const { _id, userId, provider, ott } = req.body;
 
-    if (_id && userId && oneToken && PROVIDERS.includes(provider)) {
+    if (_id && ott && PROVIDERS.includes(provider)) {
         try {
             const user = await User.findOne({ _id, userId, provider }).lean(); 
             if (user) { 
                 const email = get(user, 'email', null);
-                const jwtToken = await jwt.sign({ _id, userId, provider, oneToken }, user);
-                return res.json({ jwtToken, email });
+                const token = await jwt.sign({ _id, userId, provider, ott }, user);
+                return res.json({ status: 'success', payload: { token, email } });
             }
         } catch(e) {}
     }

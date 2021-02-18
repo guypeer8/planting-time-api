@@ -15,11 +15,11 @@ passport.use(new FacebookStrategy({
     try {
         const { user, isNew } = await User.findOrCreate({ 
           userId: profile.id, 
-          displayName: profile.displayName || profile.username, 
+          name: profile.displayName || profile.username, 
           email: get(profile, '_json.email', ''),
           provider: 'facebook',
         });
-        cb(null, { user, oneToken: accessToken || refreshToken, isNew });
+        cb(null, { ...user, ott: accessToken || refreshToken, isNew });
     } catch(e) {
         cb(e, null);
     }

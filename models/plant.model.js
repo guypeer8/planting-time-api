@@ -2,9 +2,11 @@ const get = require('lodash/get');
 const set = require('lodash/set');
 const mongoose = require('mongoose');
 const isEmpty = require('lodash/isEmpty');
+const isNumber = require('lodash/isNumber');
 const isURL = require('validator/lib/isURL');
 const isBoolean = require('lodash/isBoolean');
 const { SEASONS } = require('@planting-time/constants/seasons');
+const { getSeasonMonth } = require('@planting-time/constants/utils/season');
 const { CLIMATE_ZONES } = require('@planting-time/constants/climate-zones');
 const { HARDINESS_ZONES } = require('@planting-time/constants/hardiness-zones');
 
@@ -61,18 +63,10 @@ const plantSchema = new mongoose.Schema({
         frost_sensitive: { type: Boolean, default: true },
     },
     calendar: {
-        sowing_months: {
-            start: { type: Number, min: 0, max: 11 },
-            end: { type: Number, min: 0, max: 11 },
-        },
-        seeding_months: {
-            start: { type: Number, min: 0, max: 11 },
-            end: { type: Number, min: 0, max: 11 },
-        },
-        harvest_months: {
-            start: { type: Number, min: 0, max: 11 },
-            end: { type: Number, min: 0, max: 11 },
-        },
+        sow: [{ type: Number, min: 0, max: 11 }],
+        seed: [{ type: Number, min: 0, max: 11 }],
+        harvest: [{ type: Number, min: 0, max: 11 }],
+        flowering: [{ type: Number, min: 0, max: 11 }],
     },
     taxonomy: {
         kingdom: { type: String },
@@ -178,10 +172,10 @@ plantSchema.statics.getPlants = async function({
     introduced_distribution = null, 
     withCompanions = true,
     select_fields = null,
+    geo = { lat: null },
     page = 1,
     limit = 30,
     sort = 'metadata.common_name',
-    meta = { lat: null, lon: null },
 } = {}) {
     const query = { searchable };
     if (id) { 
@@ -231,12 +225,19 @@ plantSchema.statics.getPlants = async function({
     if (search_keyword) {
         const search_re = { $regex: new RegExp(search_keyword), $options: 'i' };
         query.$or = [
-            { 'metadata.common_name': search_re },
-            { 'metadata.scientific_name': search_re },
             { search_keywords: { $elemMatch: search_re } },
-            { [`dictionary.common_names.he`]: { $elemMatch: search_re } },
-            { [`dictionary.common_names.${locale}`]: { $elemMatch: search_re } },
+            ...['common_name', 'scientific_name'].map(name => ({ 
+                [`metadata.${name}`]: { $elemMatch: search_re },
+            })),
+            ...['he', 'en'].map(loc => ({ 
+                [`dictionary.common_names.${loc}`]: { $elemMatch: search_re },
+            })),
         ];
+        if (!['he', 'il', 'en'].includes(locale)) {
+            query.$or.push({ 
+                [`dictionary.common_names.${locale}`]: { $elemMatch: search_re },
+            });
+        }
     }
     if (tmin) {
         query['growth.temerature.min'] = { $lte: tmin };
@@ -252,6 +253,13 @@ plantSchema.statics.getPlants = async function({
     }
     if (plant_type) {
         query['attributes.plant_type'] = plant_type;
+    }
+
+    if (!isEmpty(geo) && isNumber(geo.lat)) {
+        const { lat } = geo;
+        const month = new Date().getMonth();
+        const season_month = getSeasonMonth({ month, lat });
+        query['calendar.sow'] = { $elemMatch: season_month };
     }
 
     let queryBuilder = this.find(query).limit(limit).skip((page-1) * limit).sort(sort);
