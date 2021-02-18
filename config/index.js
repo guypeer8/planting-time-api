@@ -26,7 +26,9 @@ const frontendRoute = isDev ? 'http://localhost:8888' : 'https://plantingtime.co
 const backendRoute = isDev ? 'http://localhost:8080' : 'https://api.plantingtime.com';
 const mongodbServer = isDev ? 'mongodb://localhost:27017/plantingtime' : process.env.MONGO_URI;
 
-const corsOptions = isDev ? {} : { origin: frontendRoute, optionsSuccessStatus: 200 };
+const corsOptions = isDev ? {
+    exposedHeaders: ['Content-Range', 'X-Content-Range', 'X-Total-Count']
+} : { origin: frontendRoute, optionsSuccessStatus: 200 };
 
 module.exports = {
     PORT,

@@ -5,6 +5,7 @@ const isEmpty = require('lodash/isEmpty');
 const isNumber = require('lodash/isNumber');
 const isURL = require('validator/lib/isURL');
 const isBoolean = require('lodash/isBoolean');
+const mongooseLeanVirtuals = require('mongoose-lean-virtuals');
 const { SEASONS } = require('@planting-time/constants/seasons');
 const { getSeasonMonth } = require('@planting-time/constants/utils/season');
 const { CLIMATE_ZONES } = require('@planting-time/constants/climate-zones');
@@ -121,7 +122,7 @@ const plantSchema = new mongoose.Schema({
             },
         },
     }], 
-    pests: [{ type: ObjectId, ref: 'Pest' }],
+    // pests: [{ type: ObjectId, ref: 'Pest' }],
     companions: [{ type: ObjectId, ref: 'Plant' }],
     non_companions: [{ type: ObjectId, ref: 'Plant' }],
     growth_methods: [{ type: String }], // hydrophonic, etc.
@@ -129,6 +130,7 @@ const plantSchema = new mongoose.Schema({
     searchable: { type: Boolean, default: false }, // should the plant be queried 
 }, { 
     toJSON: { virtuals: true },
+    toObject: { virtuals: true },
     timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },
 });
 
@@ -146,7 +148,7 @@ const getCompanions = function(plant, { select_fields = null } = {}) {
     if (select_fields) {
         queryBuilder = queryBuilder.select(select_fields.join(' '));
     }
-    return queryBuilder.lean();
+    return queryBuilder.lean({ virtuals: true });
 };
 
 plantSchema.methods.getCompanions = function({ select_fields = null } = {}) {
@@ -266,14 +268,14 @@ plantSchema.statics.getPlants = async function({
 
     if (!withCompanions) {
         const select = [...(select_fields || []), '-companions', '-non_companions'].join(' ');
-        return queryBuilder.select(select).lean();
+        return queryBuilder.select(select).lean({ virtuals: true });
     } 
 
     if (select_fields) {
         queryBuilder = queryBuilder.select(select_fields.join(' '));
     }
 
-    const plants = await queryBuilder.lean();
+    const plants = await queryBuilder.lean({ virtuals: true });
 
     return Promise.all(plants.map(async plant => {
         plant.companions = await getCompanions(plant);
@@ -281,5 +283,11 @@ plantSchema.statics.getPlants = async function({
         return plant;
     }));
 };
+
+plantSchema.plugin(mongooseLeanVirtuals);
+
+plantSchema.virtual('id').get(function() {
+    return this._id.toString();
+});
 
 module.exports = mongoose.model('Plant', plantSchema);
