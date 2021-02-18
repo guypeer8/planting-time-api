@@ -2,15 +2,17 @@ require('dotenv').config();
 
 const fs = require('fs');
 const axios = require('axios');
-const csv = require('csvtojson');
 const map = require('map-series');
 const set = require('lodash/set');
 const keys = require('lodash/keys');
 const mongoose = require('mongoose');
+const last = require('lodash/last');
 const first = require('lodash/first');
 const isNil = require('lodash/isNil');
 const sample = require('lodash/sample');
 const isEmpty = require('lodash/isEmpty');
+const isNumber = require('lodash/isNumber');
+const startCase = require('lodash/startCase');
 
 const { mongodbServer } = require('../../config');
 const PlantModel = require('../../models/plant.model');
@@ -24,6 +26,12 @@ const cache = {
     plant_by_name: {},
     species_by_link: {},
     taxonomy_by_family: {},
+};
+
+const plants_by_type = {
+    herb: require('./data/herbs'),
+    flower: require('./data/flowers'),
+    vegetable: require('./data/vegetables'),
 };
 
 const writeFile = (name, data, pretty = false) => {
@@ -84,7 +92,37 @@ const createMetadata = async (result, plant) => {
     });
 };
 
-// const createClimateData = async (result, plant) => {
+const createCalendar = async (result, plant_name, plant_type) => {
+    if (!plant_name || !plant_type) return;
+    if (isEmpty(plants_by_type[plant_type][plant_name])) return;
+
+    const { 
+        wiki, hardiness_zone,
+        sow_to_harvest_days, sow_to_germination_days,
+        sow = [], seed = [], harvest = [], flowering = [], 
+    } = plants_by_type[plant_type][plant_name];
+
+    result.wiki = wiki;
+
+    if (hardiness_zone) {
+        if (isNumber(Number(hardiness_zone))) {
+            set(result, 'climate.hardiness_zones', [`${hardiness_zone}a`, `${hardiness_zone}b`]);
+            set(result, 'climate.frost_sensitive', Number(hardiness_zone) <= 9);
+        } else {
+            set(result, 'climate.hardiness_zones', [hardiness_zone]);
+            set(result, 'climate.frost_sensitive', Number(hardiness_zone.slice(0, -1)) <= 9);
+        }
+    }
+    set(result, 'calendar', { sow, seed, harvest, flowering });
+    if (isNumber(sow_to_harvest_days)) {
+        result.sow_to_harvest_days = sow_to_harvest_days;
+    }
+    if (isNumber(sow_to_germination_days)) {
+        result.sow_to_germination_days = sow_to_germination_days;
+    }
+};
+
+// const createClimateData = async (result, plant_name, plant_type) => {
 //     if (hardiness_zone) {
 //         if (isNumber(Number(hardiness_zone))) {
 //             set(result, 'climate.hardiness_zones', [`${hardiness_zone}a`, `${hardiness_zone}b`]);
@@ -97,8 +135,7 @@ const createMetadata = async (result, plant) => {
 //     if (climate_zones) {
 //         set(result, 'climate.climate_zones', climate_zones);
 //     }
-//     set(result, 'seasons', {});
-//     set(result, 'calendar', {});
+//     // set(result, 'seasons', {});
 // };
 
 const createSpecies = async (result, plant, plant_type) => {
@@ -217,15 +254,35 @@ const buildPlantsByNames = ({
     plant_type = null,
     onFinish = () => {},
 } = {}) => {
-    map(plant_names, async (plant_name, cbk) => {
+    const plants = (() => {
+        if (!plant_type) return plant_names;
+        return [...plant_names, ...keys(plants_by_type[plant_type])];
+    })();
+
+    map(plants, async (plant_name, cbk) => {
+        const fetch_name = (() => {
+            if (!plant_type) return plant_name;
+            if (isEmpty(plants_by_type[plant_type][plant_name])) return plant_name;
+            const scientific_name = plants_by_type[plant_type][plant_name].scientific_name;
+            if (scientific_name) return scientific_name;
+            const wiki = plants_by_type[plant_type][plant_name].wiki;
+            if (wiki) {
+                return startCase(last(wiki.split('/'))
+                .replace('_(plant)', '')
+                .replace('_(genus)',''));
+            }
+            return plant_name;
+        })();
+
         try {
             const result = {};
-            const plant = await fetchPlantByName(plant_name);
+            const plant = await fetchPlantByName(fetch_name);
             result.t_id = plant.id;
 
             await createMetadata(result, plant);
             await createSpecies(result, plant, plant_type);
             await createTaxonomy(result, plant);
+            await createCalendar(result, plant_name, plant_type);
 
             cbk(null, { result });
         } catch(e) {
@@ -317,59 +374,79 @@ function runDatabaseBuildByPlantName(plant_names = [], {
     });
 }
 
-function runPageByPageDatabaseBuild({ save_to_db = false, write_files = true } = {}) {
-    const failed_by_page = {};
-    const failed_insertion_by_page = {};
+// function runPageByPageDatabaseBuild({ save_to_db = false, write_files = true } = {}) {
+//     const failed_by_page = {};
+//     const failed_insertion_by_page = {};
 
-    if (save_to_db) {
-        mongoose.connect(mongodbServer, { useNewUrlParser: true, useUnifiedTopology: true });
-    }
+//     if (save_to_db) {
+//         mongoose.connect(mongodbServer, { useNewUrlParser: true, useUnifiedTopology: true });
+//     }
 
-    buildPlantsByPage({ 
-        until_page: 2,
-        async onPageFinished({ results, failed, page }) {
-            if (write_files && !isEmpty(failed)) {
-                failed_by_page[page] = failed;
-            }
-            write_files && writeFile(`page_${page}`, results, true);
-            if (save_to_db) {
-                try {
-                    await PlantModel.insertMany(results);
-                } catch(e) {
-                    write_files && (failed_insertion_by_page[page] = e);
-                }
-            }
-        },
-        onLastPage() {
-            write_files && writeFile('failed_plants', failed_by_page);
-            save_to_db && writeFile('failed_insersion_plants', failed_insertsion_by_page);
-            console.info('Finished last page!');
-        },
-    });
-}
+//     buildPlantsByPage({ 
+//         until_page: 2,
+//         async onPageFinished({ results, failed, page }) {
+//             if (write_files && !isEmpty(failed)) {
+//                 failed_by_page[page] = failed;
+//             }
+//             write_files && writeFile(`page_${page}`, results, true);
+//             if (save_to_db) {
+//                 try {
+//                     await PlantModel.insertMany(results);
+//                 } catch(e) {
+//                     write_files && (failed_insertion_by_page[page] = e);
+//                 }
+//             }
+//         },
+//         onLastPage() {
+//             write_files && writeFile('failed_plants', failed_by_page);
+//             save_to_db && writeFile('failed_insersion_plants', failed_insertsion_by_page);
+//             console.info('Finished last page!');
+//         },
+//     });
+// }
 
-runDatabaseBuildByPlantName(
-    [
-        'tomato',
-        'potato',
-        'cucumber', 
-        'onion', 
-        'garlic', 
-        'broccoli', 
-        'basil', 
-        'sweet corn', 
-        'cauliflower', 
-        'celery',
-        'Beans',
-        'Broccoli',
-        'Cabbage',
-        'Kale',
-        'Lettuce',
-        'mango',
-    ], 
-    { 
-        save_to_db: true,
-    }
-);
+// runDatabaseBuildByPlantName(
+//     [
+//         'tomato',
+//         'potato',
+//         'cucumber', 
+//         'onion', 
+//         'garlic', 
+//         'broccoli', 
+//         'basil', 
+//         'sweet corn', 
+//         'cauliflower', 
+//         'celery',
+//         'Beans',
+//         'Broccoli',
+//         'Cabbage',
+//         'Kale',
+//         'Lettuce',
+//         'mango',
+//     ], 
+//     { 
+//         save_to_db: true,
+//     }
+// );
 
 // runPageByPageDatabaseBuild();
+
+function buildHerbsDatabase() {
+    runDatabaseBuildByPlantName([], { plant_type: 'herb', save_to_db: true });
+}
+
+function buildFlowersDatabase() {
+    runDatabaseBuildByPlantName([], { plant_type: 'flower', save_to_db: true });
+}
+
+function buildVegetablesDatabase() {
+    runDatabaseBuildByPlantName([], { plant_type: 'vegetable', save_to_db: true });
+}
+
+function buildDatabase() {
+    buildHerbsDatabase();
+    buildFlowersDatabase();
+    buildVegetablesDatabase();
+}
+
+buildDatabase();

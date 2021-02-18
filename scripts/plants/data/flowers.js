@@ -1,366 +1,729 @@
-module.exports = [
-    {
-      "zone": "1",
-      "name": "Arrowhead"
-    },
-    {
-      "zone": "1",
-      "name": "Delphinium"
-    },
-    {
-      "zone": "1",
-      "name": "Goldenrod"
-    },
-    {
-      "zone": "1",
-      "name": "Sunflower"
-    },
-    {
-      "zone": "1",
-      "name": "Lily of the Valley"
-    },
-    {
-      "zone": "1",
-      "name": "Oxeye Daisy"
-    },
-    {
-      "zone": "1",
-      "name": "Yarrow"
-    },
-    {
-      "zone": "2",
-      "name": "Bleeding Heart"
-    },
-    {
-      "zone": "2",
-      "name": "Monkshood"
-    },
-    {
-      "zone": "2",
-      "name": "Penstemon"
-    },
-    {
-      "zone": "2",
-      "name": "Poppy"
-    },
-    {
-      "zone": "2",
-      "name": "Primrose"
-    },
-    {
-      "zone": "2",
-      "name": "Sea Holly"
-    },
-    {
-      "zone": "2",
-      "name": "Violet"
-    },
-    {
-      "zone": "3",
-      "name": "Alpine Rockcress"
-    },
-    {
-      "zone": "3",
-      "name": "Aster"
-    },
-    {
-      "zone": "3",
-      "name": "Blanket Flower"
-    },
-    {
-      "zone": "3",
-      "name": "Liatris varieties"
-    },
-    {
-      "zone": "3",
-      "name": "Salvia"
-    },
-    {
-      "zone": "3",
-      "name": "Snow-in-Summer"
-    },
-    {
-      "zone": "3",
-      "name": "Spurge"
-    },
-    {
-      "zone": "3",
-      "name": "Virginia Bluebells"
-    },
-    {
-      "zone": "3",
-      "name": "Wallflower"
-    },
-    {
-      "zone": "4",
-      "name": "Coneflower"
-    },
-    {
-      "zone": "4",
-      "name": "Daylily"
-    },
-    {
-      "zone": "4",
-      "name": "Iris"
-    },
-    {
-      "zone": "4",
-      "name": "Phlox"
-    },
-    {
-      "zone": "4",
-      "name": "Plantain lily (Hostas)"
-    },
-    {
-      "zone": "5",
-      "name": "Baptisia"
-    },
-    {
-      "zone": "5",
-      "name": "Black-eyed Susan"
-    },
-    {
-      "zone": "5",
-      "name": "Campanula"
-    },
-    {
-      "zone": "5",
-      "name": "Cinquefoil"
-    },
-    {
-      "zone": "5",
-      "name": "Russian Sage"
-    },
-    {
-      "zone": "6",
-      "name": "False sunflower"
-    },
-    {
-      "zone": "6",
-      "name": "Floribunda rose"
-    },
-    {
-      "zone": "6",
-      "name": "Flowering fern"
-    },
-    {
-      "zone": "6",
-      "name": "Japanese Bottlebrush"
-    },
-    {
-      "zone": "6",
-      "name": "Lady’s Mantle"
-    },
-    {
-      "zone": "6",
-      "name": "Sedum"
-    },
-    {
-      "zone": "7",
-      "name": "Butterfly weed"
-    },
-    {
-      "zone": "7",
-      "name": "Candytuft"
-    },
-    {
-      "zone": "7",
-      "name": "Chrysanthemum"
-    },
-    {
-      "zone": "7",
-      "name": "Clematis"
-    },
-    {
-      "zone": "7",
-      "name": "Forget-me-not"
-    },
-    {
-      "zone": "7",
-      "name": "Four O’clock"
-    },
-    {
-      "zone": "7",
-      "name": "Painted daisy"
-    },
-    {
-      "zone": "7",
-      "name": "Peony"
-    },
-    {
-      "zone": "8",
-      "name": "Asiatic lily"
-    },
-    {
-      "zone": "8",
-      "name": "Hardy geranium"
-    },
-    {
-      "zone": "8",
-      "name": "Lantana"
-    },
-    {
-      "zone": "8",
-      "name": "Mexican petunia"
-    },
-    {
-      "zone": "8",
-      "name": "Phlox"
-    },
-    {
-      "zone": "9",
-      "name": "Black-eyed Susan"
-    },
-    {
-      "zone": "9",
-      "name": "Canna"
-    },
-    {
-      "zone": "9",
-      "name": "Dahlia"
-    },
-    {
-      "zone": "9",
-      "name": "Hydrangea"
-    },
-    {
-      "zone": "9",
-      "name": "Rhododendrons"
-    },
-    {
-      "zone": "9",
-      "name": "Wisteria"
-    },
-    {
-      "zone": "9",
-      "name": "Zinnia"
-    },
-    {
-      "zone": "10",
-      "name": "Aeoniums"
-    },
-    {
-      "zone": "10",
-      "name": "Agave"
-    },
-    {
-      "zone": "10",
-      "name": "African lily"
-    },
-    {
-      "zone": "10",
-      "name": "Delta maidenhair fern"
-    },
-    {
-      "zone": "10",
-      "name": "Floss flower"
-    },
-    {
-      "zone": "10",
-      "name": "Geraniums"
-    },
-    {
-      "zone": "10",
-      "name": "Hummingbird mint"
-    },
-    {
-      "zone": "10",
-      "name": "Ornamental onion"
-    },
-    {
-      "zone": "10",
-      "name": "Peruvian lily"
-    },
-    {
-      "zone": "10",
-      "name": "Various aloes"
-    },
-    {
-      "zone": "11",
-      "name": "Anemone coronaria"
-    },
-    {
-      "zone": "11",
-      "name": "Begonias"
-    },
-    {
-      "zone": "11",
-      "name": "Bougainvillea"
-    },
-    {
-      "zone": "11",
-      "name": "Drumstick allium"
-    },
-    {
-      "zone": "11",
-      "name": "Kangaroo paw"
-    },
-    {
-      "zone": "11",
-      "name": "Ponytail palm"
-    },
-    {
-      "zone": "12",
-      "name": "Musaceae"
-    },
-    {
-      "zone": "12",
-      "name": "Strelitziaceae"
-    },
-    {
-      "zone": "12",
-      "name": "Heliconia"
-    },
-    {
-      "zone": "12",
-      "name": "Zingiberaceae"
-    },
-    {
-      "zone": "12",
-      "name": "Costaceae"
-    },
-    {
-      "zone": "12",
-      "name": "Cannaceae"
-    },
-    {
-      "zone": "12",
-      "name": "Marantaceae"
-    },
-    {
-      "zone": "12",
-      "name": "Lowiaceae"
-    },
-    {
-      "zone": "13",
-      "name": "Musaceae"
-    },
-    {
-      "zone": "13",
-      "name": "Strelitziaceae"
-    },
-    {
-      "zone": "13",
-      "name": "Heliconia"
-    },
-    {
-      "zone": "13",
-      "name": "Zingiberaceae"
-    },
-    {
-      "zone": "13",
-      "name": "Costaceae"
-    },
-    {
-      "zone": "13",
-      "name": "Cannaceae"
-    },
-    {
-      "zone": "13",
-      "name": "Marantaceae"
-    },
-    {
-      "zone": "13",
-      "name": "Lowiaceae"
-    }
-];
+module.exports = {
+  "Tagetes": {
+    "name": "Tagetes",
+    "wiki": "http://en.wikipedia.org/wiki/Tagetes",
+    "sow": [
+      3,
+      4
+    ],
+    "seed": [
+      4,
+      5
+    ],
+    "flowering": [
+      6,
+      7,
+      8,
+      9
+    ]
+  },
+  "Aster": {
+    "name": "Aster",
+    "wiki": "http://en.wikipedia.org/wiki/Aster_(genus)",
+    "sow": [
+      3,
+      4
+    ],
+    "seed": [
+      4,
+      5
+    ],
+    "flowering": [
+      6,
+      7,
+      8
+    ],
+    "hardiness_zone": 3,
+  },
+  "Begonia": {
+    "name": "Begonia",
+    "wiki": "http://en.wikipedia.org/wiki/Begonia",
+    "sow": [
+      1,
+      2,
+      3
+    ],
+    "seed": [],
+    "flowering": [
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "Baby blue-eyes": {
+    "name": "Baby blue-eyes",
+    "wiki": "https://en.wikipedia.org/wiki/Nemophila",
+    "sow": [
+      2,
+      3,
+      4
+    ],
+    "seed": [
+      3,
+      4,
+      5
+    ],
+    "flowering": [
+      6,
+      7,
+      8,
+      9
+    ]
+  },
+  "Chrysanthemums": {
+    "name": "Chrysanthemums",
+    "wiki": "http://en.wikipedia.org/wiki/Chrysanthemum",
+    "sow": [
+      2,
+      3
+    ],
+    "seed": [
+      3,
+      4
+    ],
+    "flowering": [
+      5,
+      6,
+      7
+    ]
+  },
+  "Berlandiera": {
+    "name": "Berlandiera",
+    "wiki": "http://en.wikipedia.org/wiki/Berlandiera",
+    "sow": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "seed": [
+      4
+    ],
+    "flowering": [
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "Dahlia": {
+    "name": "Dahlia",
+    "wiki": "http://en.wikipedia.org/wiki/Dahlia",
+    "sow": [
+      3,
+      4
+    ],
+    "seed": [
+      4,
+      5
+    ],
+    "flowering": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "hardiness_zone": 9,
+  },
+  "Flower-of-an-Hour": {
+    "name": "Flower-of-an-Hour",
+    "wiki": "http://en.wikipedia.org/wiki/Hibiscus_trionum",
+    "sow": [
+      2,
+      3
+    ],
+    "seed": [
+      4,
+      5
+    ],
+    "flowering": [
+      6,
+      7,
+      8
+    ]
+  },
+  "Ageratum": {
+    "name": "Ageratum",
+    "wiki": "http://en.wikipedia.org/wiki/Ageratum",
+    "sow": [
+      1,
+      2,
+      3
+    ],
+    "seed": [],
+    "flowering": [
+      6,
+      7,
+      8
+    ]
+  },
+  "Buddha belly plant": {
+    "name": "Buddha belly plant",
+    "wiki": "http://en.wikipedia.org/wiki/Jatropha_podagrica",
+    "sow": [
+      3,
+      4
+    ],
+    "seed": [
+      4,
+      5
+    ],
+    "flowering": [
+      7,
+      8,
+      9
+    ]
+  },
+  "Petunia": {
+    "name": "Petunia",
+    "wiki": "http://en.wikipedia.org/wiki/Petunia",
+    "sow": [
+      2,
+      3,
+      4
+    ],
+    "seed": [],
+    "flowering": [
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "Plumed cockscomb": {
+    "name": "Plumed cockscomb",
+    "wiki": "http://en.wikipedia.org/wiki/Celosia_argentea",
+    "sow": [
+      2,
+      3
+    ],
+    "seed": [
+      5,
+      6
+    ],
+    "flowering": [
+      6,
+      7,
+      8
+    ]
+  },
+  "Portulak": {
+    "name": "Portulak",
+    "wiki": "https://en.wikipedia.org/wiki/Portulaca",
+    "sow": [
+      2,
+      3,
+      4
+    ],
+    "seed": [
+      4,
+      5,
+      6
+    ],
+    "flowering": [
+      6,
+      7,
+      8
+    ]
+  },
+  "Sweet peas": {
+    "name": "Sweet peas",
+    "wiki": "http://en.wikipedia.org/wiki/Lathyrus",
+    "sow": [
+      2,
+      3,
+      4
+    ],
+    "seed": [
+      3,
+      4,
+      5
+    ],
+    "flowering": [
+      6,
+      7,
+      8
+    ]
+  },
+  "Larkspur": {
+    "name": "Larkspur",
+    "wiki": "http://en.wikipedia.org/wiki/Delphinium",
+    "sow": [
+      2,
+      3
+    ],
+    "seed": [
+      4,
+      5
+    ],
+    "flowering": [
+      5,
+      6,
+      7
+    ]
+  },
+  "Obedient plant": {
+    "name": "Obedient plant",
+    "wiki": "http://en.wikipedia.org/wiki/Physostegia_virginiana",
+    "sow": [],
+    "seed": [
+      3,
+      4,
+      5
+    ],
+    "flowering": [
+      6,
+      7,
+      8
+    ]
+  },
+  "Decorative Kale": {
+    "name": "Decorative Kale",
+    "wiki": "http://en.wikipedia.org/wiki/Kale#Decorative_uses",
+    "sow": [
+      2,
+      3,
+      4
+    ],
+    "seed": [
+      4,
+      5
+    ],
+    "flowering": [
+      7,
+      8,
+      9,
+      10
+    ]
+  },
+  "Coleus": {
+    "name": "Coleus",
+    "wiki": "http://en.wikipedia.org/wiki/Solenostemon_scutellarioides",
+    "sow": [
+      3,
+      4,
+      5
+    ],
+    "seed": [],
+    "flowering": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ]
+  },
+  "Pumpkin": {
+    "name": "Pumpkin",
+    "wiki": "http://en.wikipedia.org/wiki/Pumpkin",
+    "sow": [
+      3,
+      4
+    ],
+    "seed": [
+      4,
+      5
+    ],
+    "flowering": [
+      7,
+      8,
+      9
+    ]
+  },
+  "Winged Tobacco": {
+    "name": "Winged Tobacco",
+    "wiki": "http://en.wikipedia.org/wiki/Nicotiana_alata",
+    "sow": [
+      3,
+      4
+    ],
+    "seed": [
+      4,
+      5
+    ],
+    "flowering": [
+      6,
+      7,
+      8
+    ]
+  },
+  "Viola": {
+    "name": "Viola",
+    "wiki": "http://en.wikipedia.org/wiki/Viola_(plant)",
+    "sow": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      11
+    ],
+    "seed": [
+      3,
+      4,
+      8,
+      9
+    ],
+    "flowering": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ]
+  },
+  "Sweet William": {
+    "name": "Sweet William",
+    "wiki": "https://en.wikipedia.org/wiki/Dianthus_barbatus",
+    "sow": [
+      2,
+      3,
+      4
+    ],
+    "seed": [
+      4,
+      5,
+      6
+    ],
+    "flowering": [
+      5,
+      6,
+      7
+    ]
+  },
+  "Iceland Poppy": {
+    "name": "Iceland Poppy",
+    "wiki": "https://en.wikipedia.org/wiki/Papaver_nudicaule",
+    "sow": [
+      4,
+      5,
+      6
+    ],
+    "seed": [
+      6,
+      7
+    ],
+    "flowering": [
+      5,
+      6,
+      7
+    ]
+  },
+  "Honesty": {
+    "name": "Honesty",
+    "wiki": "https://en.wikipedia.org/wiki/Lunaria_annua",
+    "sow": [],
+    "seed": [
+      4,
+      5,
+      6
+    ],
+    "flowering": [
+      4,
+      5
+    ]
+  },
+  "Dalmatian bellflower": {
+    "name": "Dalmatian bellflower",
+    "wiki": "https://en.wikipedia.org/wiki/Campanula_portenschlagiana",
+    "sow": [
+      2,
+      3
+    ],
+    "seed": [
+      4,
+      5,
+      6
+    ],
+    "flowering": [
+      4,
+      5,
+      6
+    ]
+  },
+  "Wallflower": {
+    "name": "Wallflower",
+    "wiki": "https://en.wikipedia.org/wiki/Erysimum_cheiri",
+    "sow": [
+      2,
+      3
+    ],
+    "seed": [
+      3,
+      4,
+      5
+    ],
+    "flowering": [
+      4,
+      5
+    ],
+    "hardiness_zone": 3,
+  },
+  "Common hollyhock": {
+    "name": "Common hollyhock",
+    "wiki": "http://en.wikipedia.org/wiki/Alcea_rosea",
+    "sow": [
+      2,
+      3
+    ],
+    "seed": [
+      4,
+      5
+    ],
+    "flowering": [
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "Forget-me-not": {
+    "name": "Forget-me-not",
+    "wiki": "https://en.wikipedia.org/wiki/Forget-me-not",
+    "sow": [
+      3,
+      4,
+      5
+    ],
+    "seed": [
+      4,
+      5,
+      6
+    ],
+    "flowering": [
+      4,
+      5,
+      6
+    ],
+    "hardiness_zone": 7,
+  },
+  "Foxglove": {
+    "name": "Foxglove",
+    "wiki": "https://en.wikipedia.org/wiki/Digitalis_purpurea",
+    "sow": [
+      2,
+      3
+    ],
+    "seed": [
+      4,
+      5
+    ],
+    "flowering": [
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "Groundcherries": {
+    "name": "Groundcherries",
+    "wiki": "https://en.wikipedia.org/wiki/Physalis",
+    "sow": [],
+    "seed": [
+      4,
+      5,
+      6
+    ],
+    "flowering": [
+      7,
+      8,
+      9
+    ]
+  },
+  "Lupin": {
+    "name": "Lupin",
+    "wiki": "http://en.wikipedia.org/wiki/Lupinus",
+    "sow": [],
+    "seed": [
+      4,
+      5,
+      6
+    ],
+    "flowering": [
+      5,
+      6,
+      7
+    ]
+  },
+  "Oriental poppy": {
+    "name": "Oriental poppy",
+    "wiki": "https://en.wikipedia.org/wiki/Papaver_orientale",
+    "sow": [],
+    "seed": [
+      4,
+      5,
+      6
+    ],
+    "flowering": [
+      5,
+      6,
+      7
+    ]
+  },
+  "Passion flowers": {
+    "name": "Passion flowers",
+    "wiki": "https://en.wikipedia.org/wiki/Passiflora",
+    "sow": [
+      2,
+      3,
+      4
+    ],
+    "seed": [],
+    "flowering": [
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "Lindheimer’s Beeblossom": {
+    "name": "Lindheimer’s Beeblossom",
+    "wiki": "https://en.wikipedia.org/wiki/Gaura_lindheimeri",
+    "sow": [
+      1,
+      2,
+      3
+    ],
+    "seed": [
+      4,
+      5,
+      6
+    ],
+    "flowering": [
+      6,
+      7,
+      8
+    ]
+  },
+  "Candytuft": {
+    "name": "Candytuft",
+    "wiki": "https://en.wikipedia.org/wiki/Iberis_sempervirens",
+    "sow": [],
+    "seed": [
+      4,
+      5,
+      6
+    ],
+    "flowering": [
+      3,
+      4,
+      5
+    ],
+    "hardiness_zone": 7,
+  },
+  "Welsh poppy": {
+    "name": "Welsh poppy",
+    "wiki": "https://en.wikipedia.org/wiki/Meconopsis_cambrica",
+    "sow": [
+      3,
+      4,
+      5
+    ],
+    "seed": [],
+    "flowering": [
+      6,
+      7,
+      8,
+      9
+    ]
+  },
+  "Primula": {
+    "name": "Primula",
+    "wiki": "https://en.wikipedia.org/wiki/Primula",
+    "sow": [
+      2,
+      3,
+      4
+    ],
+    "seed": [
+      4,
+      5,
+      6
+    ],
+    "flowering": [
+      2,
+      3,
+      4
+    ]
+  },
+  "Arrowhead": {},
+  "Delphinium": {},
+  "Goldenrod": {},
+  "Sunflower": {},
+  "Lily of the Valley": {},
+  "Oxeye Daisy": {},
+  "Yarrow": {},
+  "Bleeding Heart": {},
+  "Monkshood": {},
+  "Penstemon": {},
+  "Poppy": {},
+  "Primrose": {},
+  "Sea Holly": {},
+  "Violet": {},
+  "Alpine Rockcress": {},
+  "Blanket Flower": {},
+  "Liatris varieties": {},
+  "Salvia": {},
+  "Snow-in-Summer": {},
+  "Spurge": {},
+  "Virginia Bluebells": {},
+  "Coneflower": {},
+  "Daylily": {},
+  "Iris": {},
+  "Phlox": {},
+  "Plantain lily (Hostas)": {},
+  "Baptisia": {},
+  "Black-eyed Susan": {},
+  "Campanula": {},
+  "Cinquefoil": {},
+  "Russian Sage": {},
+  "False sunflower": {},
+  "Floribunda rose": {},
+  "Flowering fern": {},
+  "Japanese Bottlebrush": {},
+  "Lady’s Mantle": {},
+  "Sedum": {},
+  "Butterfly weed": {},
+  "Chrysanthemum": {},
+  "Clematis": {},
+  "Four O’clock": {},
+  "Painted daisy": {},
+  "Peony": {},
+  "Asiatic lily": {},
+  "Hardy geranium": {},
+  "Lantana": {},
+  "Mexican petunia": {},
+  "Canna": {},
+  "Hydrangea": {},
+  "Rhododendrons": {},
+  "Wisteria": {},
+  "Zinnia": {},
+  "Aeoniums": {},
+  "Agave": {},
+  "African lily": {},
+  "Delta maidenhair fern": {},
+  "Floss flower": {},
+  "Geraniums": {},
+  "Hummingbird mint": {},
+  "Ornamental onion": {},
+  "Peruvian lily": {},
+  "Various aloes": {},
+  "Anemone coronaria": {},
+  "Begonias": {},
+  "Bougainvillea": {},
+  "Drumstick allium": {},
+  "Kangaroo paw": {},
+  "Ponytail palm": {},
+  "Musaceae": {},
+  "Strelitziaceae": {},
+  "Heliconia": {},
+  "Zingiberaceae": {},
+  "Costaceae": {},
+  "Cannaceae": {},
+  "Marantaceae": {},
+  "Lowiaceae": {},
+};
