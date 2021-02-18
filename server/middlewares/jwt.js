@@ -48,8 +48,22 @@ const ensureLoggedOut = (req, res, next) => {
     res.status(401).send({ status: 'Already logged in.' });
 };
 
+const ensureAdmin = (req, res, next) => {  
+  const { _id, provider, name, role } = req.user_auth;
+
+  if (!(_id || provider || name || !role)) {
+      return res.status(401).send({ status: 'Missing data' });
+  }
+  if (role !== 'admin') { 
+    return res.status(401).send({ status: 'Unauthorized.' });
+  }
+
+  next();
+};
+
 module.exports = {
-    jwtMiddleware,
-    ensureLoggedIn,
-    ensureLoggedOut,
+  ensureAdmin,
+  jwtMiddleware,
+  ensureLoggedIn,
+  ensureLoggedOut,
 };
