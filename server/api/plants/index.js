@@ -9,7 +9,10 @@ const { ensureLoggedIn } = require('../../middlewares/jwt');
  */
 router.post('/', async (req, res) => {
     try {
+        const { limit = 30 } = req.query;
         const plants = await PlantModel.getPlants(req.body);
+        const total_plants = await PlantModel.count();
+        res.setHeader('Content-Range', `posts 0-${limit}/${total_plants}`);
         res.json({ status: 'success', payload: plants });
     } catch(e) {
         res.json({ status: 'error', error: e });
