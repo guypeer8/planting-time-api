@@ -22,7 +22,7 @@ const plantSchema = new mongoose.Schema({
             numeric: { type: Number, min: 0, max: 10 }, 
             textual: { type: String }, // describes detailed light conditions
         },
-        temerature: { 
+        temperature: { 
             min: { type: Number },
             max: { type: Number },
             optimal: { type: Number },
@@ -58,7 +58,6 @@ const plantSchema = new mongoose.Schema({
         days_to_maturity: { type: Number, min: 0 },
     },
     climate: {
-        seasons: [{ type: String, enum: Object.values(SEASONS) }],
         hardiness_zones: [{ type: String, enum: Object.keys(HARDINESS_ZONES) }],
         climate_zones: [{ type: String, enum: CLIMATE_ZONES }],
         frost_sensitive: { type: Boolean, default: true },
@@ -228,9 +227,7 @@ plantSchema.statics.getPlants = async function({
         const search_re = { $regex: new RegExp(search_keyword), $options: 'i' };
         query.$or = [
             { search_keywords: { $elemMatch: search_re } },
-            ...['common_name', 'scientific_name'].map(name => ({ 
-                [`metadata.${name}`]: { $elemMatch: search_re },
-            })),
+            ...['common_name', 'scientific_name'].map(name => ({ [`metadata.${name}`]: search_re })),
             ...['he', 'en'].map(loc => ({ 
                 [`dictionary.common_names.${loc}`]: { $elemMatch: search_re },
             })),
@@ -242,10 +239,10 @@ plantSchema.statics.getPlants = async function({
         }
     }
     if (tmin) {
-        query['growth.temerature.min'] = { $lte: tmin };
+        query['growth.temperature.min'] = { $lte: tmin };
     }
     if (tmax) {
-        query['growth.temerature.max'] = { $gte: tmax };
+        query['growth.temperature.max'] = { $gte: tmax };
     }
     if (pmin) {
         query['growth.precipitation.min'] = { $lte: pmin };
