@@ -11,7 +11,7 @@ router.post('/', async (req, res) => {
     try {
         const { limit = 30 } = req.query;
         const plants = await PlantModel.getPlants(req.body);
-        const total_plants = await PlantModel.count();
+        const total_plants = await PlantModel.countDocuments();
         res.setHeader('Content-Range', `posts 0-${limit}/${total_plants}`);
         res.json({ status: 'success', payload: plants });
     } catch(e) {
@@ -32,7 +32,6 @@ router.get('/:plant_id', async (req, res) => {
         res.json({ status: 'error', error: e });
     }
 });
-
 
 /**
  * /api/plants/companions --> get plants companions

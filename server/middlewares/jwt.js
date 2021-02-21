@@ -9,7 +9,6 @@ const { JWT_NAME } = process.env;
 const jwtMiddleware = async (req, res, next) => {
   try {
     const authHeader = get(req.headers, 'authorization', null);
-
     if (authHeader) {
       const [authType, authToken] = authHeader.split(/\s+/);
       if (lowerCase(authType) === 'bearer') {
@@ -49,11 +48,7 @@ const ensureLoggedOut = (req, res, next) => {
 };
 
 const ensureAdmin = (req, res, next) => {  
-  const { _id, provider, name, role } = req.user_auth;
-
-  if (!(_id || provider || name || !role)) {
-      return res.status(401).send({ status: 'Missing data' });
-  }
+  const { role } = req.user_auth;
   if (role !== 'admin') { 
     return res.status(401).send({ status: 'Unauthorized.' });
   }
