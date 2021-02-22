@@ -236,7 +236,7 @@ plantSchema.statics.getPlants = async function({
         if (!['he', 'il', 'en'].includes(locale)) {
             $or[`dictionary.common_names.${locale}`] = { $elemMatch: search_re };
         }
-        query.$and.push($or);
+        query.$and.push({ $or });
     }
     if (isNumber(tmax)) {
         if (!query.$and) { query.$and = []; }
