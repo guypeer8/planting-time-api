@@ -1,6 +1,8 @@
 const bcrypt = require('bcryptjs');
+const { isBoolean } = require('lodash');
 const mongoose = require('mongoose');
 const isEmail = require('validator/lib/isEmail');
+const mongooseLeanVirtuals = require('mongoose-lean-virtuals');
 
 const { ROLES, PROVIDERS } = require('../../config');
 
@@ -33,8 +35,51 @@ const userDiscriminatorSchema = new mongoose.Schema({
   timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },
 });
 
-userDiscriminatorSchema.statics.getUserByEmail = function(email) {
-  return this.findOne({ email });
+userDiscriminatorSchema.statics.getUsers = async function({ 
+  id = null, 
+  ids = null, 
+  role = null,
+  email = null,
+  active = null,
+  provider = null,
+  search_keyword = '',
+  page = 1,
+  limit = 30,
+  sort = 'email',
+} = {}) {
+  const query = {};
+  if (id) { 
+      query._id = id;
+  }
+  if (ids) { 
+      query._id = { $in: ids };
+  }
+  if (isBoolean(active)) {
+    query.active = active;
+  }
+  if (role) { 
+    query.role = role;
+  }
+  if (email) { 
+    query.email = email;
+  }
+  if (provider) { 
+    query.provider = provider;
+  }
+  if (search_keyword) {
+      const search_re = { $regex: new RegExp(search_keyword), $options: 'i' };
+      query.$or = [{ name: search_re }, { email: search_re }];
+  }
+
+  const users = await this
+    .find(query)
+    .limit(limit)
+    .skip((page-1) * limit)
+    .sort(sort)
+    .select('-password')
+    .lean({ virtuals: true });
+
+  return users;
 };
 
 userDiscriminatorSchema.methods.checkPassword = function(password) {
@@ -76,6 +121,12 @@ userDiscriminatorSchema.pre('save', function(next) {
       next();
     });
   });
+});
+
+userDiscriminatorSchema.plugin(mongooseLeanVirtuals);
+
+userDiscriminatorSchema.virtual('id').get(function() {
+    return this._id.toString();
 });
 
 module.exports = mongoose.model('User', userDiscriminatorSchema);

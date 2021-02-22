@@ -8,30 +8,16 @@ const PlantModel = require('../../../../models/plant.model');
  */
 router.put('/:plant_id', async (req, res) => {
     try {
+        let plant = {};
         const { plant_id: _id } = req.params;
         if (!_id) {
             const plantRecord = new PlantModel(req.body);
-            const plant = await plantRecord.save();
-            return res.json({ status: 'success', payload: plant });
+            plant = await plantRecord.save();
+        } else {
+            const { ok, nModified } = await PlantModel.update({ _id }, { $set: req.body });
+            if (!ok || nModified !== 1) { throw new Error('Update failed!'); }
+            plant = await PlantModel.findOne({ _id });
         }
-        const { ok, n, nModified } = await PlantModel.update({ _id }, { $set: req.body });
-        const plant = await PlantModel.findOne({ _id });
-        if (!ok || n !== 1 || nModified !== 1) { throw new Error('Update failed!'); }
-        res.json({ status: 'success', payload: plant });
-    } catch(e) {
-        res.json({ status: 'error', error: e });
-    }
-});
-
-/**
- * /api/plants/:plant_id --> update plant
- */
-router.put('/:plant_id', async (req, res) => {
-    try {
-        const { plant_id: _id } = req.params;
-        const { ok, n, nModified } = await PlantModel.update({ _id }, { $set: req.body });
-        const plant = await PlantModel.findOne({ _id });
-        if (!ok || n !== 1 || nModified !== 1) { throw new Error('Update failed!'); }
         res.json({ status: 'success', payload: plant });
     } catch(e) {
         res.json({ status: 'error', error: e });
@@ -44,10 +30,10 @@ router.put('/:plant_id', async (req, res) => {
 router.delete('/', async (req, res) => {
     try {
         const { ids = [] } = req.body;
-        if (!isEmpty(ids)) { throw new Error('No ids passed!'); }
+        if (isEmpty(ids)) { throw new Error('No ids passed!'); }
         const { ok } = await PlantModel.deleteMany({ _id: { $in: ids } });
         if (!ok) { throw new Error('Delete failed!'); }
-        res.json({ status: 'success', payload: {} });
+        res.json({ status: 'success', payload: [] });
     } catch(e) {
         res.json({ status: 'error', error: e });
     }

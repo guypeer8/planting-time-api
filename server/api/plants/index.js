@@ -81,6 +81,10 @@ router.post('/:plant_id/companions', async (req, res) => {
  * ENSURE ADMIN
  */
 router.use(ensureAdmin);
+
+/**
+ * /api/plants --> plant admin actions
+ */
 router.use(adminRouter);
 
 module.exports = router;
