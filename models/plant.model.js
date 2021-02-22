@@ -224,8 +224,9 @@ plantSchema.statics.getPlants = async function({
         };
     }
     if (search_keyword) {
+        if (!query.$and) { query.$and = []; }
         const search_re = { $regex: new RegExp(search_keyword), $options: 'i' };
-        query.$or = [
+        const $or = [
             { search_keywords: { $elemMatch: search_re } },
             ...['common_name', 'scientific_name'].map(name => ({ [`metadata.${name}`]: search_re })),
             ...['he', 'en'].map(loc => ({ 
@@ -233,22 +234,45 @@ plantSchema.statics.getPlants = async function({
             })),
         ];
         if (!['he', 'il', 'en'].includes(locale)) {
-            query.$or.push({ 
-                [`dictionary.common_names.${locale}`]: { $elemMatch: search_re },
-            });
+            $or[`dictionary.common_names.${locale}`] = { $elemMatch: search_re };
         }
+        query.$and.push($or);
     }
-    if (tmin) {
-        query['growth.temperature.min'] = { $lte: tmin };
+    if (isNumber(tmax)) {
+        if (!query.$and) { query.$and = []; }
+        query.$and.push({ 
+            $or: [ 
+                { 'growth.temperature.max': { $gte: tmax } }, 
+                { 'growth.temperature.max': { $exists: false } }, 
+            ],
+        });
     }
-    if (tmax) {
-        query['growth.temperature.max'] = { $gte: tmax };
+    if (isNumber(tmin)) {
+        if (!query.$and) { query.$and = []; }
+        query.$and.push({ 
+            $or: [ 
+                { 'growth.temperature.min': { $lte: tmin } }, 
+                { 'growth.temperature.min': { $exists: false } }, 
+            ],
+        });
     }
-    if (pmin) {
-        query['growth.precipitation.min'] = { $lte: pmin };
+    if (isNumber(pmax)) {
+        if (!query.$and) { query.$and = []; }
+        query.$and.push({ 
+            $or: [ 
+                { 'growth.precipitation.min': { $gte: pmax } }, 
+                { 'growth.precipitation.min': { $exists: false } }, 
+            ],
+        });
     }
-    if (pmax) {
-        query['growth.precipitation.max'] = { $gte: pmax };
+    if (isNumber(pmin)) {
+        if (!query.$and) { query.$and = []; }
+        query.$and.push({ 
+            $or: [ 
+                { 'growth.precipitation.max': { $lte: pmin } }, 
+                { 'growth.precipitation.max': { $exists: false } }, 
+            ],
+        });
     }
     if (plant_type) {
         query['attributes.plant_type'] = plant_type;
