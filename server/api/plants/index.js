@@ -1,8 +1,9 @@
 const isEmpty = require('lodash/isEmpty');
 const router = require('express').Router();
 
+const adminRouter = require('./admin');
 const PlantModel = require('../../../models/plant.model');
-const { ensureLoggedIn } = require('../../middlewares/jwt');
+const { ensureLoggedIn, ensureAdmin } = require('../../middlewares/jwt');
 
 /**
  * /api/plants --> get plants
@@ -34,9 +35,15 @@ router.get('/:plant_id', async (req, res) => {
 });
 
 /**
+ * ENSURE LOGGED IN
+ */
+
+router.use(ensureLoggedIn);
+
+/**
  * /api/plants/companions --> get plants companions
  */
-router.post('/companions', ensureLoggedIn, async (req, res) => {
+router.post('/companions', async (req, res) => {
     try {
         const { plant_ids } = req.body;
         if (isEmpty(plant_ids)) {
@@ -57,7 +64,7 @@ router.post('/companions', ensureLoggedIn, async (req, res) => {
 /**
  * /api/plants/:plant_id/companions --> get plant companions
  */
-router.post('/:plant_id/companions', ensureLoggedIn, async (req, res) => {
+router.post('/:plant_id/companions', async (req, res) => {
     try {
         const { plant_id } = req.params;
         const [plant] = await PlantModel.getPlants({ id: plant_id });
@@ -69,5 +76,11 @@ router.post('/:plant_id/companions', ensureLoggedIn, async (req, res) => {
         res.json({ status: 'error', error: e });
     }
 });
+
+/**
+ * ENSURE ADMIN
+ */
+router.use(ensureAdmin);
+router.use(adminRouter);
 
 module.exports = router;
