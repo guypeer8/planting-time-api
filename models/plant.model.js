@@ -112,7 +112,9 @@ const plantSchema = new mongoose.Schema({
     }],
     videos: [{
         title: { type: String },
+        description: { type: String },
         created_at: { type: Date },
+        thumbnails: { type: mongoose.Schema.Types.Mixed },
         url: {
             type: String,
             validate: {
@@ -177,8 +179,9 @@ plantSchema.statics.getPlants = async function({
     page = 1,
     limit = 30,
     sort = 'metadata.common_name',
+    extended_query = {},
 } = {}) {
-    const query = { searchable };
+    const query = { searchable, ...extended_query };
     if (id) { 
         query._id = id;
     }
@@ -288,8 +291,8 @@ plantSchema.statics.getPlants = async function({
     let queryBuilder = this.find(query).limit(limit).skip((page-1) * limit).sort(sort);
 
     if (!withCompanions) {
-        const select = [...(select_fields || []), '-companions', '-non_companions'].join(' ');
-        return queryBuilder.select(select).lean({ virtuals: true });
+        // const select = (select_fields || []).join(' ').trim();
+        return queryBuilder.select('-companions -non_companions').lean({ virtuals: true });
     } 
 
     if (select_fields) {
