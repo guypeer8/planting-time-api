@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
 /**
  * /api/plants/:id_or_slug --> get plant
  */
-router.get('/:plant_id', async (req, res) => {
+router.get('/:id_or_slug', async (req, res) => {
     try {
         const { id_or_slug } = req.params;
         const key = /\d/.test(id_or_slug) ? 'id' : 'slug';
