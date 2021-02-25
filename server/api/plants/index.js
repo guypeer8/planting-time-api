@@ -21,13 +21,13 @@ router.post('/', async (req, res) => {
 });
 
 /**
- * /api/plants/:plant_id --> get plant
+ * /api/plants/:id_or_slug --> get plant
  */
 router.get('/:plant_id', async (req, res) => {
     try {
-        const { plant_id } = req.params;
-        const [plant] = await PlantModel.getPlants({ id: plant_id });
-
+        const { id_or_slug } = req.params;
+        const key = /\d/.test(id_or_slug) ? 'id' : 'slug';
+        const [plant] = await PlantModel.getPlants({ [key]: id_or_slug });
         res.json({ status: 'success', payload: plant });
     } catch(e) {
         res.json({ status: 'error', error: e });

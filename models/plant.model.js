@@ -17,6 +17,7 @@ const PLANT_TYPES = ['fruit', 'vegetable', 'herb', 'flower', 'houseplant'];
 
 const plantSchema = new mongoose.Schema({
     t_id: { type: String, unique: true }, // trefle id
+    slug: { type: String, unique: true }, 
     growth: {
         light: { 
             numeric: { type: Number, min: 0, max: 10 }, 
@@ -159,6 +160,7 @@ plantSchema.methods.getCompanions = function({ select_fields = null } = {}) {
 plantSchema.statics.getPlants = async function({ 
     id = null, 
     ids = null, 
+    slug = null, 
     tmin = null, 
     tmax = null,
     pmin = null, 
@@ -187,6 +189,9 @@ plantSchema.statics.getPlants = async function({
     }
     if (ids) { 
         query._id = { $in: ids };
+    }
+    if (slug) { 
+        query.slug = slug;
     }
     if (season) { 
         query.seasons = season;
