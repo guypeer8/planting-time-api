@@ -181,6 +181,7 @@ plantSchema.statics.getPlants = async function({
     page = 1,
     limit = 30,
     sort = 'metadata.common_name',
+    lean = true,
     extended_query = {},
 } = {}) {
     const query = { searchable, ...extended_query };
@@ -297,14 +298,15 @@ plantSchema.statics.getPlants = async function({
 
     if (!withCompanions) {
         // const select = (select_fields || []).join(' ').trim();
-        return queryBuilder.select('-companions -non_companions').lean({ virtuals: true });
+        queryBuilder = queryBuilder.select('-companions -non_companions');
+        return lean ? queryBuilder.lean({ virtuals: true }) : queryBuilder;
     } 
 
     if (select_fields) {
         queryBuilder = queryBuilder.select(select_fields.join(' '));
     }
 
-    const plants = await queryBuilder.lean({ virtuals: true });
+    const plants = await (lean ? queryBuilder.lean({ virtuals: true }) : queryBuilder);
 
     return Promise.all(plants.map(async plant => {
         plant.companions = await getCompanions(plant);

@@ -51,9 +51,7 @@ router.post('/companions', async (req, res) => {
         }
         const plants = await PlantModel.getPlants({ ids: plant_ids });
         const companions = await Promise.all(
-            plants.map(p => 
-                p.getCompanions({ select_fields: ['growth.days_to_maturity'] })
-            )
+            plants.map(p => p.getCompanions())
         );
         res.json({ status: 'success', payload: companions });
     } catch(e) {
@@ -67,12 +65,11 @@ router.post('/companions', async (req, res) => {
 router.post('/:plant_id/companions', async (req, res) => {
     try {
         const { plant_id } = req.params;
-        const [plant] = await PlantModel.getPlants({ id: plant_id });
-        const companions = await plant.getCompanions({ 
-            select_fields: ['growth.days_to_maturity'],
-        });
+        const [plant] = await PlantModel.getPlants({ id: plant_id, lean: false });
+        const companions = await plant.getCompanions();
         res.json({ status: 'success', payload: companions });
     } catch(e) {
+        console.warn(e)
         res.json({ status: 'error', error: e });
     }
 });
