@@ -27,7 +27,11 @@ router.get('/:id_or_slug', async (req, res) => {
     try {
         const { id_or_slug } = req.params;
         const key = /\d/.test(id_or_slug) ? 'id' : 'slug';
-        const [plant] = await PlantModel.getPlants({ [key]: id_or_slug });
+        const [plant] = await PlantModel.getPlants({ 
+            [key]: id_or_slug, 
+            withCompanions: true,
+            select: ['metadata.common_name'],
+        });
         res.json({ status: 'success', payload: plant });
     } catch(e) {
         res.json({ status: 'error', error: e });

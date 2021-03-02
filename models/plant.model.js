@@ -141,9 +141,9 @@ const getCompanions = function(plant, { select_fields = null } = {}) {
     if (!isEmpty(plant.companions)) {
         set(query, '_id.$in', plant.companions);
     } else {
-        const genus = get(plant, 'taxonomy.genus', null);
-        if (!genus) return [];
-        query['taxonomy.genus'] = genus;
+        const family = get(plant, 'taxonomy.family', get(plant, 'metadata.family_common_name', null));
+        if (!family) return [];
+        query.$or = [{ 'metadata.family_common_name': family }, { 'taxonomy.family': family }];
         query._id.$nin.push(...plant.non_companions);
     }
     let queryBuilder = mongoose.model('Plant').find(query);
