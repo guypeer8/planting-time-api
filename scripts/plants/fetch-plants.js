@@ -5,13 +5,14 @@ const axios = require('axios');
 const map = require('map-series');
 const set = require('lodash/set');
 const keys = require('lodash/keys');
-const mongoose = require('mongoose');
 const last = require('lodash/last');
+const mongoose = require('mongoose');
 const first = require('lodash/first');
 const isNil = require('lodash/isNil');
 const sample = require('lodash/sample');
 const isEmpty = require('lodash/isEmpty');
 const isNumber = require('lodash/isNumber');
+const kebabCase = require('lodash/kebabCase');
 const startCase = require('lodash/startCase');
 
 const { mongodbServer } = require('../../config');
@@ -90,6 +91,7 @@ const createMetadata = async (result, plant) => {
         family_common_name: plant.family_common_name,
         ...(plant.image_url ? { images: [plant.image_url] } : {})
     });
+    result.slug = kebabCase(plant.common_name || plant.scientific_name);
 };
 
 const createCalendar = async (result, plant_name, plant_type) => {
@@ -364,7 +366,14 @@ function runDatabaseBuildByPlantName(plant_names = [], {
             if (save_to_db) {
                 mongoose.connect(mongodbServer, { useNewUrlParser: true, useUnifiedTopology: true });
                 try {
-                    await PlantModel.insertMany(_results);
+                    _results.forEach(async plant => {
+                        try {
+                            const plantRecord = new PlantModel(plant);
+                            await plantRecord.save();
+                        } catch(e) {
+                            console.error(e);
+                        }
+                    });
                 } catch(e) {
                     console.log(e);
                     // failed_insertsion_by_page[page] = e;
@@ -444,8 +453,8 @@ function buildVegetablesDatabase() {
 }
 
 function buildDatabase() {
-    buildHerbsDatabase();
-    buildFlowersDatabase();
+    // buildHerbsDatabase();
+    // buildFlowersDatabase();
     buildVegetablesDatabase();
 }
 

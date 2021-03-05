@@ -10,7 +10,7 @@ const { ensureLoggedIn, ensureAdmin } = require('../../middlewares/jwt');
  */
 router.post('/', async (req, res) => {
     try {
-        const { limit = 30 } = req.query;
+        const { limit = 60 } = req.query;
         const plants = await PlantModel.getPlants(req.body);
         const total_plants = await PlantModel.countDocuments();
         res.setHeader('Content-Range', `posts 0-${limit}/${total_plants}`);
@@ -27,11 +27,12 @@ router.get('/:id_or_slug', async (req, res) => {
     try {
         const { id_or_slug } = req.params;
         const key = /\d/.test(id_or_slug) ? 'id' : 'slug';
-        const [plant] = await PlantModel.getPlants({ 
+        const query = { 
             [key]: id_or_slug, 
             withCompanions: true,
             select: ['metadata.common_name'],
-        });
+        };
+        const [plant] = await PlantModel.getPlants(query);
         res.json({ status: 'success', payload: plant });
     } catch(e) {
         res.json({ status: 'error', error: e });
@@ -50,13 +51,9 @@ router.use(ensureLoggedIn);
 router.post('/companions', async (req, res) => {
     try {
         const { plant_ids } = req.body;
-        if (isEmpty(plant_ids)) {
-            throw new Error('No plant ids');
-        }
+        if (isEmpty(plant_ids)) { throw new Error('No plant ids'); }
         const plants = await PlantModel.getPlants({ ids: plant_ids });
-        const companions = await Promise.all(
-            plants.map(p => p.getCompanions())
-        );
+        const companions = await Promise.all(plants.map(p => p.getCompanions()));
         res.json({ status: 'success', payload: companions });
     } catch(e) {
         res.json({ status: 'error', error: e });

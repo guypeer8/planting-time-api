@@ -12,10 +12,6 @@
     "plant_name": "Romaine lettuce"
   },
   {
-    "error": "connect ETIMEDOUT 51.210.210.163:443",
-    "plant_name": "Celeriac"
-  },
-  {
     "error": "Cannot read property 'id' of undefined",
     "plant_name": "Black radish"
   },

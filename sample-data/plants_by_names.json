@@ -30,6 +30,7 @@
         ]
       }
     },
+    "slug": "cultivated-endive",
     "attributes": {
       "is_edible": true,
       "duration": [],
@@ -472,6 +473,7 @@
         ]
       }
     },
+    "slug": "jerusalem-artichoke",
     "attributes": {
       "is_edible": true,
       "duration": [],
@@ -1343,6 +1345,7 @@
         ]
       }
     },
+    "slug": "prickly-lettuce",
     "attributes": {
       "is_edible": false,
       "duration": [],
@@ -1963,6 +1966,7 @@
         ]
       }
     },
+    "slug": "hairy-bittercress",
     "attributes": {
       "is_edible": false,
       "duration": [],
@@ -2623,6 +2627,7 @@
         ]
       }
     },
+    "slug": "hedgemustard",
     "attributes": {
       "is_edible": false,
       "duration": [],
@@ -3138,6 +3143,7 @@
         ]
       }
     },
+    "slug": "tetragonia-tetragonoides",
     "attributes": {
       "is_edible": false,
       "duration": [],
@@ -3522,6 +3528,7 @@
         ]
       }
     },
+    "slug": "nasturtium",
     "attributes": {
       "is_edible": false,
       "duration": [],
@@ -4011,6 +4018,7 @@
         ]
       }
     },
+    "slug": "little-hogweed",
     "attributes": {
       "is_edible": true,
       "duration": [],
@@ -4786,6 +4794,7 @@
         ]
       }
     },
+    "slug": "munks-rhubarb",
     "attributes": {
       "is_edible": false,
       "duration": [],
@@ -5077,6 +5086,7 @@
         ]
       }
     },
+    "slug": "field-mustard",
     "attributes": {
       "is_edible": true,
       "duration": [],
@@ -5912,6 +5922,7 @@
         ]
       }
     },
+    "slug": "prickly-lettuce",
     "attributes": {
       "is_edible": false,
       "duration": [],
@@ -6589,6 +6600,7 @@
         ]
       }
     },
+    "slug": "common-beet",
     "attributes": {
       "is_edible": false,
       "duration": [],
@@ -7243,6 +7255,7 @@
         ]
       }
     },
+    "slug": "field-mustard",
     "attributes": {
       "is_edible": true,
       "duration": [],
@@ -7920,6 +7933,7 @@
         ]
       }
     },
+    "slug": "spinach",
     "attributes": {
       "is_edible": true,
       "duration": [],
@@ -8534,6 +8548,7 @@
         ]
       }
     },
+    "slug": "celtic-valerian",
     "attributes": {
       "is_edible": false,
       "duration": [],
@@ -8849,6 +8864,7 @@
         ]
       }
     },
+    "slug": "gardencress-pepperweed",
     "attributes": {
       "is_edible": true,
       "duration": [],
@@ -9581,6 +9597,7 @@
         ]
       }
     },
+    "slug": "european-cornsalad",
     "attributes": {
       "is_edible": false,
       "duration": [],
@@ -10174,6 +10191,7 @@
         ]
       }
     },
+    "slug": "watercress",
     "attributes": {
       "is_edible": true,
       "duration": [],
@@ -10562,6 +10580,7 @@
         ]
       }
     },
+    "slug": "miners-lettuce",
     "attributes": {
       "is_edible": true,
       "duration": [],
@@ -10971,6 +10990,7 @@
         ]
       }
     },
+    "slug": "irish-potato",
     "attributes": {
       "is_edible": true,
       "duration": [],
@@ -11764,6 +11784,7 @@
         ]
       }
     },
+    "slug": "jerusalem-artichoke",
     "attributes": {
       "is_edible": true,
       "duration": [],
@@ -12416,6 +12437,7 @@
         ]
       }
     },
+    "slug": "common-beet",
     "attributes": {
       "is_edible": false,
       "duration": [],
@@ -13010,6 +13032,725 @@
     "searchable": true
   },
   {
+    "t_id": 105974,
+    "metadata": {
+      "common_name": "Wild celery",
+      "scientific_name": "Apium graveolens",
+      "family_common_name": "Carrot family",
+      "images": [
+        "https://bs.floristic.org/image/o/c373a570b61d7607a13d3d35f2cf12bf8768a105"
+      ],
+      "plant_part_images": {
+        "bark": [
+          {
+            "id": 3219963,
+            "image_url": "https://bs.floristic.org/image/o/9b6a50d1e235734fd5f7bae52dd74718a36ba378",
+            "copyright": "Taken Sep 25, 2016 by Pierre Bonnet (cc-by-sa)"
+          },
+          {
+            "id": 3219964,
+            "image_url": "https://bs.floristic.org/image/o/638e5d636976554125469bca972dd334e41e7c51",
+            "copyright": "Taken Sep 25, 2016 by Pierre Bonnet (cc-by-sa)"
+          },
+          {
+            "id": 3219967,
+            "image_url": "https://bs.floristic.org/image/o/c373a570b61d7607a13d3d35f2cf12bf8768a105",
+            "copyright": "Taken May 29, 2019 by Brett Bissell someguy (cc-by-sa)"
+          },
+          {
+            "id": 3544913,
+            "image_url": "https://bs.floristic.org/image/o/8d2755c34fc6d10f46dde9a382f09752617ffd12",
+            "copyright": "Taken Sep 25, 2016 by Pierre Bonnet (cc-by-sa)"
+          }
+        ],
+        "habit": [
+          {
+            "id": 3219970,
+            "image_url": "https://bs.floristic.org/image/o/b22f1ead3e25cbb4f7c6b8b1b4447870e4dd9580",
+            "copyright": "Taken Sep 8, 2015 by Tela Botanica − Yoan MARTIN (cc-by-sa)"
+          }
+        ],
+        "": [
+          {
+            "id": 3449857,
+            "image_url": "https://d2seqvvyy3b8p2.cloudfront.net/085c2de34e51bd7239458236ba667573.jpg",
+            "copyright": "© copyright of the Board of Trustees of the Royal Botanic Gardens, Kew."
+          },
+          {
+            "id": 3449856,
+            "image_url": "https://d2seqvvyy3b8p2.cloudfront.net/14896f0f2f91e03c36b219a5189d0e1a.jpg",
+            "copyright": "© copyright of the Board of Trustees of the Royal Botanic Gardens, Kew."
+          }
+        ],
+        "flower": [
+          {
+            "id": 3541037,
+            "image_url": "https://bs.floristic.org/image/o/61eac852bf240139214455c3ae1be459126706d1",
+            "copyright": "Taken Aug 23, 2014 by Tela Botanica − Henri SCORDIA (cc-by-sa)"
+          }
+        ]
+      }
+    },
+    "slug": "wild-celery",
+    "attributes": {
+      "is_edible": true,
+      "duration": [],
+      "plant_type": "vegetable"
+    },
+    "distribution": {
+      "native": [
+        "Afghanistan",
+        "Albania",
+        "Algeria",
+        "Austria",
+        "Azores",
+        "Baleares",
+        "Belgium",
+        "Bulgaria",
+        "Canary Is.",
+        "Corse",
+        "Cyprus",
+        "Denmark",
+        "France",
+        "Germany",
+        "Great Britain",
+        "Greece",
+        "Gulf States",
+        "Iran",
+        "Iraq",
+        "Ireland",
+        "Italy",
+        "Kazakhstan",
+        "Kriti",
+        "Krym",
+        "Lebanon-Syria",
+        "Libya",
+        "Madeira",
+        "Morocco",
+        "Netherlands",
+        "North Caucasus",
+        "Oman",
+        "Pakistan",
+        "Palestine",
+        "Poland",
+        "Portugal",
+        "Romania",
+        "Sardegna",
+        "Saudi Arabia",
+        "Sicilia",
+        "South European Russi",
+        "Spain",
+        "Tadzhikistan",
+        "Transcaucasus",
+        "Tunisia",
+        "Turkey",
+        "Turkey-in-Europe",
+        "Turkmenistan",
+        "Ukraine",
+        "Uzbekistan",
+        "West Himalaya",
+        "Yemen",
+        "Yugoslavia"
+      ],
+      "introduced": [
+        "Amsterdam-St.Paul Is",
+        "Argentina Northeast",
+        "Argentina Northwest",
+        "Argentina South",
+        "Bangladesh",
+        "Bermuda",
+        "Botswana",
+        "Brazil South",
+        "Buryatiya",
+        "Cameroon",
+        "Cape Provinces",
+        "Cape Verde",
+        "Central European Rus",
+        "Chatham Is.",
+        "Chile North",
+        "Chile South",
+        "China North-Central",
+        "China South-Central",
+        "China Southeast",
+        "Cuba",
+        "Czechoslovakia",
+        "Dominican Republic",
+        "East Aegean Is.",
+        "East Himalaya",
+        "Ecuador",
+        "Egypt",
+        "Eritrea",
+        "Ethiopia",
+        "Finland",
+        "Free State",
+        "Guatemala",
+        "Hainan",
+        "Haiti",
+        "Hungary",
+        "India",
+        "Juan Fernández Is.",
+        "Kirgizstan",
+        "KwaZulu-Natal",
+        "Lesotho",
+        "Mexico Northwest",
+        "Mongolia",
+        "Mozambique",
+        "Myanmar",
+        "Namibia",
+        "New Mexico",
+        "New York",
+        "New Zealand North",
+        "New Zealand South",
+        "Norfolk Is.",
+        "Northern Provinces",
+        "Norway",
+        "Peru",
+        "Puerto Rico",
+        "Réunion",
+        "Sinai",
+        "Socotra",
+        "St.Helena",
+        "Sweden",
+        "Switzerland",
+        "Taiwan",
+        "Thailand",
+        "Trinidad-Tobago",
+        "Vietnam"
+      ]
+    },
+    "dictionary": {
+      "common_names": {
+        "en": [
+          "Celery",
+          "Wild celery",
+          "Carrot",
+          "Celeriac",
+          "Turnip-rooted celery",
+          "Marsh parsley",
+          "Smallage",
+          "Garden Celery"
+        ],
+        "af": [
+          "Seldery"
+        ],
+        "sq": [
+          "Selinoja"
+        ],
+        "am": [
+          "ሰለሪ"
+        ],
+        "ar": [
+          "Krafis",
+          "بط (بَطّ)",
+          "قرابيص (قَرابيص)",
+          "كرابيص",
+          "كرفس (كَرفس)",
+          "كرفس",
+          "Karafs",
+          "Karfas",
+          "كَرَفْس",
+          "كَرْفَس"
+        ],
+        "az": [
+          "İyli kərəviz"
+        ],
+        "ba": [
+          "Сельдерей"
+        ],
+        "eu": [
+          "Apio"
+        ],
+        "be": [
+          "Сельдэрэй"
+        ],
+        "bn": [
+          "পাথুনি শাক"
+        ],
+        "bs": [
+          "Celer"
+        ],
+        "br": [
+          "Ach"
+        ],
+        "bg": [
+          "Целина"
+        ],
+        "my": [
+          "တရုတ်နံနံပင်"
+        ],
+        "ca": [
+          "Api",
+          "Api bord de montanya"
+        ],
+        "zh": [
+          "Han qin",
+          "Qin cai"
+        ],
+        "hr": [
+          "Celer"
+        ],
+        "cs": [
+          "Miřík celer",
+          "Zeler voňavý"
+        ],
+        "da": [
+          "Bladselleri",
+          "Vild selleri",
+          "Bitter Bakkestjerna",
+          "Fligbladet Tidselkugle",
+          "Smalstråle"
+        ],
+        "nl": [
+          "Selderij"
+        ],
+        "eo": [
+          "Celerio"
+        ],
+        "et": [
+          "Aedseller"
+        ],
+        "fi": [
+          "Selleri",
+          "(ruoka)selleri",
+          "Karvaskallioinen",
+          "Sädekallioinen",
+          "Valkopallo-ohdake"
+        ],
+        "fr": [
+          "Céleri",
+          "Cèleri",
+          "Céleri à côtes",
+          "Céleri à côte",
+          "Ache",
+          "Ache odorante",
+          "Ache puante",
+          "Céleri-branche",
+          "Persil cultivé"
+        ],
+        "gl": [
+          "Apio"
+        ],
+        "ka": [
+          "ნიახური",
+          "Ნიახური"
+        ],
+        "de": [
+          "Sellerie",
+          "Echte Sellerie",
+          "Echter Sellerie",
+          "Wilder Sellerie",
+          "Knollensellerie",
+          "Eppich"
+        ],
+        "el": [
+          "Σέλινο"
+        ],
+        "ht": [
+          "Sèlri"
+        ],
+        "he": [
+          "סלרי",
+          "כרפס ריחני"
+        ],
+        "hi": [
+          "Shalari"
+        ],
+        "hu": [
+          "Zeller"
+        ],
+        "is": [
+          "Seljurót",
+          "Blaðselja"
+        ],
+        "io": [
+          "Celerio"
+        ],
+        "id": [
+          "Seledri"
+        ],
+        "ga": [
+          "Soilire"
+        ],
+        "it": [
+          "Sedano",
+          "Sedano comune"
+        ],
+        "ja": [
+          "Oranda-mitsuba",
+          "セロリ"
+        ],
+        "jv": [
+          "Slèdri"
+        ],
+        "kn": [
+          "ಸೆಲರಿ"
+        ],
+        "kk": [
+          "Балдыркөк"
+        ],
+        "lv": [
+          "Selerija"
+        ],
+        "lt": [
+          "Salieras"
+        ],
+        "ms": [
+          "Daun Saderi"
+        ],
+        "gv": [
+          "Smullish"
+        ],
+        "mr": [
+          "अजमोदा"
+        ],
+        "nv": [
+          "Hazaʼaleehtsoh"
+        ],
+        "no": [
+          "Selleri",
+          "Bakkestjerna",
+          "Kuletistel",
+          "Trådstjerne"
+        ],
+        "nb": [
+          "Hageselleri",
+          "Selleri"
+        ],
+        "nn": [
+          "Hageselleri"
+        ],
+        "oc": [
+          "Api"
+        ],
+        "os": [
+          "Маламар"
+        ],
+        "fa": [
+          "کرفس"
+        ],
+        "pl": [
+          "Selery zwyczajne"
+        ],
+        "pt": [
+          "Aipo",
+          "Aipo; aipo d'água; aipo dos pântanos",
+          "Salsão"
+        ],
+        "qu": [
+          "Apiyu"
+        ],
+        "ro": [
+          "Țelină"
+        ],
+        "ru": [
+          "Sel'dereĭ",
+          "Сельдерей"
+        ],
+        "sa": [
+          "कुस्तुम्बरीपर्णम्"
+        ],
+        "sc": [
+          "Appiu"
+        ],
+        "gd": [
+          "Smaileog"
+        ],
+        "sr": [
+          "Целер"
+        ],
+        "sk": [
+          "Zeler voňavý"
+        ],
+        "sl": [
+          "Navadna zelena"
+        ],
+        "es": [
+          "Apio",
+          "Huaillahuaikea"
+        ],
+        "su": [
+          "Salédri"
+        ],
+        "sv": [
+          "Selleri",
+          "Serlleri",
+          "(ruoka)selleri",
+          "Bolltistel",
+          "Grå bolltistel",
+          "Gråbinka",
+          "Sommarbinka"
+        ],
+        "tl": [
+          "Apyo"
+        ],
+        "tg": [
+          "Карафс"
+        ],
+        "ta": [
+          "சிவரிக்கீரை"
+        ],
+        "th": [
+          "ขึ้นฉ่าย"
+        ],
+        "bo": [
+          "ལྕ་ཚལ།"
+        ],
+        "tr": [
+          "Kereviz"
+        ],
+        "uk": [
+          "Селера"
+        ],
+        "vi": [
+          "Cần tây"
+        ],
+        "wa": [
+          "Celeri"
+        ],
+        "cy": [
+          "Seleri gwyllt",
+          "Seleri"
+        ],
+        "yi": [
+          "סעלערי"
+        ],
+        "za": [
+          "Ginzcaiq"
+        ],
+        "fra": [
+          "ache des marais",
+          "ache odorante",
+          "céleri",
+          "céleri à côtes",
+          "céleri à côte"
+        ],
+        "swe": [
+          "(ruoka)selleri",
+          "bolltistel",
+          "grå bolltistel",
+          "gråbinka",
+          "sommarbinka",
+          "selleri"
+        ],
+        "fin": [
+          "(ruoka)selleri",
+          "karvaskallioinen",
+          "sädekallioinen",
+          "valkopallo-ohdake"
+        ],
+        "por": [
+          "aipo",
+          "aipo-d'água",
+          "aipo-dos-pântanos",
+          "salsão"
+        ],
+        "nor": [
+          "bakkestjerna",
+          "kuletistel",
+          "trådstjerne",
+          "malm-rot",
+          "vandmerke",
+          "vild celeri"
+        ],
+        "dan": [
+          "bitter bakkestjerna",
+          "fligbladet tidselkugle",
+          "smalstråle",
+          "vild selleri"
+        ],
+        "deu": [
+          "echter sellerie",
+          "sellerie",
+          "wilder sellerie"
+        ],
+        "eng": [
+          "wild celery",
+          "celery"
+        ],
+        "est": [
+          "aedseller"
+        ],
+        "spa": [
+          "apio"
+        ],
+        "nob": [
+          "hageselleri"
+        ],
+        "nno": [
+          "hageselleri"
+        ],
+        "ces": [
+          "miřík celer",
+          "zeler voňavý"
+        ],
+        "ita": [
+          "sedano"
+        ],
+        "nld": [
+          "selderij"
+        ],
+        "cym": [
+          "seleri gwyllt"
+        ],
+        "gla": [
+          "smaileog"
+        ],
+        "kat": [
+          "ნიახური"
+        ]
+      },
+      "available_locales": [
+        "en",
+        "af",
+        "sq",
+        "am",
+        "ar",
+        "az",
+        "ba",
+        "eu",
+        "be",
+        "bn",
+        "bs",
+        "br",
+        "bg",
+        "my",
+        "ca",
+        "zh",
+        "hr",
+        "cs",
+        "da",
+        "nl",
+        "eo",
+        "et",
+        "fi",
+        "fr",
+        "gl",
+        "ka",
+        "de",
+        "el",
+        "ht",
+        "he",
+        "hi",
+        "hu",
+        "is",
+        "io",
+        "id",
+        "ga",
+        "it",
+        "ja",
+        "jv",
+        "kn",
+        "kk",
+        "lv",
+        "lt",
+        "ms",
+        "gv",
+        "mr",
+        "nv",
+        "no",
+        "nb",
+        "nn",
+        "oc",
+        "os",
+        "fa",
+        "pl",
+        "pt",
+        "qu",
+        "ro",
+        "ru",
+        "sa",
+        "sc",
+        "gd",
+        "sr",
+        "sk",
+        "sl",
+        "es",
+        "su",
+        "sv",
+        "tl",
+        "tg",
+        "ta",
+        "th",
+        "bo",
+        "tr",
+        "uk",
+        "vi",
+        "wa",
+        "cy",
+        "yi",
+        "za",
+        "fra",
+        "swe",
+        "fin",
+        "por",
+        "nor",
+        "dan",
+        "deu",
+        "eng",
+        "est",
+        "spa",
+        "nob",
+        "nno",
+        "ces",
+        "ita",
+        "nld",
+        "cym",
+        "gla",
+        "kat"
+      ]
+    },
+    "growth": {
+      "humidity": 8,
+      "ph": {
+        "min": 6.5,
+        "max": 7
+      },
+      "light": {
+        "numeric": 7
+      },
+      "soil": {
+        "nutriments": {
+          "numeric": 5
+        },
+        "salinity": {
+          "numeric": 4
+        },
+        "texture": {
+          "numeric": 2
+        }
+      }
+    },
+    "taxonomy": {
+      "genus": "Apium",
+      "family": "Apiaceae",
+      "order": "Apiales",
+      "class": "Magnoliopsida",
+      "division": "Magnoliophyta",
+      "subkingdom": "Tracheobionta",
+      "kingdom": "Plantae"
+    },
+    "wiki": "http://en.wikipedia.org/wiki/Celeriac",
+    "calendar": {
+      "sow": [
+        1,
+        2
+      ],
+      "seed": [
+        3,
+        4
+      ],
+      "harvest": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "flowering": []
+    },
+    "sow_to_harvest_days": 260,
+    "searchable": true
+  },
+  {
     "t_id": 173646,
     "metadata": {
       "common_name": "St. anthony's turnip",
@@ -13210,6 +13951,7 @@
         ]
       }
     },
+    "slug": "st-anthonys-turnip",
     "attributes": {
       "is_edible": false,
       "duration": [],
@@ -13739,6 +14481,7 @@
         ]
       }
     },
+    "slug": "wild-parsnip",
     "attributes": {
       "is_edible": true,
       "duration": [],
@@ -14389,6 +15132,7 @@
         ]
       }
     },
+    "slug": "wild-radish",
     "attributes": {
       "is_edible": false,
       "duration": [],
@@ -15008,6 +15752,7 @@
         ]
       }
     },
+    "slug": "black-salsify",
     "attributes": {
       "is_edible": true,
       "duration": [],
@@ -15285,6 +16030,7 @@
         ]
       }
     },
+    "slug": "australian-carrot",
     "attributes": {
       "is_edible": false,
       "duration": [],
@@ -15443,6 +16189,7 @@
         ]
       }
     },
+    "slug": "cous-biscuitroot",
     "attributes": {
       "is_edible": false,
       "duration": [],
@@ -15690,6 +16437,7 @@
         ]
       }
     },
+    "slug": "mountain-house-leek",
     "attributes": {
       "is_edible": false,
       "duration": [],
@@ -15991,6 +16739,7 @@
         ]
       }
     },
+    "slug": "shallot",
     "attributes": {
       "is_edible": true,
       "duration": [],
@@ -16291,6 +17040,7 @@
         ]
       }
     },
+    "slug": "scallion-grass",
     "attributes": {
       "is_edible": false,
       "duration": [],
@@ -16478,6 +17228,7 @@
         ]
       }
     },
+    "slug": "garlic-mustard",
     "attributes": {
       "is_edible": false,
       "duration": [],
@@ -16942,6 +17693,7 @@
         ]
       }
     },
+    "slug": "shallot",
     "attributes": {
       "is_edible": true,
       "duration": [],
@@ -17283,6 +18035,7 @@
         ]
       }
     },
+    "slug": "welsh-onion",
     "attributes": {
       "is_edible": true,
       "duration": [],
@@ -17679,6 +18432,7 @@
         ]
       }
     },
+    "slug": "tapertip-onion",
     "attributes": {
       "is_edible": false,
       "duration": [],
@@ -18290,6 +19044,7 @@
         ]
       }
     },
+    "slug": "wild-garlic",
     "attributes": {
       "is_edible": false,
       "duration": [],
@@ -18739,6 +19494,7 @@
         ]
       }
     },
+    "slug": "sea-kale",
     "attributes": {
       "is_edible": true,
       "duration": [],
@@ -19094,6 +19850,7 @@
         ]
       }
     },
+    "slug": "mustard",
     "attributes": {
       "is_edible": false,
       "duration": [],
@@ -19197,6 +19954,7 @@
       "family_common_name": "Mustard family",
       "plant_part_images": {}
     },
+    "slug": "ruvo-kale",
     "attributes": {
       "is_edible": false,
       "duration": [],
@@ -19310,6 +20068,7 @@
         ]
       }
     },
+    "slug": "field-mustard",
     "attributes": {
       "is_edible": true,
       "duration": [],
@@ -19904,6 +20663,7 @@
         ]
       }
     },
+    "slug": "cabbage",
     "attributes": {
       "is_edible": true,
       "duration": [],
@@ -20278,6 +21038,7 @@
         ]
       }
     },
+    "slug": "cabbage",
     "attributes": {
       "is_edible": true,
       "duration": [],
@@ -20777,6 +21538,7 @@
         ]
       }
     },
+    "slug": "annual-bastardcabbage",
     "attributes": {
       "is_edible": false,
       "duration": [],
@@ -21136,6 +21898,7 @@
         ]
       }
     },
+    "slug": "cabbage",
     "attributes": {
       "is_edible": true,
       "duration": [],
@@ -21481,6 +22244,7 @@
         ]
       }
     },
+    "slug": "field-mustard",
     "attributes": {
       "is_edible": true,
       "duration": [],
@@ -22064,6 +22828,7 @@
         ]
       }
     },
+    "slug": "cabbage",
     "attributes": {
       "is_edible": true,
       "duration": [],
@@ -22578,6 +23343,7 @@
         ]
       }
     },
+    "slug": "asparagus-pea",
     "attributes": {
       "is_edible": false,
       "duration": [],
@@ -22974,6 +23740,7 @@
         ]
       }
     },
+    "slug": "garden-pea",
     "attributes": {
       "is_edible": true,
       "duration": [],
@@ -23661,6 +24428,7 @@
         ]
       }
     },
+    "slug": "garden-pea",
     "attributes": {
       "is_edible": true,
       "duration": [],
@@ -24242,6 +25010,7 @@
         ]
       }
     },
+    "slug": "snowpeaks-raspberry",
     "attributes": {
       "is_edible": false,
       "duration": [],
@@ -24560,6 +25329,7 @@
         ]
       }
     },
+    "slug": "scarlet-runner",
     "attributes": {
       "is_edible": true,
       "duration": [],
@@ -25147,6 +25917,7 @@
         ]
       }
     },
+    "slug": "kidney-bean",
     "attributes": {
       "is_edible": true,
       "duration": [],
@@ -26054,6 +26825,7 @@
         ]
       }
     },
+    "slug": "kidney-bean",
     "attributes": {
       "is_edible": true,
       "duration": [],
@@ -26956,6 +27728,7 @@
         ]
       }
     },
+    "slug": "kidney-bean",
     "attributes": {
       "is_edible": true,
       "duration": [],
@@ -27860,6 +28633,7 @@
         ]
       }
     },
+    "slug": "kidney-bean",
     "attributes": {
       "is_edible": true,
       "duration": [],
@@ -28734,6 +29508,7 @@
         ]
       }
     },
+    "slug": "scarlet-runner",
     "attributes": {
       "is_edible": true,
       "duration": [],
@@ -29323,6 +30098,7 @@
         ]
       }
     },
+    "slug": "kidney-bean",
     "attributes": {
       "is_edible": true,
       "duration": [],
@@ -30242,6 +31018,7 @@
         ]
       }
     },
+    "slug": "fava-bean",
     "attributes": {
       "is_edible": true,
       "duration": [],
@@ -30698,6 +31475,7 @@
         ]
       }
     },
+    "slug": "wild-celery",
     "attributes": {
       "is_edible": true,
       "duration": [],
@@ -31457,6 +32235,7 @@
         ]
       }
     },
+    "slug": "chicory",
     "attributes": {
       "is_edible": true,
       "duration": [],
@@ -32218,83 +32997,160 @@
     "searchable": true
   },
   {
-    "t_id": 188201,
+    "t_id": 242641,
     "metadata": {
-      "common_name": "Umbrella milkwort",
-      "scientific_name": "Tolpis umbellata",
+      "common_name": "Cretan hedypnois",
+      "scientific_name": "Hedypnois rhagadioloides",
       "family_common_name": "Aster family",
       "images": [
-        "https://bs.floristic.org/image/o/a86d88490033778fee6a677d98f7b4b64cec2b40"
+        "https://bs.floristic.org/image/o/563b4beea975aecc8e7eff9bc8d739d8eca09064"
       ],
       "plant_part_images": {
         "flower": [
           {
-            "id": 3387292,
-            "image_url": "https://bs.floristic.org/image/o/cc68abf40e5de515af53443e4c04d701ee1451c2",
-            "copyright": "Taken Jun 22, 2015 by Tela Botanica − Liliane ROUBAUDI (cc-by-sa)"
+            "id": 3316765,
+            "image_url": "https://bs.floristic.org/image/o/74a21095d7983c201a662f4816fe2f0073a89e89",
+            "copyright": "Taken Mar 28, 2016 by Tela Botanica − Genevieve BOTTI (cc-by-sa)"
           },
           {
-            "id": 3387293,
-            "image_url": "https://bs.floristic.org/image/o/e64a773cbc0e8b70fee00b0559031bf51d8dd165",
-            "copyright": "Taken Jun 22, 2015 by Tela Botanica − Liliane ROUBAUDI (cc-by-sa)"
+            "id": 3316766,
+            "image_url": "https://bs.floristic.org/image/o/f3042978798040cb2fafda2c9cecb5f02d6b7024",
+            "copyright": "Taken May 12, 2017 by Tela Botanica − Genevieve BOTTI (cc-by-sa)"
           },
           {
-            "id": 3387294,
-            "image_url": "https://bs.floristic.org/image/o/f577ad307c60b060eefb0a5b846286043d940fda",
-            "copyright": "Taken Jun 22, 2015 by Tela Botanica − Liliane ROUBAUDI (cc-by-sa)"
+            "id": 3316767,
+            "image_url": "https://bs.floristic.org/image/o/47f1d6fd3c157d34cbe06ec9f27bde7a9e763448",
+            "copyright": "Taken Apr 30, 2013 by Tela Botanica − Marie PORTAS (cc-by-sa)"
           },
           {
-            "id": 3387295,
-            "image_url": "https://bs.floristic.org/image/o/396e520032df5e18276d13f895eefbfc392fc365",
-            "copyright": "Taken Jun 22, 2015 by Tela Botanica − Liliane ROUBAUDI (cc-by-sa)"
+            "id": 3316768,
+            "image_url": "https://bs.floristic.org/image/o/50861949ac31e41fe979072a9eb17dd6361b9aab",
+            "copyright": "Taken May 23, 2019 by Philippe Pellicier (cc-by-sa)"
           },
           {
-            "id": 3387296,
-            "image_url": "https://bs.floristic.org/image/o/4ca114744583a119abaaeeb12a7e0a82ae690e95",
-            "copyright": "Taken Jun 22, 2015 by Tela Botanica − Liliane ROUBAUDI (cc-by-sa)"
-          }
-        ],
-        "habit": [
-          {
-            "id": 3387297,
-            "image_url": "https://bs.floristic.org/image/o/9014dab6e382ff076284822ff25571e11725d10f",
-            "copyright": "Taken Jun 22, 2015 by Tela Botanica − Liliane ROUBAUDI (cc-by-sa)"
-          },
-          {
-            "id": 3387298,
-            "image_url": "https://bs.floristic.org/image/o/49cbfa27c30817049eab7ee1ef8fea79734b5d5d",
-            "copyright": "Taken Mar 2, 2015 by Tela Botanica − Errol Vela (cc-by-sa)"
-          },
-          {
-            "id": 3387299,
-            "image_url": "https://bs.floristic.org/image/o/0cf866ec04d25eee1edf661a65e12d30090fd309",
-            "copyright": "Taken Jun 22, 2015 by Tela Botanica − Liliane ROUBAUDI (cc-by-sa)"
-          },
-          {
-            "id": 3387300,
-            "image_url": "https://bs.floristic.org/image/o/a86d88490033778fee6a677d98f7b4b64cec2b40",
-            "copyright": "Taken Mar 2, 2015 by Tela Botanica − Errol Vela (cc-by-sa)"
+            "id": 3316769,
+            "image_url": "https://bs.floristic.org/image/o/dcf0c00fd1a8270871eb05a06795d3c5d808e899",
+            "copyright": "Taken Aug 24, 2018 by Jean-Michel Faton (cc-by-sa)"
           }
         ],
         "leaf": [
           {
-            "id": 3387301,
-            "image_url": "https://bs.floristic.org/image/o/d72388eb3239d4ad13874670791dc6da9c5f9f42",
-            "copyright": "Taken Jun 22, 2015 by Tela Botanica − Liliane ROUBAUDI (cc-by-sa)"
+            "id": 3316771,
+            "image_url": "https://bs.floristic.org/image/o/c4a002020a936ff84b8e7ae55a41c3d8269192a0",
+            "copyright": "Taken May 17, 2020 by Fàbregas Enric (cc-by-sa)"
           },
           {
-            "id": 3387302,
-            "image_url": "https://bs.floristic.org/image/o/1d559866fd1526f62127f6e0dae168d9ad0c1fe1",
-            "copyright": "Taken Jun 22, 2015 by Tela Botanica − Liliane ROUBAUDI (cc-by-sa)"
+            "id": 3316772,
+            "image_url": "https://bs.floristic.org/image/o/1b7c7839b280e68a039d6254aff427deed6a5294",
+            "copyright": "Taken Jun 23, 2018 by Daan Tijm (cc-by-sa)"
           },
           {
-            "id": 3387303,
-            "image_url": "https://bs.floristic.org/image/o/153118465febeafd2fefeb5b3a6b1fb2d3b09073",
-            "copyright": "Taken Jun 22, 2015 by Tela Botanica − Liliane ROUBAUDI (cc-by-sa)"
+            "id": 3316773,
+            "image_url": "https://bs.floristic.org/image/o/c71dd9d1c477f37adf94d5e00fa927c17522c1b6",
+            "copyright": "Taken May 24, 2020 by Hope (cc-by-sa)"
+          },
+          {
+            "id": 3316774,
+            "image_url": "https://bs.floristic.org/image/o/c50f115f80faf1e856a74d48bef10b911eca1426",
+            "copyright": "Taken Apr 28, 2020 by Lilian Car (cc-by-sa)"
+          },
+          {
+            "id": 3316775,
+            "image_url": "https://bs.floristic.org/image/o/36662ba66e342dc89b78eead298103adacab7cbe",
+            "copyright": "Taken Aug 24, 2018 by Jean-Michel Faton (cc-by-sa)"
+          }
+        ],
+        "habit": [
+          {
+            "id": 3316776,
+            "image_url": "https://bs.floristic.org/image/o/f37bc8d23b92c98fa70914fd668a66a8c3290b15",
+            "copyright": "Taken Mar 28, 2016 by Tela Botanica − Genevieve BOTTI (cc-by-sa)"
+          },
+          {
+            "id": 3316777,
+            "image_url": "https://bs.floristic.org/image/o/330a1335df7d4c099dc16f4812358b9c32485252",
+            "copyright": "Taken Dec 8, 2012 by Tela Botanica − Hugues TINGUY (cc-by-sa)"
+          },
+          {
+            "id": 3316778,
+            "image_url": "https://bs.floristic.org/image/o/98382894119dbc6997ba83f6d5bfc1893a5f8b58",
+            "copyright": "Taken Apr 30, 2013 by Tela Botanica − Marie PORTAS (cc-by-sa)"
+          },
+          {
+            "id": 3316779,
+            "image_url": "https://bs.floristic.org/image/o/e4c53ffb05e599221c558b8ca6530e272d1dd87c",
+            "copyright": "Taken May 22, 2013 by Tela Botanica − Genevieve BOTTI (cc-by-sa)"
+          },
+          {
+            "id": 3316780,
+            "image_url": "https://bs.floristic.org/image/o/563b4beea975aecc8e7eff9bc8d739d8eca09064",
+            "copyright": "Taken Mar 2, 2015 by Tela Botanica − Errol Vela (cc-by-sa)"
+          },
+          {
+            "id": 3566110,
+            "image_url": "https://bs.floristic.org/image/o/c7afa178575e1603a59edba4e6d0ba9dfb4c5dfc",
+            "copyright": "Taken Mar 28, 2016 by Tela Botanica − Genevieve BOTTI (cc-by-sa)"
+          }
+        ],
+        "fruit": [
+          {
+            "id": 3316781,
+            "image_url": "https://bs.floristic.org/image/o/50ea07a9a427c8127191f7683b7adda64cdc2e27",
+            "copyright": "Taken May 16, 2020 by joselu_4 (cc-by-sa)"
+          },
+          {
+            "id": 3316782,
+            "image_url": "https://bs.floristic.org/image/o/c1de382e94d3c2fd22d2b5ac4a79c0dfbebe4409",
+            "copyright": "Taken Jun 4, 2020 by Stéphane Mars (cc-by-sa)"
+          },
+          {
+            "id": 3316783,
+            "image_url": "https://bs.floristic.org/image/o/9f3483160ea8c362365d32de8cefc824a385273b",
+            "copyright": "Taken Jun 23, 2018 by Daan Tijm (cc-by-sa)"
+          },
+          {
+            "id": 3316784,
+            "image_url": "https://bs.floristic.org/image/o/1d74430a4fc5b98ad5608be88b1ef22068d40996",
+            "copyright": "Taken Apr 30, 2020 by David Delon (cc-by-sa)"
+          },
+          {
+            "id": 3316785,
+            "image_url": "https://bs.floristic.org/image/o/bf483d41ba367cb792412c13d59886db90f0c36f",
+            "copyright": "Taken Jun 16, 2012 by Tela Botanica − Bertrand BUI (cc-by-sa)"
+          }
+        ],
+        "other": [
+          {
+            "id": 3316786,
+            "image_url": "https://bs.floristic.org/image/o/135c1ff39ed4e7430f8cb794d688b527ee9d4f62",
+            "copyright": "Taken Jun 16, 2012 by Tela Botanica − Bertrand BUI (cc-by-sa)"
+          },
+          {
+            "id": 3316787,
+            "image_url": "https://bs.floristic.org/image/o/d8ce90b313ceb890a918542123452cf5c7120976",
+            "copyright": "Taken Jun 16, 2012 by Tela Botanica − Bertrand BUI (cc-by-sa)"
+          },
+          {
+            "id": 3316788,
+            "image_url": "https://bs.floristic.org/image/o/1b5681a6db5bc3081e18beacb680d222b9b1066a",
+            "copyright": "Taken Jun 16, 2012 by Tela Botanica − Bertrand BUI (cc-by-sa)"
+          }
+        ],
+        "": [
+          {
+            "id": 3566109,
+            "image_url": "https://d2seqvvyy3b8p2.cloudfront.net/41a09668c0570eaaa458ca60d91414e0.jpg",
+            "copyright": "© copyright of the Board of Trustees of the Royal Botanic Gardens, Kew."
+          },
+          {
+            "id": 3566108,
+            "image_url": "https://d2seqvvyy3b8p2.cloudfront.net/590bc9d36fbbd8fe1171596e3bdb758c.jpg",
+            "copyright": "© copyright of the Board of Trustees of the Royal Botanic Gardens, Kew."
           }
         ]
       }
     },
+    "slug": "cretan-hedypnois",
     "attributes": {
       "is_edible": false,
       "duration": [],
@@ -32302,71 +33158,151 @@
     },
     "distribution": {
       "native": [
+        "Albania",
         "Algeria",
         "Baleares",
         "Bulgaria",
         "Canary Is.",
         "Corse",
+        "Cyprus",
         "East Aegean Is.",
+        "Egypt",
         "France",
         "Greece",
+        "Iran",
+        "Iraq",
         "Italy",
         "Kriti",
+        "Krym",
         "Lebanon-Syria",
+        "Libya",
+        "Madeira",
         "Morocco",
+        "North Caucasus",
         "Palestine",
         "Portugal",
         "Sardegna",
+        "Saudi Arabia",
         "Sicilia",
+        "Sinai",
         "Spain",
+        "Transcaucasus",
         "Tunisia",
         "Turkey",
         "Turkey-in-Europe",
         "Yugoslavia"
+      ],
+      "introduced": [
+        "Arizona",
+        "California",
+        "Cape Provinces",
+        "Germany",
+        "Great Britain",
+        "New Mexico",
+        "New South Wales",
+        "Poland",
+        "Queensland",
+        "South Australia",
+        "Texas",
+        "Uruguay",
+        "Western Australia"
       ]
     },
     "dictionary": {
       "common_names": {
         "en": [
-          "Umbrella Milkwort",
-          "Yellow Hawkweed",
-          "Tolpis"
+          "Cretan Hedypnois",
+          "Cretan Weed",
+          "Cretin Weed"
+        ],
+        "sq": [
+          "Hedipnoi kretase"
+        ],
+        "ar": [
+          "سُرَّة الكَبْش",
+          "هَدِبْنُويس كْريت"
+        ],
+        "bg": [
+          "Критски хедипноис"
         ],
         "fr": [
-          "Trépane en ombelle",
-          "Oeil-du-Christ"
+          "Hedypnois faux rhagadiole",
+          "Bonne-nuit-les-petits",
+          "Hédipnoïs de Crète",
+          "Hedypnoïs de Crête",
+          "Hedypnoïs faux rhagadiole",
+          "Hédipnoïs polymorphe"
         ],
-        "de": [
-          "Doldiger Bartpippau"
+        "he": [
+          "שׁוֹפָרִית כְּרֵתִית",
+          "שופרית כרתית"
         ],
         "it": [
-          "Radicchio ombrellaio",
-          "Radicchio ombrellato"
+          "Radicchio pallottolino",
+          "Radicchio tubuloso"
         ],
         "sv": [
-          "Blek skäggfibbla"
+          "Rörfibbla"
         ],
-        "ita": [
-          "radicchio ombrellato"
+        "tr": [
+          "Öküz Otu"
+        ],
+        "fra": [
+          "bonne-nuit-les-petits",
+          "hedypnoïs de crête",
+          "hedypnoïs faux rhagadiole",
+          "hédipnoïs de crète",
+          "hédipnoïs polymorphe"
         ],
         "eng": [
-          "umbrella milkwort",
-          "yellow hawkweed",
-          "tolpis"
+          "cretan hedypnois",
+          "cretan weed",
+          "cretin weed"
+        ],
+        "sqi": [
+          "hedipnoi kretase"
+        ],
+        "ita": [
+          "radicchio pallottolino",
+          "radicchio tubuloso"
         ],
         "swe": [
-          "blek skäggfibbla"
+          "rörfibbla"
+        ],
+        "tur": [
+          "öküz otu"
+        ],
+        "bul": [
+          "критски хедипноис"
+        ],
+        "heb": [
+          "שׁוֹפָרִית כְּרֵתִית",
+          "שופרית כרתית"
+        ],
+        "ara": [
+          "سُرَّة الكَبْش",
+          "هَدِبْنُويس كْريت"
         ]
       },
       "available_locales": [
         "en",
+        "sq",
+        "ar",
+        "bg",
         "fr",
-        "de",
+        "he",
         "it",
         "sv",
-        "ita",
+        "tr",
+        "fra",
         "eng",
-        "swe"
+        "sqi",
+        "ita",
+        "swe",
+        "tur",
+        "bul",
+        "heb",
+        "ara"
       ]
     },
     "growth": {
@@ -32379,7 +33315,7 @@
       }
     },
     "taxonomy": {
-      "genus": "Tolpis",
+      "genus": "Hedypnois",
       "family": "Asteraceae",
       "order": "Asterales",
       "class": "Magnoliopsida",
@@ -32473,6 +33409,7 @@
         ]
       }
     },
+    "slug": "woodland-strawberry",
     "attributes": {
       "is_edible": false,
       "duration": [],
@@ -32945,6 +33882,7 @@
         ]
       }
     },
+    "slug": "fried-egg-plant",
     "attributes": {
       "is_edible": false,
       "duration": [],
@@ -33055,6 +33993,7 @@
         ]
       }
     },
+    "slug": "west-indian-gherkin",
     "attributes": {
       "is_edible": true,
       "duration": [],
@@ -33472,6 +34411,7 @@
         ]
       }
     },
+    "slug": "highbush-blueberry",
     "attributes": {
       "is_edible": false,
       "duration": [],
@@ -33798,6 +34738,7 @@
         ]
       }
     },
+    "slug": "woodland-strawberry",
     "attributes": {
       "is_edible": false,
       "duration": [],
@@ -34466,6 +35407,7 @@
         ]
       }
     },
+    "slug": "american-red-raspberry",
     "attributes": {
       "is_edible": false,
       "duration": [],
@@ -35145,6 +36087,7 @@
         ]
       }
     },
+    "slug": "bitter-bottle-gourd",
     "attributes": {
       "is_edible": true,
       "duration": [],
@@ -35798,6 +36741,7 @@
         ]
       }
     },
+    "slug": "american-red-raspberry",
     "attributes": {
       "is_edible": false,
       "duration": [],
@@ -36348,6 +37292,7 @@
         ]
       }
     },
+    "slug": "garden-cucumber",
     "attributes": {
       "is_edible": true,
       "duration": [],
@@ -36997,6 +37942,7 @@
         ]
       }
     },
+    "slug": "tournefortia-glabra",
     "attributes": {
       "is_edible": false,
       "duration": [],
@@ -37095,6 +38041,7 @@
         ]
       }
     },
+    "slug": "melon-loco",
     "attributes": {
       "is_edible": false,
       "duration": [],
@@ -37170,6 +38117,7 @@
       "family_common_name": "Olive family",
       "plant_part_images": {}
     },
+    "slug": "pumpkin-ash",
     "attributes": {
       "is_edible": false,
       "duration": [],
@@ -37310,6 +38258,7 @@
         ]
       }
     },
+    "slug": "wild-black-pepper",
     "attributes": {
       "is_edible": false,
       "duration": [],
@@ -37576,6 +38525,7 @@
         ]
       }
     },
+    "slug": "corn",
     "attributes": {
       "is_edible": false,
       "duration": [],
