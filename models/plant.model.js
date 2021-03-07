@@ -18,6 +18,13 @@ const PLANT_TYPES = ['fruit', 'vegetable', 'herb', 'flower', 'houseplant'];
 const plantSchema = new mongoose.Schema({
     t_id: { type: String, unique: true }, // trefle id
     slug: { type: String, unique: true }, 
+    wiki: {
+        type: String,
+        validate: {
+            validator: v => !v || isURL(v),
+            message: props => `${props.value} must be a valid url.`
+        },
+    },
     growth: {
         light: { 
             numeric: { type: Number, min: 0, max: 10 }, 
@@ -56,7 +63,7 @@ const plantSchema = new mongoose.Schema({
                 textual: { type: String }, // describes detailed soil humidity
             },
         },
-        days_to_maturity: { type: Number, min: 0 },
+        days_to_maturity: { type: Number, min: -1 },
     },
     climate: {
         hardiness_zones: [{ type: String, enum: Object.keys(HARDINESS_ZONES) }],
@@ -68,6 +75,8 @@ const plantSchema = new mongoose.Schema({
         seed: [{ type: Number, min: 0, max: 11 }],
         harvest: [{ type: Number, min: 0, max: 11 }],
         flowering: [{ type: Number, min: 0, max: 11 }],
+        sow_to_harvest_days: { type: Number, default: -1 },
+        sow_to_germination_days: { type: Number, default: -1 },
     },
     taxonomy: {
         kingdom: { type: String },
@@ -141,9 +150,18 @@ const getCompanions = function(plant, { select_fields = null } = {}) {
     if (!isEmpty(plant.companions)) {
         set(query, '_id.$in', plant.companions);
     } else {
-        const family = get(plant, 'taxonomy.family', get(plant, 'metadata.family_common_name', null));
-        if (!family) return [];
-        query.$or = [{ 'metadata.family_common_name': family }, { 'taxonomy.family': family }];
+        const family = get(
+            plant, 
+            'taxonomy.family', 
+            get(plant, 'metadata.family_common_name', null)
+        );
+        if (!family) {
+            return [];
+        }
+        query.$or = [
+            { 'metadata.family_common_name': family }, 
+            { 'taxonomy.family': family },
+        ];
         query._id.$nin.push(...plant.non_companions);
     }
     let queryBuilder = mongoose.model('Plant').find(query);
@@ -179,7 +197,7 @@ plantSchema.statics.getPlants = async function({
     select_fields = null,
     geo = { lat: null },
     page = 1,
-    limit = 60,
+    limit = 50,
     sort = 'metadata.common_name',
     lean = true,
     extended_query = {},

@@ -10,7 +10,7 @@ const { ensureLoggedIn, ensureAdmin } = require('../../middlewares/jwt');
  */
 router.post('/', async (req, res) => {
     try {
-        const { limit = 60 } = req.query;
+        const { limit = 50 } = req.query;
         const plants = await PlantModel.getPlants(req.body);
         const total_plants = await PlantModel.countDocuments();
         res.setHeader('Content-Range', `posts 0-${limit}/${total_plants}`);

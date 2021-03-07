@@ -30,6 +30,7 @@ const cache = {
 };
 
 const plants_by_type = {
+    fruit: {},
     herb: require('./data/herbs'),
     flower: require('./data/flowers'),
     vegetable: require('./data/vegetables'),
@@ -115,30 +116,15 @@ const createCalendar = async (result, plant_name, plant_type) => {
             set(result, 'climate.frost_sensitive', Number(hardiness_zone.slice(0, -1)) <= 9);
         }
     }
+    result.calendar = result.calendar || {};
     set(result, 'calendar', { sow, seed, harvest, flowering });
     if (isNumber(sow_to_harvest_days)) {
-        result.sow_to_harvest_days = sow_to_harvest_days;
+        result.calendar.sow_to_harvest_days = sow_to_harvest_days;
     }
     if (isNumber(sow_to_germination_days)) {
-        result.sow_to_germination_days = sow_to_germination_days;
+        result.calendar.sow_to_germination_days = sow_to_germination_days;
     }
 };
-
-// const createClimateData = async (result, plant_name, plant_type) => {
-//     if (hardiness_zone) {
-//         if (isNumber(Number(hardiness_zone))) {
-//             set(result, 'climate.hardiness_zones', [`${hardiness_zone}a`, `${hardiness_zone}b`]);
-//             set(result, 'climate.frost_sensitive', Number(hardiness_zone) <= 9);
-//         } else {
-//             set(result, 'climate.hardiness_zones', [hardiness_zone]);
-//             set(result, 'climate.frost_sensitive', Number(hardiness_zone.slice(0, -1)) <= 9);
-//         }
-//     }
-//     if (climate_zones) {
-//         set(result, 'climate.climate_zones', climate_zones);
-//     }
-//     // set(result, 'seasons', {});
-// };
 
 const createSpecies = async (result, plant, plant_type) => {
     const species = await fetchSpeciesByLink(plant.links.self);
@@ -149,7 +135,6 @@ const createSpecies = async (result, plant, plant_type) => {
     
     set(result, 'attributes', {
         is_edible: species.edible,
-        // edible_part: species.edible_part,
         duration: plant.duration || [], // [Annual, Biennial, Perennial]
     });
 
@@ -258,7 +243,7 @@ const buildPlantsByNames = ({
 } = {}) => {
     const plants = (() => {
         if (!plant_type) return plant_names;
-        return [...plant_names, ...keys(plants_by_type[plant_type])];
+        return [...plant_names, ...keys(plants_by_type[plant_type] || {})];
     })();
 
     map(plants, async (plant_name, cbk) => {
@@ -275,7 +260,7 @@ const buildPlantsByNames = ({
             }
             return plant_name;
         })();
-
+console.log(fetch_name)
         try {
             const result = {};
             const plant = await fetchPlantByName(fetch_name);
@@ -345,12 +330,12 @@ const buildPlantsByPage = async ({
     });
 };
 
-function runDatabaseBuildByPlantName(plant_names = [], { 
+const runDatabaseBuildByPlantName = (plant_names = [], { 
     plant_type = null, 
     save_to_db = false, 
     write_files = true,
     searchable = true,
-} = {}) {
+} = {}) => {
     buildPlantsByNames({
         plant_names,
         plant_type,
@@ -364,7 +349,10 @@ function runDatabaseBuildByPlantName(plant_names = [], {
             write_files && writeFile('plants_by_names', _results, true);
             
             if (save_to_db) {
-                mongoose.connect(mongodbServer, { useNewUrlParser: true, useUnifiedTopology: true });
+                mongoose.connect(mongodbServer, { 
+                    useNewUrlParser: true, 
+                    useUnifiedTopology: true,
+                });
                 try {
                     _results.forEach(async plant => {
                         try {
@@ -383,65 +371,265 @@ function runDatabaseBuildByPlantName(plant_names = [], {
     });
 }
 
-// function runPageByPageDatabaseBuild({ save_to_db = false, write_files = true } = {}) {
-//     const failed_by_page = {};
-//     const failed_insertion_by_page = {};
+function runPageByPageDatabaseBuild({ save_to_db = false, write_files = true } = {}) {
+    const failed_by_page = {};
+    const failed_insertion_by_page = {};
 
-//     if (save_to_db) {
-//         mongoose.connect(mongodbServer, { useNewUrlParser: true, useUnifiedTopology: true });
-//     }
+    if (save_to_db) {
+        mongoose.connect(mongodbServer, { 
+            useNewUrlParser: true, 
+            useUnifiedTopology: true,
+        });
+    }
 
-//     buildPlantsByPage({ 
-//         until_page: 2,
-//         async onPageFinished({ results, failed, page }) {
-//             if (write_files && !isEmpty(failed)) {
-//                 failed_by_page[page] = failed;
-//             }
-//             write_files && writeFile(`page_${page}`, results, true);
-//             if (save_to_db) {
-//                 try {
-//                     await PlantModel.insertMany(results);
-//                 } catch(e) {
-//                     write_files && (failed_insertion_by_page[page] = e);
-//                 }
-//             }
-//         },
-//         onLastPage() {
-//             write_files && writeFile('failed_plants', failed_by_page);
-//             save_to_db && writeFile('failed_insersion_plants', failed_insertsion_by_page);
-//             console.info('Finished last page!');
-//         },
-//     });
-// }
+    buildPlantsByPage({ 
+        until_page: 2,
+        async onPageFinished({ results, failed, page }) {
+            if (write_files && !isEmpty(failed)) {
+                failed_by_page[page] = failed;
+            }
+            write_files && writeFile(`page_${page}`, results, true);
+            if (save_to_db) {
+                try {
+                    await PlantModel.insertMany(results);
+                } catch(e) {
+                    write_files && (failed_insertion_by_page[page] = e);
+                }
+            }
+        },
+        onLastPage() {
+            write_files && writeFile('failed_plants', failed_by_page);
+            save_to_db && writeFile('failed_insersion_plants', failed_insertsion_by_page);
+            console.info('Finished last page!');
+        },
+    });
+}
 
-// runDatabaseBuildByPlantName(
-//     [
-//         'tomato',
-//         'potato',
-//         'cucumber', 
-//         'onion', 
-//         'garlic', 
-//         'broccoli', 
-//         'basil', 
-//         'sweet corn', 
-//         'cauliflower', 
-//         'celery',
-//         'Beans',
-//         'Broccoli',
-//         'Cabbage',
-//         'Kale',
-//         'Lettuce',
-//         'mango',
-//     ], 
-//     { 
-//         save_to_db: true,
-//     }
-// );
+runDatabaseBuildByPlantName(
+    [
+        "apple",
+        "apricot",
+        "avocado",
+        "banana",
+        "bell pepper",
+        "bilberry",
+        "blackberry",
+        "blackcurrant",
+        "blood orange",
+        "blueberry",
+        "boysenberry",
+        "breadfruit",
+        "canary melon",
+        "cantaloupe",
+        "cherimoya",
+        "cherry",
+        "chili pepper",
+        "clementine",
+        "cloudberry",
+        "coconut",
+        "cranberry",
+        "cucumber",
+        "currant",
+        "damson",
+        "date",
+        "dragonfruit",
+        "durian",
+        "eggplant",
+        "elderberry",
+        "feijoa",
+        "fig",
+        "goji berry",
+        "gooseberry",
+        "grape",
+        "grapefruit",
+        "guava",
+        "honeydew",
+        "huckleberry",
+        "jackfruit",
+        "jambul",
+        "jujube",
+        "kiwi fruit",
+        "kumquat",
+        "lemon",
+        "lime",
+        "loquat",
+        "lychee",
+        "mandarine",
+        "mango",
+        "mulberry",
+        "nectarine",
+        "nut",
+        "olive",
+        "orange",
+        "pamelo",
+        "papaya",
+        "passionfruit",
+        "peach",
+        "pear",
+        "persimmon",
+        "physalis",
+        "pineapple",
+        "plum",
+        "pomegranate",
+        "pomelo",
+        "purple mangosteen",
+        "quince",
+        "raisin",
+        "rambutan",
+        "raspberry",
+        "redcurrant",
+        "rock melon",
+        "salal berry",
+        "satsuma",
+        "star fruit",
+        "strawberry",
+        "tamarillo",
+        "tangerine",
+        "tomato",
+        "ugli fruit",
+        "watermelon"
+    ], 
+    { 
+        plant_type: 'fruit',
+        save_to_db: true,
+    }
+);
 
-// runPageByPageDatabaseBuild();
+runDatabaseBuildByPlantName(
+    [
+        "acorn squash",
+        "alfalfa sprout",
+        "amaranth",
+        "anise",
+        "artichoke",
+        "arugula",
+        "asparagus",
+        "aubergine",
+        "azuki bean",
+        "banana squash",
+        "basil",
+        "bean sprout",
+        "beet",
+        "black bean",
+        "black-eyed pea",
+        "bok choy",
+        "borlotti bean",
+        "broad beans",
+        "broccoflower",
+        "broccoli",
+        "brussels sprout",
+        "butternut squash",
+        "cabbage",
+        "calabrese",
+        "caraway",
+        "carrot",
+        "cauliflower",
+        "cayenne pepper",
+        "celeriac",
+        "celery",
+        "chamomile",
+        "chard",
+        "chayote",
+        "chickpea",
+        "chives",
+        "cilantro",
+        "collard green",
+        "corn",
+        "corn salad",
+        "courgette",
+        "cucumber",
+        "daikon",
+        "delicata",
+        "dill",
+        "eggplant",
+        "endive",
+        "fennel",
+        "fiddlehead",
+        "frisee",
+        "garlic",
+        "gem squash",
+        "ginger",
+        "green bean",
+        "green pepper",
+        "habanero",
+        "herbs and spice",
+        "horseradish",
+        "hubbard squash",
+        "jalapeno",
+        "jerusalem artichoke",
+        "jicama",
+        "kale",
+        "kidney bean",
+        "kohlrabi",
+        "lavender",
+        "leek ",
+        "legume",
+        "lemon grass",
+        "lentils",
+        "lettuce",
+        "lima bean",
+        "mamey",
+        "mangetout",
+        "marjoram",
+        "mung bean",
+        "mushroom",
+        "mustard green",
+        "navy bean",
+        "new zealand spinach",
+        "nopale",
+        "okra",
+        "onion",
+        "oregano",
+        "paprika",
+        "parsley",
+        "parsnip",
+        "patty pan",
+        "pea",
+        "pinto bean",
+        "potato",
+        "pumpkin",
+        "radicchio",
+        "radish",
+        "rhubarb",
+        "rosemary",
+        "runner bean",
+        "rutabaga",
+        "sage",
+        "scallion",
+        "shallot",
+        "skirret",
+        "snap pea",
+        "soy bean",
+        "spaghetti squash",
+        "spinach",
+        "squash",
+        "sweet potato",
+        "tabasco pepper",
+        "taro",
+        "tat soi",
+        "thyme",
+        "topinambur",
+        "tubers",
+        "turnip",
+        "wasabi",
+        "water chestnut",
+        "watercress",
+        "white radish",
+        "yam",
+        "zucchini"
+    ], 
+    { 
+        plant_type: 'vegetable',
+        save_to_db: true,
+    }
+);
 
 function buildHerbsDatabase() {
     runDatabaseBuildByPlantName([], { plant_type: 'herb', save_to_db: true });
+}
+
+function buildFruitDatabase() {
+    runDatabaseBuildByPlantName([], { plant_type: 'fruit', save_to_db: true });
 }
 
 function buildFlowersDatabase() {
@@ -454,8 +642,7 @@ function buildVegetablesDatabase() {
 
 function buildDatabase() {
     // buildHerbsDatabase();
+    buildFruitDatabase();
     // buildFlowersDatabase();
-    buildVegetablesDatabase();
+    // buildVegetablesDatabase();
 }
-
-buildDatabase();
