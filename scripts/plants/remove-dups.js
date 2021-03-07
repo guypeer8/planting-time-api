@@ -1,8 +1,9 @@
 require('dotenv').config();
 
-const map = require('map-series');
+const keys = require('lodash/keys');
+const tail = require('lodash/tail');
 const mongoose = require('mongoose');
-const kebabCase = require('lodash/kebabCase');
+const groupBy = require('lodash/groupBy');
  
 const { mongodbServer } = require('../../config');
 const PlantModel = require('../../models/plant.model');
@@ -19,21 +20,18 @@ mongoose.connect(mongodbServer, {
             limit: plants_count,
             withCompanions: false,
             select_fields: ['metadata.common_name'],
+            extended_query: { 'metadata.common_name': { $ne: '', $exists: true } },
         });
 
-        const errors = [];
-        map(plants, async (plant, cbk) => {
-            const { _id, metadata } = plant;
-            try {
-                const slug = kebabCase(metadata.common_name || metadata.scientific_name);
-                await PlantModel.updateOne({ _id }, { $set: { slug } });
-            } catch(e) {
-                errors.push({ _id, name: metadata.common_name, e });
+        const dups = [];
+        const grouped_plants = groupBy(plants, 'metadata.common_name');
+        keys(grouped_plants).forEach(plant_name => {
+            if (grouped_plants[plant_name].length > 1) {
+                dups.push(...tail(grouped_plants[plant_name].map(x => x._id)));
             }
-            cbk();
-        }, () => {
-            console.log(errors);
         });
+        await PlantModel.deleteMany({ _id: { $in: dups } });
+        cbk();
     } catch(e) {
         console.warn(e);
     }
