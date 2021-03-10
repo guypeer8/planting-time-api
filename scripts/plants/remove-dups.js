@@ -13,26 +13,25 @@ mongoose.connect(mongodbServer, {
     useUnifiedTopology: true,
 });
  
-(async () => {
+(async key => {
     try {
         const plants_count = await PlantModel.countDocuments();
         const plants = await PlantModel.getPlants({
             limit: plants_count,
             withCompanions: false,
-            select_fields: ['metadata.common_name'],
+            select_fields: [key],
             extended_query: { 'metadata.common_name': { $ne: '', $exists: true } },
         });
 
         const dups = [];
-        const grouped_plants = groupBy(plants, 'metadata.common_name');
-        keys(grouped_plants).forEach(plant_name => {
-            if (grouped_plants[plant_name].length > 1) {
-                dups.push(...tail(grouped_plants[plant_name].map(x => x._id)));
+        const grouped_plants = groupBy(plants, key);
+        keys(grouped_plants).forEach(plant_key => {
+            if (grouped_plants[plant_key].length > 1) {
+                dups.push(...tail(grouped_plants[plant_key].map(x => x._id)));
             }
         });
         await PlantModel.deleteMany({ _id: { $in: dups } });
-        cbk();
     } catch(e) {
         console.warn(e);
     }
-})();
+})('t_id');

@@ -202,7 +202,11 @@ plantSchema.statics.getPlants = async function({
     lean = true,
     extended_query = {},
 } = {}) {
-    const query = { searchable, ...extended_query };
+    const query = { 
+        searchable, 
+        'metadata.common_name': { $ne: null, $exists: true }, 
+        ...extended_query,
+    };
     if (id) { 
         query._id = id;
     }
