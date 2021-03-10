@@ -6,6 +6,7 @@ const router = require('express').Router();
 
 const jwt = require('../../utils/jwt');
 const User = require('../../../models/user.model');
+const Garden = require('../../../models/garden.model');
 const { ensureLoggedOut } = require('../../middlewares/jwt');
 const { frontendRoute, PROVIDERS } = require('../../../config');
 
@@ -54,6 +55,7 @@ router.post('/local/login', ensureLoggedOut, async (req, res) => {
     try {
       const { email, password } = req.body;
       const user = await User.findOne({ email, provider });
+      const garden = await Garden.findOne({ name: 'default', user: user._id });
   
       if (!user) {
         return res.json({ status: 'error', message: 'Email does not exist' });
@@ -64,7 +66,7 @@ router.post('/local/login', ensureLoggedOut, async (req, res) => {
         return res.json({ status: 'error', message: 'Wrong password entered' });
       }
   
-      const _user = { ...user._doc, ott: uuidv4() };
+      const _user = { ...user._doc, ott: uuidv4(), gardenId: garden._id };
       const token = await jwt.sign(_user, user._doc);
 
       res.json({ status: 'success', payload: { token } });
@@ -86,7 +88,10 @@ router.post('/local/signup', ensureLoggedOut, async (req, res) => {
         const user = new User({ name, email, password });
         const userSaved = await user.save();
 
-        const _user = { ...userSaved._doc, ott: uuidv4() };
+        const garden = new Garden({ user: userSaved._id });
+        const gardenSaved = await garden.save();
+        
+        const _user = { ...userSaved._doc, ott: uuidv4(), gardenId: gardenSaved._id };
         const token = await jwt.sign(_user, userSaved._doc);
 
         res.json({ status: 'success', payload: { token } });

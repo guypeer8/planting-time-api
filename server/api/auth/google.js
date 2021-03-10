@@ -13,13 +13,13 @@ passport.use(new GoogleStrategy({
   },
   async (accessToken, refreshToken, profile, cb) => {
     try {
-      const { user, isNew } = await User.findOrCreate({ 
+      const { user, isNew, gardenId } = await User.findOrCreate({ 
         userId: profile.id, 
         provider: 'google',
         name: profile.displayName,
         email: get(profile, 'emails[0].value', ''),
       });
-      cb(null, { ...user, ott: accessToken || refreshToken, isNew });
+      cb(null, { ...user, gardenId, ott: accessToken || refreshToken, isNew });
     } catch(e) {
       cb(e, null);
     }

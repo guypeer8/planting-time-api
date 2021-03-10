@@ -1,9 +1,10 @@
 const bcrypt = require('bcryptjs');
-const { isBoolean } = require('lodash');
 const mongoose = require('mongoose');
+const isBoolean = require('lodash/isBoolean');
 const isEmail = require('validator/lib/isEmail');
 const mongooseLeanVirtuals = require('mongoose-lean-virtuals');
 
+const Garden = require('../garden.model');
 const { ROLES, PROVIDERS } = require('../../config');
 
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$!%*?&])[A-Za-z\d@#$!%*?&]{8,}$/;
@@ -97,11 +98,14 @@ userDiscriminatorSchema.statics.findOrCreate = function({ userId, provider = '',
           }
           const userRecord = await this.findOne({ userId, provider, name });
           if (userRecord) { 
-              return resolve({ user: userRecord, isNew: false });
+            const gardenRecord = await Garden.findOne({ name: 'default', user: userRecord._id });
+            return resolve({ user: userRecord, isNew: false, gardenId: gardenRecord._id });
           }
           const newUser = new this({ userId, provider, name, email });
           const newUserRecord = await newUser.save();
-          resolve({ user: newUserRecord, isNew: true });
+          const newGarden = new Garden({ user: newUserRecord._id });
+          const newGardenRecord = await newGarden.save();
+          resolve({ user: newUserRecord, isNew: true, gardenId: newGardenRecord._id });
       } catch(err) {
           reject(err);
       }

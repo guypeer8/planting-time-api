@@ -9,13 +9,13 @@ const UserPlantModel = require('../../../../models/user-plant.model');
 router.get('/', async (req, res) => {
     try {
         const { name } = req.body;
-        const userId = req.user_auth._id;
+        const user = req.user_auth._id;
 
         if (!name) { throw new Error('A garden must have a name'); }
 
-        const gardensWithPlants = await GardenModel.getGardens({ userId });
+        const gardens = await GardenModel.getGardens({ user });
 
-        res.json({ status: 'success', payload: gardensWithPlants });
+        res.json({ status: 'success', payload: gardens });
     } catch(e) {
         res.json({ status: 'error', error: e });
     }
@@ -51,7 +51,7 @@ router.delete('/', async (req, res) => {
         const user = req.user_auth._id;
         const { garden_id: garden } = req.params;
         await Promise.all([
-            UserPlantModel.remove({ user, garden }),
+            UserPlantModel.deleteMany({ user, garden }),
             GardenModel.remove({ user, _id: garden }),
         ]);
         res.json({ status: 'success', payload: {} });

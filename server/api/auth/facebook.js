@@ -13,13 +13,13 @@ passport.use(new FacebookStrategy({
   },
   async (accessToken, refreshToken, profile, cb) => {
     try {
-        const { user, isNew } = await User.findOrCreate({ 
+        const { user, gardenId, isNew } = await User.findOrCreate({ 
           userId: profile.id, 
           name: profile.displayName || profile.username, 
           email: get(profile, '_json.email', ''),
           provider: 'facebook',
         });
-        cb(null, { ...user, ott: accessToken || refreshToken, isNew });
+        cb(null, { ...user, gardenId, ott: accessToken || refreshToken, isNew });
     } catch(e) {
         cb(e, null);
     }
