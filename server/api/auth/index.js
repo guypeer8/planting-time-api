@@ -1,5 +1,5 @@
 const get = require('lodash/get');
-const uuidv4 = require('uuid/v4');
+const uuidv4 = require('uuid').v4;
 const passport = require('passport');
 const { Base64 } = require('js-base64');
 const router = require('express').Router();
