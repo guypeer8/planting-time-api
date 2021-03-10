@@ -17,6 +17,14 @@ const PLANT_TYPES = ['fruit', 'vegetable', 'herb', 'flower', 'houseplant'];
 
 const plantSchema = new mongoose.Schema({
     t_id: { type: String, unique: true }, // trefle id
+    slug: { type: String, unique: true }, 
+    wiki: {
+        type: String,
+        validate: {
+            validator: v => !v || isURL(v),
+            message: props => `${props.value} must be a valid url.`
+        },
+    },
     growth: {
         light: { 
             numeric: { type: Number, min: 0, max: 10 }, 
@@ -55,7 +63,7 @@ const plantSchema = new mongoose.Schema({
                 textual: { type: String }, // describes detailed soil humidity
             },
         },
-        days_to_maturity: { type: Number, min: 0 },
+        days_to_maturity: { type: Number, min: -1 },
     },
     climate: {
         hardiness_zones: [{ type: String, enum: Object.keys(HARDINESS_ZONES) }],
@@ -67,6 +75,8 @@ const plantSchema = new mongoose.Schema({
         seed: [{ type: Number, min: 0, max: 11 }],
         harvest: [{ type: Number, min: 0, max: 11 }],
         flowering: [{ type: Number, min: 0, max: 11 }],
+        sow_to_harvest_days: { type: Number, default: -1 },
+        sow_to_germination_days: { type: Number, default: -1 },
     },
     taxonomy: {
         kingdom: { type: String },
@@ -112,7 +122,9 @@ const plantSchema = new mongoose.Schema({
     }],
     videos: [{
         title: { type: String },
+        description: { type: String },
         created_at: { type: Date },
+        thumbnails: { type: mongoose.Schema.Types.Mixed },
         url: {
             type: String,
             validate: {
@@ -138,9 +150,18 @@ const getCompanions = function(plant, { select_fields = null } = {}) {
     if (!isEmpty(plant.companions)) {
         set(query, '_id.$in', plant.companions);
     } else {
-        const genus = get(plant, 'taxonomy.genus', null);
-        if (!genus) return [];
-        query['taxonomy.genus'] = genus;
+        const family = get(
+            plant, 
+            'taxonomy.family', 
+            get(plant, 'metadata.family_common_name', null)
+        );
+        if (!family) {
+            return [];
+        }
+        query.$or = [
+            { 'metadata.family_common_name': family }, 
+            { 'taxonomy.family': family },
+        ];
         query._id.$nin.push(...plant.non_companions);
     }
     let queryBuilder = mongoose.model('Plant').find(query);
@@ -157,6 +178,7 @@ plantSchema.methods.getCompanions = function({ select_fields = null } = {}) {
 plantSchema.statics.getPlants = async function({ 
     id = null, 
     ids = null, 
+    slug = null, 
     tmin = null, 
     tmax = null,
     pmin = null, 
@@ -175,15 +197,20 @@ plantSchema.statics.getPlants = async function({
     select_fields = null,
     geo = { lat: null },
     page = 1,
-    limit = 30,
+    limit = 50,
     sort = 'metadata.common_name',
+    lean = true,
+    extended_query = {},
 } = {}) {
-    const query = { searchable };
+    const query = { searchable, ...extended_query };
     if (id) { 
         query._id = id;
     }
     if (ids) { 
         query._id = { $in: ids };
+    }
+    if (slug) { 
+        query.slug = slug;
     }
     if (season) { 
         query.seasons = season;
@@ -224,8 +251,9 @@ plantSchema.statics.getPlants = async function({
         };
     }
     if (search_keyword) {
+        if (!query.$and) { query.$and = []; }
         const search_re = { $regex: new RegExp(search_keyword), $options: 'i' };
-        query.$or = [
+        const $or = [
             { search_keywords: { $elemMatch: search_re } },
             ...['common_name', 'scientific_name'].map(name => ({ [`metadata.${name}`]: search_re })),
             ...['he', 'en'].map(loc => ({ 
@@ -233,22 +261,45 @@ plantSchema.statics.getPlants = async function({
             })),
         ];
         if (!['he', 'il', 'en'].includes(locale)) {
-            query.$or.push({ 
-                [`dictionary.common_names.${locale}`]: { $elemMatch: search_re },
-            });
+            $or[`dictionary.common_names.${locale}`] = { $elemMatch: search_re };
         }
+        query.$and.push({ $or });
     }
-    if (tmin) {
-        query['growth.temperature.min'] = { $lte: tmin };
+    if (isNumber(tmax)) {
+        if (!query.$and) { query.$and = []; }
+        query.$and.push({ 
+            $or: [ 
+                { 'growth.temperature.max': { $gte: tmax } }, 
+                { 'growth.temperature.max': { $exists: false } }, 
+            ],
+        });
     }
-    if (tmax) {
-        query['growth.temperature.max'] = { $gte: tmax };
+    if (isNumber(tmin)) {
+        if (!query.$and) { query.$and = []; }
+        query.$and.push({ 
+            $or: [ 
+                { 'growth.temperature.min': { $lte: tmin } }, 
+                { 'growth.temperature.min': { $exists: false } }, 
+            ],
+        });
     }
-    if (pmin) {
-        query['growth.precipitation.min'] = { $lte: pmin };
+    if (isNumber(pmax)) {
+        if (!query.$and) { query.$and = []; }
+        query.$and.push({ 
+            $or: [ 
+                { 'growth.precipitation.min': { $gte: pmax } }, 
+                { 'growth.precipitation.min': { $exists: false } }, 
+            ],
+        });
     }
-    if (pmax) {
-        query['growth.precipitation.max'] = { $gte: pmax };
+    if (isNumber(pmin)) {
+        if (!query.$and) { query.$and = []; }
+        query.$and.push({ 
+            $or: [ 
+                { 'growth.precipitation.max': { $lte: pmin } }, 
+                { 'growth.precipitation.max': { $exists: false } }, 
+            ],
+        });
     }
     if (plant_type) {
         query['attributes.plant_type'] = plant_type;
@@ -264,15 +315,16 @@ plantSchema.statics.getPlants = async function({
     let queryBuilder = this.find(query).limit(limit).skip((page-1) * limit).sort(sort);
 
     if (!withCompanions) {
-        const select = [...(select_fields || []), '-companions', '-non_companions'].join(' ');
-        return queryBuilder.select(select).lean({ virtuals: true });
+        // const select = (select_fields || []).join(' ').trim();
+        queryBuilder = queryBuilder.select('-companions -non_companions');
+        return lean ? queryBuilder.lean({ virtuals: true }) : queryBuilder;
     } 
 
     if (select_fields) {
         queryBuilder = queryBuilder.select(select_fields.join(' '));
     }
 
-    const plants = await queryBuilder.lean({ virtuals: true });
+    const plants = await (lean ? queryBuilder.lean({ virtuals: true }) : queryBuilder);
 
     return Promise.all(plants.map(async plant => {
         plant.companions = await getCompanions(plant);

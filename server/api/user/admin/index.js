@@ -1,14 +1,15 @@
+const isEmpty = require('lodash/isEmpty');
 const router = require('express').Router();
 
-const UserModel = require('../../../../models/user.model');
+const UserModel = require('../../../../models/discriminators/user-discriminator');
 
 /**
  * /api/users --> get users
  */
 router.post('/', async (req, res) => {
     try {
-        const { email, limit = 30 } = req.body;
-        const users = await UserModel.find(email ? {email} : {});
+        const { limit = 25 } = req.body;
+        const users = await UserModel.getUsers(req.body);
         const total_users = await UserModel.countDocuments();
         res.setHeader('Content-Range', `posts 0-${limit}/${total_users}`);
         res.json({ status: 'success', payload: users });
@@ -22,8 +23,8 @@ router.post('/', async (req, res) => {
  */
 router.get('/:user_id', async (req, res) => {
     try {
-        const { user_id: _id } = req.params;
-        const user = await UserModel.findOne({ _id });
+        const { user_id: id } = req.params;
+        const [user] = await UserModel.getUsers({ id });
         res.json({ status: 'success', payload: user });
     } catch(e) {
         res.json({ status: 'error', error: e });
@@ -31,47 +32,46 @@ router.get('/:user_id', async (req, res) => {
 });
 
 /**
- * /api/users/garden/:garden_id --> delete user garden
+ * /api/users --> create users
  */
-router.delete('/', async (req, res) => {
+router.put('/', async (req, res) => {
     try {
-        const user = req.user_auth._id;
-        const { garden_id: garden } = req.params;
-        await Promise.all([
-            UserPlantModel.remove({ user, garden }),
-            GardenModel.remove({ user, _id: garden }),
-        ]);
-        res.json({ status: 'success', payload: {} });
+        const userRecord = new UserModel(req.body);
+        const user = await userRecord.save();
+        res.json({ status: 'success', payload: user });
     } catch(e) {
         res.json({ status: 'error', error: e });
     }
 });
 
 /**
- * /api/user/garden/:garden_id/plants/:plant_id --> create user garden plant
+ * /api/users --> update users
  */
-router.post('/:garden_id/plants/:plant_id', async (req, res) => {
+router.put('/:user_id', async (req, res) => {
     try {
-        const user = req.user_auth._id;
-        const { garden_id: garden, plant_id: plant } = req.params;
-        const userPlantRecord = new UserPlantModel({ user, garden, plant });
-        const userPlant = await userPlantRecord.save();
-        res.json({ status: 'success', payload: userPlant });
+        const { user_id: _id } = req.params;
+        const { ok, nModified } = await UserModel.update({ _id }, { $set: req.body });
+        if (!ok || nModified !== 1) { throw new Error('Update failed!'); }
+        const user = await UserModel.findOne({ _id });
+        res.json({ status: 'success', payload: user });
     } catch(e) {
         res.json({ status: 'error', error: e });
     }
 });
 
+
 /**
- * /api/user/garden/:garden_id/plants/:plant_id --> delete user plant
+ * /api/users --> delete users
  */
 router.delete('/', async (req, res) => {
     try {
-        const user = req.user_auth._id;
-        const { garden_id: garden, plant_id: plant } = req.params;
-        await UserPlantModel.remove({ user, garden, plant });
-        res.json({ status: 'success', payload: userPlant });
+        const { ids = [] } = req.body;
+        if (isEmpty(ids)) { throw new Error('No ids passed!'); }
+        const { ok } = await UserModel.deleteMany({ _id: { $in: ids } });
+        if (!ok) { throw new Error('Delete failed!'); }
+        res.json({ status: 'success', payload: [] });
     } catch(e) {
+        console.log(e)
         res.json({ status: 'error', error: e });
     }
 });
