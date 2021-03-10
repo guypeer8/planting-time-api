@@ -4,17 +4,39 @@ const GardenModel = require('../../../../models/garden.model');
 const UserPlantModel = require('../../../../models/user-plant.model');
 
 /**
+ * /api/user/garden --> get user gardens
+ */
+router.get('/', async (req, res) => {
+    try {
+        const { name } = req.body;
+        const userId = req.user_auth._id;
+
+        if (!name) { throw new Error('A garden must have a name'); }
+
+        const gardensWithPlants = await GardenModel.getGardens({ userId });
+
+        res.json({ status: 'success', payload: gardensWithPlants });
+    } catch(e) {
+        res.json({ status: 'error', error: e });
+    }
+});
+
+/**
  * /api/user/garden --> create user garden
  */
 router.post('/', async (req, res) => {
     try {
         const { name } = req.body;
         const user = req.user_auth._id;
+
         if (!name) { throw new Error('A garden must have a name'); }
+
         const name_exists = await GardenModel.exists({ user, name });
         if (name_exists) { throw new Error(`Garden named "${name}" already exists`); }
+
         const gardenRecord = new GardenModel({ user, name });
         const garden = await gardenRecord.save();
+
         res.json({ status: 'success', payload: garden });
     } catch(e) {
         res.json({ status: 'error', error: e });

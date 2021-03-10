@@ -6480,340 +6480,48 @@
     "searchable": true
   },
   {
-    "t_id": 112492,
+    "t_id": 112532,
     "metadata": {
-      "common_name": "Cabbage",
-      "scientific_name": "Brassica oleracea",
+      "common_name": "Ruvo kale",
+      "scientific_name": "Brassica ruvo",
       "family_common_name": "Mustard family",
-      "images": [
-        "https://bs.plantnet.org/image/o/787a2191ca3a63b93336b61ac73b8881f21a32d4"
-      ],
-      "plant_part_images": {
-        "fruit": [
-          {
-            "id": 3239796,
-            "image_url": "https://bs.plantnet.org/image/o/aa39779ca6a81478b7dde285e340329a585db95e",
-            "copyright": "Taken Oct 13, 2019 by Dieter Albrecht (cc-by-sa)"
-          }
-        ],
-        "habit": [
-          {
-            "id": 3239800,
-            "image_url": "https://bs.plantnet.org/image/o/ce81c73c64461362018ba7180d58b9b47165b473",
-            "copyright": "Taken Apr 19, 2019 by Victoria Rivera (cc-by-sa)"
-          }
-        ],
-        "flower": [
-          {
-            "id": 3239805,
-            "image_url": "https://bs.plantnet.org/image/o/59d45386525cf84f2418c240dc3f5289869211ab",
-            "copyright": "Taken Oct 27, 2019 by Ivaylo Ivanov (cc-by-sa)"
-          },
-          {
-            "id": 3239806,
-            "image_url": "https://bs.plantnet.org/image/o/787a2191ca3a63b93336b61ac73b8881f21a32d4",
-            "copyright": "Taken May 7, 2019 by Dieter Wagner (cc-by-sa)"
-          },
-          {
-            "id": 3239807,
-            "image_url": "https://bs.plantnet.org/image/o/71d4e3413f450ffa2dc5e0f83b0f9c0a70a89018",
-            "copyright": "Taken May 7, 2019 by Dieter Wagner (cc-by-sa)"
-          }
-        ],
-        "bark": [
-          {
-            "id": 3239809,
-            "image_url": "https://bs.plantnet.org/image/o/9c731bdafddf6a65abc283cfb6df18d713fe0024",
-            "copyright": "Taken Oct 19, 2015 by Tela Botanica − katerina dimitrovska (cc-by-sa)"
-          }
-        ],
-        "": [
-          {
-            "id": 3541888,
-            "image_url": "https://d2seqvvyy3b8p2.cloudfront.net/5b7a8c63e88b8bbcff52421bcad2bb92.jpg",
-            "copyright": "© copyright of the Board of Trustees of the Royal Botanic Gardens, Kew."
-          },
-          {
-            "id": 3541887,
-            "image_url": "https://storage.googleapis.com/powop-assets/kew_profiles/KPPCONT_079715_fullsize.jpg",
-            "copyright": "© copyright of the Board of Trustees of the Royal Botanic Gardens, Kew."
-          },
-          {
-            "id": 3541886,
-            "image_url": "https://storage.googleapis.com/powop-assets/kew_profiles/Brassica_oleracea_wild_WikimediaCommons_622by415px_web_fullsize.jpg",
-            "copyright": "© copyright of the Board of Trustees of the Royal Botanic Gardens, Kew."
-          }
-        ]
-      }
+      "plant_part_images": {}
     },
-    "slug": "cabbage",
+    "slug": "ruvo-kale",
     "attributes": {
-      "is_edible": true,
+      "is_edible": false,
       "duration": [],
       "plant_type": "vegetable"
     },
-    "distribution": {
-      "native": [
-        "China North-Central",
-        "France",
-        "Great Britain",
-        "Spain"
-      ],
-      "introduced": [
-        "Albania",
-        "Algeria",
-        "Antipodean Is.",
-        "Baltic States",
-        "Bangladesh",
-        "Belarus",
-        "Belgium",
-        "California",
-        "Canary Is.",
-        "Central European Rus",
-        "Chatham Is.",
-        "Chile South",
-        "China South-Central",
-        "China Southeast",
-        "Connecticut",
-        "Crozet Is.",
-        "Czechoslovakia",
-        "East European Russia",
-        "East Himalaya",
-        "Easter Is.",
-        "Ecuador",
-        "Ethiopia",
-        "Falkland Is.",
-        "Germany",
-        "Greece",
-        "Guatemala",
-        "Illinois",
-        "India",
-        "Iowa",
-        "Juan Fernández Is.",
-        "Kazakhstan",
-        "Kentucky",
-        "Kenya",
-        "Korea",
-        "Krym",
-        "Labrador",
-        "Lebanon-Syria",
-        "Libya",
-        "Madeira",
-        "Masachusettes",
-        "Morocco",
-        "Netherlands",
-        "New Caledonia",
-        "New York",
-        "New Zealand North",
-        "New Zealand South",
-        "Newfoundland",
-        "North European Russi",
-        "Northwest European R",
-        "Ohio",
-        "Ontario",
-        "Pennsylvania",
-        "Prince Edward I.",
-        "Québec",
-        "Rhode I.",
-        "Sardegna",
-        "Saudi Arabia",
-        "South European Russi",
-        "Tadzhikistan",
-        "Tanzania",
-        "Texas",
-        "Trinidad-Tobago",
-        "Tunisia",
-        "Turkmenistan",
-        "Ukraine",
-        "Vermont",
-        "Vietnam",
-        "Zaïre",
-        "Iraq"
-      ]
-    },
+    "distribution": {},
     "dictionary": {
       "common_names": {
-        "en": [
-          "Cabbage",
-          "Wild cabbage",
-          "Kale",
-          "Tronchuda cabbage",
-          "Chinese Broccoli",
-          "Colewort",
-          "Broccoli",
-          "Brussels sprouts",
-          "Collards",
-          "Kohlrabi"
-        ],
-        "zh": [
-          "Ye gan lan"
-        ],
-        "cs": [
-          "Brukev zelná",
-          "Kapusta oby"
-        ],
-        "nl": [
-          "Kool",
-          "Kool en Wilde kool"
-        ],
-        "fr": [
-          "Chou commun",
-          "Chou maraîcher",
-          "Chou sauvage",
-          "Chou potager",
-          "Chou",
-          "Chou Brocoli",
-          "Chou de Bruxelles",
-          "Chou de Savoie",
-          "Chou fleur",
-          "Chou fourrager",
-          "Chou frisé",
-          "Chou moëllier",
-          "Chou rave"
-        ],
-        "de": [
-          "Kohl",
-          "Gemüse-Kohl",
-          "Kopfkohl",
-          "Gemüsekohl"
-        ],
-        "it": [
-          "Cavolo",
-          "Cavolo coltivato",
-          "Cavolo comune"
-        ],
-        "ja": [
-          "Kanran"
-        ],
-        "pt": [
-          "Couve-galega",
-          "Couve"
-        ],
-        "sk": [
-          "Kapusta obyčajná"
-        ],
-        "es": [
-          "Berza",
-          "Col",
-          "Lombarda",
-          "Coliflor",
-          "Repollo",
-          "Colinabo"
-        ],
-        "sv": [
-          "Kål"
-        ],
-        "deu": [
-          "wild-kohl",
-          "gemüse-kohl",
-          "kohl",
-          "portugiesischer kohl",
-          "tronchudakohl",
-          "rippenkohl"
-        ],
-        "swe": [
-          "vildkål",
-          "kål"
-        ],
-        "": [
-          "Wild Cabbage",
-          "Dinosaur Kale",
-          "Pointed Cabbage",
-          "Brussels Sprouts",
-          "Lacinato kale"
-        ],
-        "fra": [
-          "chou commun",
-          "chou maraîcher",
-          "chou sauvage",
-          "chou potager",
-          "chou",
-          "chou à grosses côtes",
-          "chou tronchuda"
-        ],
-        "por": [
-          "couve",
-          "repolho",
-          "couve-galega",
-          "couve-tronchuda",
-          "couve-portuguesa",
-          "couve-penca",
-          "couve-de-nervuras",
-          "couve-manteiga"
-        ],
-        "ces": [
-          "brukev zelná",
-          "kapusta oby"
-        ],
         "eng": [
-          "cabbage",
-          "kale",
-          "wild cabbage",
-          "tronchuda kale",
-          "tronchuda cabbage",
-          "seakale cabbage",
-          "braganza",
-          "portuguese tree kale",
-          "portuguese cole",
-          "portuguese cabbage",
-          "bedford cabbage"
+          "italian turnip",
+          "italian turnip broccoli",
+          "broccoli raab",
+          "nabana",
+          "raab",
+          "ruvo kale",
+          "saishin"
         ],
         "ita": [
-          "cavolo"
-        ],
-        "nld": [
-          "kool",
-          "kool en wilde kool"
-        ],
-        "spa": [
-          "col tronchuda",
-          "col de pezon grueso"
+          "broccoletto",
+          "cime di rapa"
         ]
       },
       "available_locales": [
-        "en",
-        "zh",
-        "cs",
-        "nl",
-        "fr",
-        "de",
-        "it",
-        "ja",
-        "pt",
-        "sk",
-        "es",
-        "sv",
-        "deu",
-        "swe",
-        "",
-        "fra",
-        "por",
-        "ces",
         "eng",
-        "ita",
-        "nld",
-        "spa"
+        "ita"
       ]
     },
     "growth": {
-      "humidity": 8,
       "ph": {
-        "min": 7,
-        "max": 7.5
+        "min": null,
+        "max": null
       },
       "light": {
-        "numeric": 8
-      },
-      "soil": {
-        "nutriments": {
-          "numeric": 6
-        },
-        "salinity": {
-          "numeric": 7
-        },
-        "texture": {
-          "numeric": 8
-        }
+        "numeric": null
       }
     },
     "taxonomy": {
@@ -69653,340 +69361,48 @@
     "searchable": true
   },
   {
-    "t_id": 112492,
+    "t_id": 112532,
     "metadata": {
-      "common_name": "Cabbage",
-      "scientific_name": "Brassica oleracea",
+      "common_name": "Ruvo kale",
+      "scientific_name": "Brassica ruvo",
       "family_common_name": "Mustard family",
-      "images": [
-        "https://bs.plantnet.org/image/o/787a2191ca3a63b93336b61ac73b8881f21a32d4"
-      ],
-      "plant_part_images": {
-        "fruit": [
-          {
-            "id": 3239796,
-            "image_url": "https://bs.plantnet.org/image/o/aa39779ca6a81478b7dde285e340329a585db95e",
-            "copyright": "Taken Oct 13, 2019 by Dieter Albrecht (cc-by-sa)"
-          }
-        ],
-        "habit": [
-          {
-            "id": 3239800,
-            "image_url": "https://bs.plantnet.org/image/o/ce81c73c64461362018ba7180d58b9b47165b473",
-            "copyright": "Taken Apr 19, 2019 by Victoria Rivera (cc-by-sa)"
-          }
-        ],
-        "flower": [
-          {
-            "id": 3239805,
-            "image_url": "https://bs.plantnet.org/image/o/59d45386525cf84f2418c240dc3f5289869211ab",
-            "copyright": "Taken Oct 27, 2019 by Ivaylo Ivanov (cc-by-sa)"
-          },
-          {
-            "id": 3239806,
-            "image_url": "https://bs.plantnet.org/image/o/787a2191ca3a63b93336b61ac73b8881f21a32d4",
-            "copyright": "Taken May 7, 2019 by Dieter Wagner (cc-by-sa)"
-          },
-          {
-            "id": 3239807,
-            "image_url": "https://bs.plantnet.org/image/o/71d4e3413f450ffa2dc5e0f83b0f9c0a70a89018",
-            "copyright": "Taken May 7, 2019 by Dieter Wagner (cc-by-sa)"
-          }
-        ],
-        "bark": [
-          {
-            "id": 3239809,
-            "image_url": "https://bs.plantnet.org/image/o/9c731bdafddf6a65abc283cfb6df18d713fe0024",
-            "copyright": "Taken Oct 19, 2015 by Tela Botanica − katerina dimitrovska (cc-by-sa)"
-          }
-        ],
-        "": [
-          {
-            "id": 3541888,
-            "image_url": "https://d2seqvvyy3b8p2.cloudfront.net/5b7a8c63e88b8bbcff52421bcad2bb92.jpg",
-            "copyright": "© copyright of the Board of Trustees of the Royal Botanic Gardens, Kew."
-          },
-          {
-            "id": 3541887,
-            "image_url": "https://storage.googleapis.com/powop-assets/kew_profiles/KPPCONT_079715_fullsize.jpg",
-            "copyright": "© copyright of the Board of Trustees of the Royal Botanic Gardens, Kew."
-          },
-          {
-            "id": 3541886,
-            "image_url": "https://storage.googleapis.com/powop-assets/kew_profiles/Brassica_oleracea_wild_WikimediaCommons_622by415px_web_fullsize.jpg",
-            "copyright": "© copyright of the Board of Trustees of the Royal Botanic Gardens, Kew."
-          }
-        ]
-      }
+      "plant_part_images": {}
     },
-    "slug": "cabbage",
+    "slug": "ruvo-kale",
     "attributes": {
-      "is_edible": true,
+      "is_edible": false,
       "duration": [],
       "plant_type": "vegetable"
     },
-    "distribution": {
-      "native": [
-        "China North-Central",
-        "France",
-        "Great Britain",
-        "Spain"
-      ],
-      "introduced": [
-        "Albania",
-        "Algeria",
-        "Antipodean Is.",
-        "Baltic States",
-        "Bangladesh",
-        "Belarus",
-        "Belgium",
-        "California",
-        "Canary Is.",
-        "Central European Rus",
-        "Chatham Is.",
-        "Chile South",
-        "China South-Central",
-        "China Southeast",
-        "Connecticut",
-        "Crozet Is.",
-        "Czechoslovakia",
-        "East European Russia",
-        "East Himalaya",
-        "Easter Is.",
-        "Ecuador",
-        "Ethiopia",
-        "Falkland Is.",
-        "Germany",
-        "Greece",
-        "Guatemala",
-        "Illinois",
-        "India",
-        "Iowa",
-        "Juan Fernández Is.",
-        "Kazakhstan",
-        "Kentucky",
-        "Kenya",
-        "Korea",
-        "Krym",
-        "Labrador",
-        "Lebanon-Syria",
-        "Libya",
-        "Madeira",
-        "Masachusettes",
-        "Morocco",
-        "Netherlands",
-        "New Caledonia",
-        "New York",
-        "New Zealand North",
-        "New Zealand South",
-        "Newfoundland",
-        "North European Russi",
-        "Northwest European R",
-        "Ohio",
-        "Ontario",
-        "Pennsylvania",
-        "Prince Edward I.",
-        "Québec",
-        "Rhode I.",
-        "Sardegna",
-        "Saudi Arabia",
-        "South European Russi",
-        "Tadzhikistan",
-        "Tanzania",
-        "Texas",
-        "Trinidad-Tobago",
-        "Tunisia",
-        "Turkmenistan",
-        "Ukraine",
-        "Vermont",
-        "Vietnam",
-        "Zaïre",
-        "Iraq"
-      ]
-    },
+    "distribution": {},
     "dictionary": {
       "common_names": {
-        "en": [
-          "Cabbage",
-          "Wild cabbage",
-          "Kale",
-          "Tronchuda cabbage",
-          "Chinese Broccoli",
-          "Colewort",
-          "Broccoli",
-          "Brussels sprouts",
-          "Collards",
-          "Kohlrabi"
-        ],
-        "zh": [
-          "Ye gan lan"
-        ],
-        "cs": [
-          "Brukev zelná",
-          "Kapusta oby"
-        ],
-        "nl": [
-          "Kool",
-          "Kool en Wilde kool"
-        ],
-        "fr": [
-          "Chou commun",
-          "Chou maraîcher",
-          "Chou sauvage",
-          "Chou potager",
-          "Chou",
-          "Chou Brocoli",
-          "Chou de Bruxelles",
-          "Chou de Savoie",
-          "Chou fleur",
-          "Chou fourrager",
-          "Chou frisé",
-          "Chou moëllier",
-          "Chou rave"
-        ],
-        "de": [
-          "Kohl",
-          "Gemüse-Kohl",
-          "Kopfkohl",
-          "Gemüsekohl"
-        ],
-        "it": [
-          "Cavolo",
-          "Cavolo coltivato",
-          "Cavolo comune"
-        ],
-        "ja": [
-          "Kanran"
-        ],
-        "pt": [
-          "Couve-galega",
-          "Couve"
-        ],
-        "sk": [
-          "Kapusta obyčajná"
-        ],
-        "es": [
-          "Berza",
-          "Col",
-          "Lombarda",
-          "Coliflor",
-          "Repollo",
-          "Colinabo"
-        ],
-        "sv": [
-          "Kål"
-        ],
-        "deu": [
-          "wild-kohl",
-          "gemüse-kohl",
-          "kohl",
-          "portugiesischer kohl",
-          "tronchudakohl",
-          "rippenkohl"
-        ],
-        "swe": [
-          "vildkål",
-          "kål"
-        ],
-        "": [
-          "Wild Cabbage",
-          "Dinosaur Kale",
-          "Pointed Cabbage",
-          "Brussels Sprouts",
-          "Lacinato kale"
-        ],
-        "fra": [
-          "chou commun",
-          "chou maraîcher",
-          "chou sauvage",
-          "chou potager",
-          "chou",
-          "chou à grosses côtes",
-          "chou tronchuda"
-        ],
-        "por": [
-          "couve",
-          "repolho",
-          "couve-galega",
-          "couve-tronchuda",
-          "couve-portuguesa",
-          "couve-penca",
-          "couve-de-nervuras",
-          "couve-manteiga"
-        ],
-        "ces": [
-          "brukev zelná",
-          "kapusta oby"
-        ],
         "eng": [
-          "cabbage",
-          "kale",
-          "wild cabbage",
-          "tronchuda kale",
-          "tronchuda cabbage",
-          "seakale cabbage",
-          "braganza",
-          "portuguese tree kale",
-          "portuguese cole",
-          "portuguese cabbage",
-          "bedford cabbage"
+          "italian turnip",
+          "italian turnip broccoli",
+          "broccoli raab",
+          "nabana",
+          "raab",
+          "ruvo kale",
+          "saishin"
         ],
         "ita": [
-          "cavolo"
-        ],
-        "nld": [
-          "kool",
-          "kool en wilde kool"
-        ],
-        "spa": [
-          "col tronchuda",
-          "col de pezon grueso"
+          "broccoletto",
+          "cime di rapa"
         ]
       },
       "available_locales": [
-        "en",
-        "zh",
-        "cs",
-        "nl",
-        "fr",
-        "de",
-        "it",
-        "ja",
-        "pt",
-        "sk",
-        "es",
-        "sv",
-        "deu",
-        "swe",
-        "",
-        "fra",
-        "por",
-        "ces",
         "eng",
-        "ita",
-        "nld",
-        "spa"
+        "ita"
       ]
     },
     "growth": {
-      "humidity": 8,
       "ph": {
-        "min": 7,
-        "max": 7.5
+        "min": null,
+        "max": null
       },
       "light": {
-        "numeric": 8
-      },
-      "soil": {
-        "nutriments": {
-          "numeric": 6
-        },
-        "salinity": {
-          "numeric": 7
-        },
-        "texture": {
-          "numeric": 8
-        }
+        "numeric": null
       }
     },
     "taxonomy": {
