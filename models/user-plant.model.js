@@ -8,8 +8,8 @@ const userPlantSchema = new mongoose.Schema({
     plant: { type: ObjectId, ref: 'Plant', required: true },
     reminders_active: { type: Boolean, default: false },
     calendar: {
+        seed_start: { type: Date },
         sow_start: { type: Date },
-        starter_start: { type: Date },
     },
 });
 

@@ -9,11 +9,13 @@ const UserPlantModel = require('../../../../models/user-plant.model');
 router.get('/', async (req, res) => {
     try {
         const { name } = req.body;
+        const { limit = 10, sort = 'name' } = req.query;
+
         const user = req.user_auth._id;
 
         if (!name) { throw new Error('A garden must have a name'); }
 
-        const gardens = await GardenModel.getGardens({ user });
+        const gardens = await GardenModel.getGardens({ user, limit, sort });
 
         res.json({ status: 'success', payload: gardens });
     } catch(e) {
@@ -55,6 +57,31 @@ router.delete('/', async (req, res) => {
             GardenModel.remove({ user, _id: garden }),
         ]);
         res.json({ status: 'success', payload: {} });
+    } catch(e) {
+        res.json({ status: 'error', error: e });
+    }
+});
+
+/**
+ * /api/user/garden/:garden_id/plants --> get user garden plants
+ */
+router.get('/:garden_id/plants/:plant_id', async (req, res) => {
+    try {
+        const user = req.user_auth._id;
+
+        const { garden_id: garden } = req.params;
+        const { limit = 15, sort = 'metadata.common_name' } = req.body;
+
+        const userPlants = UserPlantModel
+            .find({ user, garden })
+            .populate({
+                path: 'plants',
+                select: 'metadata.common_name',
+                options: { limit, sort },
+            })
+            .lean();
+            
+        res.json({ status: 'success', payload: userPlants });
     } catch(e) {
         res.json({ status: 'error', error: e });
     }
