@@ -65,23 +65,23 @@ router.delete('/', async (req, res) => {
 /**
  * /api/user/garden/:garden_id/plants --> get user garden plants
  */
-router.get('/:garden_id/plants/:plant_id', async (req, res) => {
+router.get('/:garden_id/plants', async (req, res) => {
     try {
         const user = req.user_auth._id;
 
         const { garden_id: garden } = req.params;
         const { limit = 15, sort = 'metadata.common_name' } = req.body;
 
-        const userPlants = UserPlantModel
+        const gardenPlants = await UserPlantModel
             .find({ user, garden })
             .populate({
-                path: 'plants',
+                path: 'plant',
                 select: 'metadata.common_name',
                 options: { limit, sort },
             })
             .lean();
-            
-        res.json({ status: 'success', payload: userPlants });
+
+        res.json({ status: 'success', payload: gardenPlants });
     } catch(e) {
         res.json({ status: 'error', error: e });
     }
