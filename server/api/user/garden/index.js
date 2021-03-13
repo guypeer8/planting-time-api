@@ -9,11 +9,11 @@ const UserPlantModel = require('../../../../models/user-plant.model');
 router.get('/', async (req, res) => {
     try {
         const { name } = req.body;
-        const { limit = 10, sort = 'name' } = req.query;
-
-        const user = req.user_auth._id;
+        const { limit = 20, sort = 'name' } = req.query;
 
         if (!name) { throw new Error('A garden must have a name'); }
+
+        const user = req.user_auth._id;
 
         const gardens = await GardenModel.getGardens({ user, limit, sort });
 
@@ -70,13 +70,15 @@ router.get('/:garden_id/plants', async (req, res) => {
         const user = req.user_auth._id;
 
         const { garden_id: garden } = req.params;
-        const { limit = 15, sort = 'metadata.common_name' } = req.body;
+        const { limit = 20, sort = 'metadata.common_name' } = req.body;
 
         const gardenPlants = await UserPlantModel
             .find({ user, garden })
+            .select('-user -garden')
             .populate({
+                match: { searchable: true },
                 path: 'plant',
-                select: 'metadata.common_name',
+                select: 'metadata.common_name calendar attributes.plant_type',
                 options: { limit, sort },
             })
             .lean();
@@ -95,7 +97,15 @@ router.post('/:garden_id/plants/:plant_id', async (req, res) => {
         const user = req.user_auth._id;
         const { garden_id: garden, plant_id: plant } = req.params;
         const userPlantRecord = new UserPlantModel({ user, garden, plant });
-        const userPlant = await userPlantRecord.save();
+        await userPlantRecord.save();
+        const userPlant = await UserPlantModel
+        .findOne({ user, garden, plant })
+        .select('-user -garden')
+        .populate({
+            match: { searchable: true },
+            path: 'plant',
+            select: 'metadata.common_name calendar attributes.plant_type',
+        });
         res.json({ status: 'success', payload: userPlant });
     } catch(e) {
         res.json({ status: 'error', error: e });
@@ -105,12 +115,12 @@ router.post('/:garden_id/plants/:plant_id', async (req, res) => {
 /**
  * /api/user/garden/:garden_id/plants/:plant_id --> delete user plant
  */
-router.delete('/', async (req, res) => {
+router.delete('/:garden_id/plants/:plant_id', async (req, res) => {
     try {
         const user = req.user_auth._id;
         const { garden_id: garden, plant_id: plant } = req.params;
         await UserPlantModel.remove({ user, garden, plant });
-        res.json({ status: 'success', payload: userPlant });
+        res.json({ status: 'success', payload: {} });
     } catch(e) {
         res.json({ status: 'error', error: e });
     }
