@@ -70,7 +70,6 @@ router.post('/:plant_id/companions', async (req, res) => {
         const companions = await plant.getCompanions();
         res.json({ status: 'success', payload: companions });
     } catch(e) {
-        console.warn(e)
         res.json({ status: 'error', error: e });
     }
 });
