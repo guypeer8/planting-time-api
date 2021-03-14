@@ -1,3 +1,4 @@
+const omit = require('lodash/omit');
 const isEmpty = require('lodash/isEmpty');
 const router = require('express').Router();
 
@@ -12,7 +13,9 @@ router.post('/', async (req, res) => {
     try {
         const { limit = 50 } = req.query;
         const plants = await PlantModel.getPlants(req.body);
-        const total_plants = await PlantModel.countDocuments();
+
+        const total_plants = await PlantModel.getPlants({ ...req.body, count: true });
+
         res.setHeader('Content-Range', `posts 0-${limit}/${total_plants}`);
         res.json({ status: 'success', payload: plants });
     } catch(e) {

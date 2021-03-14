@@ -199,6 +199,7 @@ plantSchema.statics.getPlants = async function({
     page = 1,
     limit = 50,
     sort = 'metadata.common_name',
+    count = false,
     lean = true,
     extended_query = {},
 } = {}) {
@@ -314,6 +315,10 @@ plantSchema.statics.getPlants = async function({
         const month = new Date().getMonth();
         const season_month = getSeasonMonth({ month, lat });
         query['calendar.sow'] = { $elemMatch: season_month };
+    }
+
+    if (count) {
+        return this.find(query).countDocuments();
     }
 
     let queryBuilder = this.find(query).limit(limit).skip((page-1) * limit).sort(sort);
