@@ -317,11 +317,19 @@ plantSchema.statics.getPlants = async function({
         query['calendar.sow'] = { $elemMatch: season_month };
     }
 
+    let queryBuilder = this.find(query)
+
     if (count) {
-        return this.find(query).countDocuments();
+        return queryBuilder.countDocuments();
     }
 
-    let queryBuilder = this.find(query).limit(limit).skip((page-1) * limit).sort(sort);
+    queryBuilder = queryBuilder.limit(limit);
+
+    if (!search_keyword) {
+        queryBuilder = queryBuilder.skip((page-1) * limit);
+    }
+
+    queryBuilder = queryBuilder.sort(sort);
 
     if (!withCompanions) {
         // const select = (select_fields || []).join(' ').trim();
