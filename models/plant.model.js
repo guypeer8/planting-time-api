@@ -332,13 +332,14 @@ plantSchema.statics.getPlants = async function({
     queryBuilder = queryBuilder.sort(sort);
 
     if (!withCompanions) {
-        // const select = (select_fields || []).join(' ').trim();
-        queryBuilder = queryBuilder.select('-companions -non_companions');
+        const _select = [...(select_fields || [])];
+        _select.push(...['-companions', '-non_companions']);
+        queryBuilder = queryBuilder.select(_select);
         return lean ? queryBuilder.lean({ virtuals: true }) : queryBuilder;
     } 
 
-    if (select_fields) {
-        queryBuilder = queryBuilder.select(select_fields.join(' '));
+    if (!isEmpty(select_fields)) {
+        queryBuilder = queryBuilder.select(select_fields.join(' ').trim());
     }
 
     const plants = await (lean ? queryBuilder.lean({ virtuals: true }) : queryBuilder);
