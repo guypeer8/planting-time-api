@@ -70,16 +70,16 @@ router.get('/:garden_id/plants', async (req, res) => {
         const user = req.user_auth._id;
 
         const { garden_id: garden } = req.params;
-        const { limit = 20, sort = 'metadata.common_name' } = req.body;
+        const { limit = 30, sort = 'metadata.common_name' } = req.body;
 
         const gardenPlants = await UserPlantModel
             .find({ user, garden })
             .select('-user -garden')
             .populate({
-                match: { searchable: true },
                 path: 'plant',
-                select: 'metadata.common_name calendar attributes.plant_type',
                 options: { limit, sort },
+                match: { searchable: true },
+                select: ['metadata.common_name', 'attributes.plant_type', 'calendar'].join(' '),
             })
             .lean();
 
@@ -96,16 +96,22 @@ router.post('/:garden_id/plants/:plant_id', async (req, res) => {
     try {
         const user = req.user_auth._id;
         const { garden_id: garden, plant_id: plant } = req.params;
+        const { limit = 30, sort = 'metadata.common_name' } = req.body;
+
         const userPlantRecord = new UserPlantModel({ user, garden, plant });
         await userPlantRecord.save();
+        
         const userPlant = await UserPlantModel
-        .findOne({ user, garden, plant })
-        .select('-user -garden')
-        .populate({
-            match: { searchable: true },
-            path: 'plant',
-            select: 'metadata.common_name calendar attributes.plant_type',
-        });
+            .findOne({ user, garden, plant })
+            .select('-user -garden')
+            .populate({
+                path: 'plant',
+                options: { limit, sort },
+                match: { searchable: true },
+                select: ['metadata.common_name', 'attributes.plant_type', 'calendar'].join(' '),
+            })
+            .lean();
+
         res.json({ status: 'success', payload: userPlant });
     } catch(e) {
         res.json({ status: 'error', error: e });
