@@ -47,7 +47,7 @@ app.get('/oauth2callback', (req, res) => {
                 select_fields: ['metadata.common_name'],
                 extended_query: { videos: { $size: 0 } },
             });
-console.log(plants.length)
+
             const errors = [];
             map(plants, (plant, cbk) => {
                 setTimeout(async () => {

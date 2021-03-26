@@ -6,6 +6,7 @@
   "scripts": {
     "start": "export NODE_ENV=production && node app.js",
     "dev": "export NODE_ENV=development && nodemon app.js",
+    "local-prod": "export NODE_ENV=local_prod && nodemon app.js",
     "create-plants-db": "node scripts/plants/fetch-plants",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

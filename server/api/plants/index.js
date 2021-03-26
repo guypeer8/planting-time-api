@@ -1,4 +1,3 @@
-const omit = require('lodash/omit');
 const isEmpty = require('lodash/isEmpty');
 const router = require('express').Router();
 

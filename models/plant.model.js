@@ -10,6 +10,7 @@ const { SEASONS } = require('@planting-time/constants/seasons');
 const { getSeasonMonth } = require('@planting-time/constants/utils/season');
 const { CLIMATE_ZONES } = require('@planting-time/constants/climate-zones');
 const { HARDINESS_ZONES } = require('@planting-time/constants/hardiness-zones');
+const { isGoodToPlant, isGoodToSeed } = require('@planting-time/constants/utils/calendar');
 
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
@@ -145,6 +146,14 @@ const plantSchema = new mongoose.Schema({
     timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },
 });
 
+const enrichPlants = (plants, lat = null) => {
+    plants.forEach(plant => {
+        plant.isGoodToPlant = isGoodToPlant(plant.calendar, plant.attributes.plant_type, { lat });
+        plant.isGoodToSeed = isGoodToSeed(plant.calendar, plant.attributes.plant_type, { lat });
+    });
+    return plants;
+};
+
 const getCompanions = function(plant, { select_fields = null } = {}) {
     const query = { _id: { $nin: [plant._id] } };
     if (!isEmpty(plant.companions)) {
@@ -195,13 +204,13 @@ plantSchema.statics.getPlants = async function({
     introduced_distribution = null, 
     withCompanions = true,
     select_fields = null,
-    geo = { lat: null },
     page = 1,
     limit = 50,
     sort = 'metadata.common_name',
     count = false,
     lean = true,
     extended_query = {},
+    geo = { lat: null },
 } = {}) {
     const query = { 
         searchable, 
@@ -333,16 +342,17 @@ plantSchema.statics.getPlants = async function({
 
     if (!withCompanions) {
         const _select = [...(select_fields || [])];
-        _select.push(...['-companions', '-non_companions']);
+        // _select.push(...['-companions', '-non_companions']);
         queryBuilder = queryBuilder.select(_select);
-        return lean ? queryBuilder.lean({ virtuals: true }) : queryBuilder;
+        const plants = await (lean ? queryBuilder.lean({ virtuals: true }) : queryBuilder);
+        return enrichPlants(plants, geo.lat);
     } 
 
     if (!isEmpty(select_fields)) {
         queryBuilder = queryBuilder.select(select_fields.join(' ').trim());
     }
 
-    const plants = await (lean ? queryBuilder.lean({ virtuals: true }) : queryBuilder);
+    const plants = enrichPlants(await (lean ? queryBuilder.lean({ virtuals: true }) : queryBuilder), geo.lat);
 
     return Promise.all(plants.map(async plant => {
         plant.companions = await getCompanions(plant);

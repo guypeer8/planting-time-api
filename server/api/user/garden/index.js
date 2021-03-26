@@ -79,7 +79,7 @@ router.get('/:garden_id/plants', async (req, res) => {
                 path: 'plant',
                 options: { limit, sort },
                 match: { searchable: true },
-                select: ['metadata', 'attributes.plant_type', 'calendar'].join(' '),
+                select: ['metadata', 'attributes.plant_type', 'calendar', 'slug'].join(' '),
             })
             .lean();
 
@@ -108,7 +108,7 @@ router.post('/:garden_id/plants/:plant_id', async (req, res) => {
                 path: 'plant',
                 options: { limit, sort },
                 match: { searchable: true },
-                select: ['metadata', 'attributes.plant_type', 'calendar'].join(' '),
+                select: ['metadata', 'attributes.plant_type', 'calendar', 'slug'].join(' '),
             })
             .lean();
 
