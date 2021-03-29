@@ -6,11 +6,10 @@ const isNumber = require('lodash/isNumber');
 const isURL = require('validator/lib/isURL');
 const isBoolean = require('lodash/isBoolean');
 const mongooseLeanVirtuals = require('mongoose-lean-virtuals');
-const { SEASONS } = require('@planting-time/constants/seasons');
-const { getSeasonMonth } = require('@planting-time/constants/utils/season');
 const { CLIMATE_ZONES } = require('@planting-time/constants/climate-zones');
+const { getSeasonMonth } = require('@planting-time/constants/utils/season');
 const { HARDINESS_ZONES } = require('@planting-time/constants/hardiness-zones');
-const { isGoodToPlant, isGoodToSeed } = require('@planting-time/constants/utils/calendar');
+const { isGoodToPlant, isGoodToSeed, getCalendarSeasons } = require('@planting-time/constants/utils/calendar');
 
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
@@ -150,6 +149,7 @@ const enrichPlants = (plants, lat = null) => {
     plants.forEach(plant => {
         plant.isGoodToPlant = isGoodToPlant(plant.calendar, plant.attributes.plant_type, { lat });
         plant.isGoodToSeed = isGoodToSeed(plant.calendar, plant.attributes.plant_type, { lat });
+        plant.seasons = getCalendarSeasons(plant.calendar, { lat });
     });
     return plants;
 };
@@ -192,7 +192,6 @@ plantSchema.statics.getPlants = async function({
     tmax = null,
     pmin = null, 
     pmax = null,
-    season = null,
     locale = 'en',
     searchable = true, 
     plant_type = null, 
@@ -225,9 +224,6 @@ plantSchema.statics.getPlants = async function({
     }
     if (slug) { 
         query.slug = slug;
-    }
-    if (season) { 
-        query.seasons = season;
     }
     if (isBoolean(frost_sensitive)) { 
         query['climate.frost_sensitive'] = frost_sensitive;
