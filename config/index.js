@@ -29,7 +29,10 @@ const mongodbServer = isDev ? 'mongodb://localhost:27017/plantingtime' : process
 
 const corsOptions = {
     exposedHeaders: ['Content-Range', 'X-Content-Range', 'X-Total-Count'],
-    ...(isDev ? {}: { optionsSuccessStatus: 200, origin: frontendRoute }),
+    ...(isDev ? {}: { 
+        optionsSuccessStatus: 200, 
+        ...(isLocalProd ? {} : { origin: frontendRoute }),
+    }),
 };
 
 module.exports = {
