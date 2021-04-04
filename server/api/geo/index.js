@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const isIP = require('validator/lib/isIP');
 
-const { isDev } = require('../../../config');
 const { fetchGeo } = require('../../utils/geo');
+const { isDev, isLocalProd } = require('../../../config');
 
 /**
  * /api/geo --> get by ip
@@ -11,13 +11,17 @@ const { fetchGeo } = require('../../utils/geo');
  */
 router.get('/', async (req, res) => {
     const { lat, lon, place } = req.query;
-    
+
     const ip = (() => {
-        if (isDev) return '84.108.88.235';
-        if (!req.ip || !isIP(req.ip)) return null;
+        if (isDev || isLocalProd) {
+            return '84.108.88.235';
+        }
+        if (!req.ip || !isIP(req.ip)) {
+            return null;
+        }
         return req.ip;
     })();
-    
+
     res.json(await fetchGeo({ ip, place, lat, lon }));
 });
 

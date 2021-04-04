@@ -41,6 +41,7 @@ module.exports = {
     PROVIDERS,
     appRootDir,
     isDev,
+    isLocalProd,
     frontendRoute,
     backendRoute,
     mongodbServer,
