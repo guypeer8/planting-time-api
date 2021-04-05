@@ -1,5 +1,7 @@
+const first = require('lodash/first');
 const router = require('express').Router();
 
+const { enrichPlants } = require('../../../utils/plant');
 const GardenModel = require('../../../../models/garden.model');
 const UserPlantModel = require('../../../../models/user-plant.model');
 
@@ -69,6 +71,7 @@ router.get('/:garden_id/plants', async (req, res) => {
     try {
         const user = req.user_auth._id;
 
+        const { lat } = req.query;
         const { garden_id: garden } = req.params;
         const { limit = 30, sort = 'metadata.common_name' } = req.body;
 
@@ -83,6 +86,10 @@ router.get('/:garden_id/plants', async (req, res) => {
             })
             .lean();
 
+        gardenPlants.forEach(gp => {
+            gp.plant = first(enrichPlants([gp.plant], lat));
+        });
+
         res.json({ status: 'success', payload: gardenPlants });
     } catch(e) {
         res.json({ status: 'error', error: e });
@@ -95,6 +102,8 @@ router.get('/:garden_id/plants', async (req, res) => {
 router.post('/:garden_id/plants/:plant_id', async (req, res) => {
     try {
         const user = req.user_auth._id;
+
+        const { lat } = req.query;
         const { garden_id: garden, plant_id: plant } = req.params;
         const { limit = 30, sort = 'metadata.common_name' } = req.body;
 
@@ -111,6 +120,8 @@ router.post('/:garden_id/plants/:plant_id', async (req, res) => {
                 select: ['metadata', 'attributes.plant_type', 'calendar', 'slug'].join(' '),
             })
             .lean();
+
+        userPlant.plant = first(enrichPlants([userPlant.plant], lat));
 
         res.json({ status: 'success', payload: userPlant });
     } catch(e) {
