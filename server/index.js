@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const cors = require('cors');
+const morgan = require('morgan');
 const helmet = require('helmet');
 const express = require('express');
 const mongoose = require('mongoose');
@@ -13,7 +14,7 @@ const rateLimit = require('express-rate-limit');
 
 const apiRoute = require('./api');
 const { jwtMiddleware } = require('./middlewares');
-const { mongodbServer, corsOptions, PORT } = require('../config');
+const { mongodbServer, corsOptions, PORT, isDev, isLocalProd } = require('../config');
 
 const apiLimiter = rateLimit({
     windowMs: 60 * 1000,
@@ -34,7 +35,13 @@ mongoose.connect(mongodbServer, {
 const createApp = () => {
     const app = express();
 
-    app.use(helmet({ xssFilter: { setOnOldIE: false } }));
+    app.use(helmet({ 
+        xssFilter: { setOnOldIE: false },
+    }));
+
+    if (isDev || isLocalProd) {
+        app.use(morgan('dev'));
+    }
 
     app.use(cors(corsOptions));
 
