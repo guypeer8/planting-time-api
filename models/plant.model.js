@@ -9,7 +9,8 @@ const mongooseLeanVirtuals = require('mongoose-lean-virtuals');
 const { CLIMATE_ZONES } = require('@planting-time/constants/climate-zones');
 const { getSeasonMonth } = require('@planting-time/constants/utils/season');
 const { HARDINESS_ZONES } = require('@planting-time/constants/hardiness-zones');
-const { isGoodToPlant, isGoodToSeed, getCalendarSeasons } = require('@planting-time/constants/utils/calendar');
+
+const { enrichPlants } = require('../server/utils/plant');
 
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
@@ -145,16 +146,7 @@ const plantSchema = new mongoose.Schema({
     timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },
 });
 
-const enrichPlants = (plants, lat = null) => {
-    plants.forEach(plant => {
-        plant.isGoodToPlant = isGoodToPlant(plant.calendar, plant.attributes.plant_type, { lat });
-        plant.isGoodToSeed = isGoodToSeed(plant.calendar, plant.attributes.plant_type, { lat });
-        plant.seasons = getCalendarSeasons(plant.calendar, { lat });
-    });
-    return plants;
-};
-
-const getCompanions = function(plant, { select_fields = null } = {}) {
+const getCompanions = async function(plant, { select_fields = null, lat = null } = {}) {
     const query = { _id: { $nin: [plant._id] } };
     if (!isEmpty(plant.companions)) {
         set(query, '_id.$in', plant.companions);
@@ -177,11 +169,12 @@ const getCompanions = function(plant, { select_fields = null } = {}) {
     if (select_fields) {
         queryBuilder = queryBuilder.select(select_fields.join(' '));
     }
-    return queryBuilder.lean({ virtuals: true });
+    const plants = await queryBuilder.lean({ virtuals: true });
+    return enrichPlants(plants, lat);
 };
 
-plantSchema.methods.getCompanions = function({ select_fields = null } = {}) {
-    return getCompanions(this, { select_fields });
+plantSchema.methods.getCompanions = function({ select_fields = null, lat = null } = {}) {
+    return getCompanions(this, { select_fields, lat });
 };
 
 plantSchema.statics.getPlants = async function({ 
@@ -351,7 +344,7 @@ plantSchema.statics.getPlants = async function({
     const plants = enrichPlants(await (lean ? queryBuilder.lean({ virtuals: true }) : queryBuilder), geo.lat);
 
     return Promise.all(plants.map(async plant => {
-        plant.companions = await getCompanions(plant);
+        plant.companions = await getCompanions(plant, { lat: geo.lat });
         delete plant.non_companions;
         return plant;
     }));
