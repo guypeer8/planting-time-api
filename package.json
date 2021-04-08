@@ -14,7 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "@paypal/checkout-server-sdk": "^1.0.2",
-    "@planting-time/constants": "git+https://github.com/guypeer8/planting-time-constants",
+    "@planting-time/constants": "git+ssh://github.com/dquak/planting-time-constants.git",
     "app-root-dir": "^1.0.2",
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
