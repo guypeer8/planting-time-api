@@ -10,6 +10,6 @@ router.use('/garden', gardenRouter);
 router.use('/profile', profileRouter);
 
 router.use(ensureAdmin);
-router.use('/', adminRouter);
+router.use('/melech', adminRouter);
 
 module.exports = router;

@@ -10,7 +10,7 @@ const { ensureLoggedIn, ensureAdmin } = require('../../middlewares/jwt');
  */
 router.post('/', async (req, res) => {
     try {
-        const { limit = 50 } = req.query;
+        const { limit = 25 } = req.query;
         const plants = await PlantModel.getPlants(req.body);
 
         const total_plants = await PlantModel.getPlants({ ...req.body, count: true });
@@ -84,6 +84,6 @@ router.use(ensureAdmin);
 /**
  * /api/plants --> plant admin actions
  */
-router.use(adminRouter);
+router.use('/melech', adminRouter);
 
 module.exports = router;

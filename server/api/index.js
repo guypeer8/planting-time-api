@@ -7,7 +7,7 @@ const plantsRouter = require('./plants');
 
 router.use('/geo', geoRouter);
 router.use('/auth', authRouter);
-router.use('/user', userRouter);
+router.use('/users', userRouter);
 router.use('/plants', plantsRouter);
 router.get('/service-check', (_, res) => res.json({ status: 'ok' }));
 
