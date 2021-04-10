@@ -65,6 +65,7 @@ const plantSchema = new mongoose.Schema({
             },
         },
         days_to_maturity: { type: Number, min: -1 },
+        literal: mongoose.Schema.Types.Mixed,
     },
     climate: {
         hardiness_zones: [{ type: String, enum: Object.keys(HARDINESS_ZONES) }],
