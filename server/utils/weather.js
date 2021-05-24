@@ -2,7 +2,6 @@ require('dotenv').config();
 
 const axios = require('axios');
 const sample = require('lodash/sample');
-const Meteostat = require('meteostat').default;
 
 const { SUNLIGHT_API } = require('../../config');
 
@@ -49,10 +48,12 @@ const getHistoricalWeather = async (lat, lon, days = 5) => {
 };
 
 const getClimateNormals = async (lat, lon) => {
-    const meteostat = new Meteostat(sample(meteostat_api_keys));
+    // const meteostat = new Meteostat(sample(meteostat_api_keys));
     try {
-        const climate_normals = await meteostat.point.climate({ lat, lon });
-        return climate_normals;
+        const { data: climate_normals } = await axios.get(`https://api.meteostat.net/v2/point/climate?lat=${lat}&lon=${lon}`, {
+            headers: { 'x-api-key': sample(meteostat_api_keys) },
+        });
+        return climate_normals.data;
     } catch (e) {
         return e;
     }

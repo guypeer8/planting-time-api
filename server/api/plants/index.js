@@ -11,7 +11,11 @@ const { ensureLoggedIn, ensureAdmin } = require('../../middlewares/jwt');
 router.post('/', async (req, res) => {
     try {
         const { limit = 25 } = req.query;
-        const plants = await PlantModel.getPlants(req.body);
+        const plants = await PlantModel.getPlants({ 
+            ...req.body, 
+            withCompanions: false, 
+            select_fields: ['-videos', '-dictionary', '-distribution', '-growth', '-climate', '-searchable'],
+        });
 
         const total_plants = await PlantModel.getPlants({ ...req.body, count: true });
 

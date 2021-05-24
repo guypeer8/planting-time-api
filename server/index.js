@@ -54,7 +54,7 @@ const createApp = () => {
     app.use(passport.initialize());
     app.use(jwtMiddleware);
     
-    app.use('/api', apiLimiter, apiSpeedLimiter, apiRoute);
+    app.use('/plant-oclock/api', apiLimiter, apiSpeedLimiter, apiRoute);
 
     return app;
 };

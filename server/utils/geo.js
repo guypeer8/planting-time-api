@@ -19,7 +19,7 @@ const { getAverageSunHours } = require('@planting-time/constants/utils/sunlight'
 const { getHardinessZone } = require('@planting-time/constants/utils/hardiness-zone');
 
 const { fetchClimateZone } = require('./zone');
-const { getClimateNormals } = require('./weather');
+const { getClimateNormals } = require('./weather.js');
 const { FREE_GEOIP, IPSTACK_API, IPGEOLOCATION_API, MAPQUEST_REVERSE_GEO_API, MAPQUEST_PLACE_GEO_API } = require('../../config');
 const { isEmpty } = require('lodash');
 
@@ -270,6 +270,7 @@ const mergeClimateData = async geo_config => {
       return true;
     }
   } catch(e) {
+    console.log(e)
     return false;
   }
 }

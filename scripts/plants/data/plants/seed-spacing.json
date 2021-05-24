@@ -1,0 +1,682 @@
+{
+    "alfalfa": {
+      "row": {
+        "min": 35,
+        "max": 40
+      },
+      "plant": {
+        "min": 6,
+        "max": 12
+      }
+    },
+    "amaranth": {
+      "row": {
+        "min": 1,
+        "max": 2
+      },
+      "plant": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "artichoke": {
+      "row": {
+        "min": 24,
+        "max": 36
+      },
+      "plant": {
+        "min": 18,
+        "max": 18
+      }
+    },
+    "asparagus": {
+        "row": {
+          "min": 60,
+          "max": 60
+        },
+        "plant": {
+          "min": 12,
+          "max": 18
+        }
+      },
+      "beans – bush": {
+        "row": {
+          "min": 18,
+          "max": 24
+        },
+        "plant": {
+          "min": 2,
+          "max": 4
+        }
+      },
+      "beans – pole": {
+        "row": {
+          "min": 30,
+          "max": 36
+        },
+        "plant": {
+          "min": 4,
+          "max": 6
+        }
+      },
+      "beets": {
+        "row": {
+          "min": 12,
+          "max": 18
+        },
+        "plant": {
+          "min": 3,
+          "max": 4
+        }
+      },
+      "black eyed peas": {
+        "row": {
+          "min": 30,
+          "max": 36
+        },
+        "plant": {
+          "min": 2,
+          "max": 4
+        }
+      },
+      "bok choy": {
+        "row": {
+          "min": 18,
+          "max": 30
+        },
+        "plant": {
+          "min": 6,
+          "max": 12
+        }
+      },
+      "broccoli": {
+        "row": {
+          "min": 36,
+          "max": 40
+        },
+        "plant": {
+          "min": 18,
+          "max": 24
+        }
+      },
+      "broccoli rabe": {
+        "row": {
+          "min": 18,
+          "max": 36
+        },
+        "plant": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      "brussels sprouts": {
+        "row": {
+          "min": 24,
+          "max": 36
+        },
+        "plant": {
+          "min": 24,
+          "max": 24
+        }
+      },
+      "cabbage": {
+        "row": {
+          "min": 36,
+          "max": 44
+        },
+        "plant": {
+          "min": 9,
+          "max": 12
+        }
+      },
+      "carrots": {
+        "row": {
+          "min": 12,
+          "max": 18
+        },
+        "plant": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      "cassava": {
+        "row": {
+          "min": 40,
+          "max": 40
+        },
+        "plant": {
+          "min": 40,
+          "max": 40
+        }
+      },
+      "cauliflower": {
+        "row": {
+          "min": 18,
+          "max": 24
+        },
+        "plant": {
+          "min": 18,
+          "max": 24
+        }
+      },
+      "celery": {
+        "row": {
+          "min": 24,
+          "max": 24
+        },
+        "plant": {
+          "min": 12,
+          "max": 18
+        }
+      },
+      "chaya": {
+        "row": {
+          "min": 36,
+          "max": 36
+        },
+        "plant": {
+          "min": 25,
+          "max": 25
+        }
+      },
+      "chinese kale": {
+        "row": {
+          "min": 18,
+          "max": 30
+        },
+        "plant": {
+          "min": 12,
+          "max": 24
+        }
+      },
+      "corn": {
+        "row": {
+          "min": 36,
+          "max": 42
+        },
+        "plant": {
+          "min": 10,
+          "max": 15
+        }
+      },
+      "cress": {
+        "row": {
+          "min": 3,
+          "max": 6
+        },
+        "plant": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      "cucumbers – ground": {
+        "row": {
+          "min": 60,
+          "max": 60
+        },
+        "plant": {
+          "min": 8,
+          "max": 10
+        }
+      },
+      "cucumbers – trellis": {
+        "row": {
+          "min": 30,
+          "max": 30
+        },
+        "plant": {
+          "min": 2,
+          "max": 3
+        }
+      },
+      "eggplants": {
+        "row": {
+          "min": 30,
+          "max": 36
+        },
+        "plant": {
+          "min": 18,
+          "max": 24
+        }
+      },
+      "fennel bulb": {
+        "row": {
+          "min": 12,
+          "max": 24
+        },
+        "plant": {
+          "min": 12,
+          "max": 24
+        }
+      },
+      "gourds – extra large (30+ lbs fruit)": {
+        "row": {
+          "min": 120,
+          "max": 144
+        },
+        "plant": {
+          "min": 60,
+          "max": 72
+        }
+      },
+      "gourds – large (15 – 30 lbs fruit)": {
+        "row": {
+          "min": 90,
+          "max": 108
+        },
+        "plant": {
+          "min": 40,
+          "max": 48
+        }
+      },
+      "gourds – medium (8 – 15 lbs fruit)": {
+        "row": {
+          "min": 72,
+          "max": 90
+        },
+        "plant": {
+          "min": 36,
+          "max": 48
+        }
+      },
+      "gourds – small (under 8 lbs)": {
+        "row": {
+          "min": 60,
+          "max": 72
+        },
+        "plant": {
+          "min": 20,
+          "max": 24
+        }
+      },
+      "greens – mature harvest": {
+        "row": {
+          "min": 36,
+          "max": 42
+        },
+        "plant": {
+          "min": 10,
+          "max": 18
+        }
+      },
+      "greens – baby green harvest": {
+        "row": {
+          "min": 12,
+          "max": 18
+        },
+        "plant": {
+          "min": 2,
+          "max": 4
+        }
+      },
+      "hops": {
+        "row": {
+          "min": 96,
+          "max": 96
+        },
+        "plant": {
+          "min": 36,
+          "max": 48
+        }
+      },
+    "jerusalem artichoke": {
+        "row": {
+          "min": 18,
+          "max": 36
+        },
+        "plant": {
+          "min": 18,
+          "max": 36
+        }
+      },
+      "jicama": {
+        "row": {
+          "min": 12,
+          "max": 12
+        },
+        "plant": {
+          "min": 12,
+          "max": 12
+        }
+      },
+      "kale": {
+        "row": {
+          "min": 24,
+          "max": 24
+        },
+        "plant": {
+          "min": 12,
+          "max": 18
+        }
+      },
+      "kohlrabi": {
+        "row": {
+          "min": 12,
+          "max": 12
+        },
+        "plant": {
+          "min": 6,
+          "max": 6
+        }
+      },
+      "leeks": {
+        "row": {
+          "min": 8,
+          "max": 16
+        },
+        "plant": {
+          "min": 4,
+          "max": 6
+        }
+      },
+      "lentils": {
+        "row": {
+          "min": 6,
+          "max": 12
+        },
+        "plant": {
+          "min": 0.5,
+          "max": 1
+        }
+      },
+      "lettuce – head": {
+        "row": {
+          "min": 12,
+          "max": 12
+        },
+        "plant": {
+          "min": 12,
+          "max": 12
+        }
+      },
+      "lettuce – leaf": {
+        "row": {
+          "min": 1,
+          "max": 3
+        },
+        "plant": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      "mache greens": {
+        "row": {
+          "min": 2,
+          "max": 2
+        },
+        "plant": {
+          "min": 2,
+          "max": 2
+        }
+      },
+      "okra": {
+        "row": {
+          "min": 36,
+          "max": 42
+        },
+        "plant": {
+          "min": 12,
+          "max": 15
+        }
+      },
+      "onions": {
+        "row": {
+          "min": 4,
+          "max": 6
+        },
+        "plant": {
+          "min": 4,
+          "max": 6
+        }
+      },
+      "parsnips": {
+        "row": {
+          "min": 18,
+          "max": 24
+        },
+        "plant": {
+          "min": 8,
+          "max": 10
+        }
+      },
+    "peanuts – bunch": {
+      "row": {
+        "min": 24,
+        "max": 24
+      },
+      "plant": {
+        "min": 6,
+        "max": 8
+      }
+    },
+    "peanuts – runner": {
+      "row": {
+        "min": 36,
+        "max": 36
+      },
+      "plant": {
+        "min": 6,
+        "max": 8
+      }
+    },
+    "peas": {
+        "row": {
+            "min": 18,
+            "max": 24
+        },
+        "plant": {
+            "min": 1,
+            "max": 2
+        }
+    },
+    "peppers": {
+        "row": {
+          "min": 18,
+          "max": 24
+        },
+        "plant": {
+          "min": 14,
+          "max": 18
+        }
+    },
+    "pigeon peas": {
+        "row": {
+          "min": 40,
+          "max": 40
+        },
+        "plant": {
+          "min": 3,
+          "max": 5
+        }
+    },
+    "potatoes": {
+        "row": {
+          "min": 30,
+          "max": 36
+        },
+        "plant": {
+          "min": 8,
+          "max": 12
+        }
+    },
+    "pumpkins": {
+        "row": {
+          "min": 120,
+          "max": 180
+        },
+        "plant": {
+          "min": 60,
+          "max": 72
+        }
+    },
+    "radicchio": {
+        "row": {
+          "min": 12,
+          "max": 12
+        },
+        "plant": {
+          "min": 8,
+          "max": 10
+        }
+    },
+    "radishes": {
+        "row": {
+          "min": 2,
+          "max": 4
+        },
+        "plant": {
+          "min": 0.5,
+          "max": 4
+        }
+    },
+    "rhubarb": {
+        "row": {
+          "min": 36,
+          "max": 48
+        },
+        "plant": {
+          "min": 36,
+          "max": 48
+        }
+    },
+    "rutabagas": {
+        "row": {
+            "min": 14,
+            "max": 18
+        },
+          "plant": {
+            "min": 6,
+            "max": 8
+        }
+    },
+    "salsify": {
+        "row": {
+        "min": 18,
+        "max": 20
+        },
+        "plant": {
+        "min": 2,
+        "max": 4
+        }
+    },
+    "shallots": {
+        "row": {
+        "min": 6,
+        "max": 8
+        },
+        "plant": {
+        "min": 6,
+        "max": 8
+        }
+    },
+    "soybeans (edamame)": {
+        "row": {
+        "min": 24,
+        "max": 24
+        },
+        "plant": {
+        "min": 2,
+        "max": 4
+        }
+    },
+    "spinach – mature leaf": {
+        "row": {
+        "min": 12,
+        "max": 18
+        },
+        "plant": {
+        "min": 2,
+        "max": 4
+        }
+    },
+    "spinach – baby leaf": {
+        "row": {
+        "min": 12,
+        "max": 18
+        },
+        "plant": {
+        "min": 0.5,
+        "max": 1
+        }
+    },
+    "summer squash": {
+        "row": {
+        "min": 36,
+        "max": 48
+        },
+        "plant": {
+        "min": 18,
+        "max": 28
+        }
+    },
+    "winter squash": {
+        "row": {
+        "min": 60,
+        "max": 72
+        },
+        "plant": {
+        "min": 24,
+        "max": 36
+        }
+    },
+    "sweet potatoes": {
+        "row": {
+        "min": 36,
+        "max": 48
+        },
+        "plant": {
+        "min": 12,
+        "max": 18
+        }
+    },
+    "swiss chard": {
+        "row": {
+        "min": 12,
+        "max": 18
+        },
+        "plant": {
+        "min": 6,
+        "max": 12
+        }
+    },
+    "tomatillos": {
+        "row": {
+          "min": 36,
+          "max": 72
+        },
+        "plant": {
+          "min": 24,
+          "max": 36
+        }
+      },
+    "tomato": {
+        "row": {
+          "min": 48,
+          "max": 60
+        },
+        "plant": {
+          "min": 24,
+          "max": 36
+        }
+    },
+    "turnip": {
+        "row": {
+          "min": 12,
+          "max": 18
+        },
+        "plant": {
+          "min": 2,
+          "max": 4
+        }
+    },
+    "zucchini": {
+        "row": {
+          "min": 36,
+          "max": 48
+        },
+        "plant": {
+          "min": 24,
+          "max": 36
+        }
+    }
+}

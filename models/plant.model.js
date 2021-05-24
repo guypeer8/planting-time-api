@@ -67,6 +67,20 @@ const plantSchema = new mongoose.Schema({
         days_to_maturity: { type: Number, min: -1 },
         literal: mongoose.Schema.Types.Mixed,
     },
+    spacing: { // inches
+        seed: { 
+            min: { type: Number },
+            max: { type: Number },
+        },
+        plant: {
+            min: { type: Number },
+            max: { type: Number },
+        },
+        row: {
+            min: { type: Number },
+            max: { type: Number },
+        },
+    },
     climate: {
         hardiness_zones: [{ type: String, enum: Object.keys(HARDINESS_ZONES) }],
         climate_zones: [{ type: String, enum: CLIMATE_ZONES }],

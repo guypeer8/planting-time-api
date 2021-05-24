@@ -6,7 +6,7 @@ const appRootDir = require('app-root-dir').get();
 const isLocalProd = process.env.NODE_ENV === 'local_prod';
 const isDev = process.env.NODE_ENV !== 'production' && !isLocalProd;
 
-const PORT = 8080;
+const PORT = 8081;
 const ROLES = ['user', 'admin', 'shop-owner'];
 const PROVIDERS = ['local', 'google', 'facebook'];
 
@@ -23,8 +23,8 @@ const MAPQUEST_PLACE_GEO_API = `${MAPQUEST_API}/address`;
 
 const SUNLIGHT_API = 'https://api.sunrise-sunset.org/json';
 
-const frontendRoute = isDev || isLocalProd ? 'http://localhost:8888' : 'https://plantingtime.com';
-const backendRoute = isDev || isLocalProd ? 'http://localhost:8080' : 'https://api.plantingtime.com';
+const frontendRoute = isDev || isLocalProd ? 'http://localhost:8888' : 'https://plantoclock.com';
+const backendRoute = isDev || isLocalProd ? 'http://localhost:8081/plant-oclock' : 'https://www.superlaunchapi.xyz/plant-oclock';
 const mongodbServer = isDev ? 'mongodb://localhost:27017/plantingtime' : process.env.MONGO_URI;
 
 const corsOptions = {
